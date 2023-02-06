@@ -1,0 +1,375 @@
+import '../auth/firebase_user_provider.dart';
+import '../backend/backend.dart';
+import '../components/bottom_sheet_place_info_widget.dart';
+import '../flutter_flow/flutter_flow_choice_chips.dart';
+import '../flutter_flow/flutter_flow_google_map.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../log_in/log_in_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class MainHomeEntryWidget extends StatefulWidget {
+  const MainHomeEntryWidget({Key? key}) : super(key: key);
+
+  @override
+  _MainHomeEntryWidgetState createState() => _MainHomeEntryWidgetState();
+}
+
+class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
+  LatLng? currentUserLocationValue;
+  final _unfocusNode = FocusNode();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? googleMapsCenter;
+  final googleMapsController = Completer<GoogleMapController>();
+  String? choiceChipsValue;
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _unfocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<List<ChargeMarkerRecord>>(
+      stream: queryChargeMarkerRecord(),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 50,
+              height: 50,
+              child: CircularProgressIndicator(
+                color: FlutterFlowTheme.of(context).primaryColor,
+              ),
+            ),
+          );
+        }
+        List<ChargeMarkerRecord> mainHomeEntryChargeMarkerRecordList =
+            snapshot.data!;
+        return Scaffold(
+          key: scaffoldKey,
+          resizeToAvoidBottomInset: false,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          body: SafeArea(
+            child: GestureDetector(
+              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+              child: Visibility(
+                visible: responsiveVisibility(
+                  context: context,
+                  tabletLandscape: false,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: FlutterFlowGoogleMap(
+                              controller: googleMapsController,
+                              onCameraIdle: (latLng) =>
+                                  googleMapsCenter = latLng,
+                              initialLocation: googleMapsCenter ??=
+                                  LatLng(37.5150049, 127.1041651),
+                              markers: mainHomeEntryChargeMarkerRecordList
+                                  .map(
+                                    (mainHomeEntryChargeMarkerRecord) =>
+                                        FlutterFlowMarker(
+                                      mainHomeEntryChargeMarkerRecord
+                                          .reference.path,
+                                      mainHomeEntryChargeMarkerRecord.location!,
+                                      () async {
+                                        if (loggedIn) {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding: MediaQuery.of(context)
+                                                    .viewInsets,
+                                                child: Container(
+                                                  height: 180,
+                                                  child:
+                                                      BottomSheetPlaceInfoWidget(
+                                                    placeName:
+                                                        mainHomeEntryChargeMarkerRecord,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text('로그인 필요'),
+                                                        content: Text(
+                                                            '로드인후 사용 가능합니다. 로그인 하시려면 확인 버튼을 누르세요.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child: Text('취소'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text('확인'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LogInWidget(),
+                                              ),
+                                            );
+                                          } else {
+                                            Navigator.pop(context);
+                                          }
+                                        }
+                                      },
+                                    ),
+                                  )
+                                  .toList(),
+                              markerColor: GoogleMarkerColor.red,
+                              mapType: MapType.normal,
+                              style: GoogleMapStyle.standard,
+                              initialZoom: 14,
+                              allowInteraction: true,
+                              allowZoom: true,
+                              showZoomControls: true,
+                              showLocation: true,
+                              showCompass: true,
+                              showMapToolbar: true,
+                              showTraffic: true,
+                              centerMapOnMarkerTap: true,
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: FlutterFlowChoiceChips(
+                                          options: [
+                                            ChipData(FFLocalizations.of(context)
+                                                .getText(
+                                              'm7i6xi9t' /* 충전속도 */,
+                                            )),
+                                            ChipData(FFLocalizations.of(context)
+                                                .getText(
+                                              '9zwpa5q3' /* DC콤보, DC차데모, AC3상 */,
+                                            )),
+                                            ChipData(FFLocalizations.of(context)
+                                                .getText(
+                                              'qi90obiz' /* 충전기상태 */,
+                                            )),
+                                            ChipData(FFLocalizations.of(context)
+                                                .getText(
+                                              'lxucu9ue' /* 차밥결제 */,
+                                            ))
+                                          ],
+                                          onChanged: (val) => setState(() =>
+                                              choiceChipsValue = val?.first),
+                                          selectedChipStyle: ChipStyle(
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryColor,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family,
+                                                      color: Colors.white,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts: GoogleFonts
+                                                              .asMap()
+                                                          .containsKey(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyText1Family),
+                                                    ),
+                                            iconColor: Color(0x00000000),
+                                            iconSize: 18,
+                                            elevation: 4,
+                                          ),
+                                          unselectedChipStyle: ChipStyle(
+                                            backgroundColor: Colors.white,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .bodyText2
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyText2Family,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2Family),
+                                                ),
+                                            iconColor: Color(0x00000000),
+                                            iconSize: 18,
+                                            elevation: 4,
+                                          ),
+                                          chipSpacing: 0,
+                                          multiselect: false,
+                                          alignment: WrapAlignment.start,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            3, 3, 3, 3),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            setAppLanguage(context, 'ko');
+                                          },
+                                          child: Icon(
+                                            Icons.refresh_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            3, 3, 3, 3),
+                                        child: Icon(
+                                          Icons.star_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 30,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            3, 3, 3, 3),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            currentUserLocationValue =
+                                                await getCurrentUserLocation(
+                                                    defaultLocation:
+                                                        LatLng(0.0, 0.0));
+                                            await googleMapsController.future
+                                                .then(
+                                              (c) => c.animateCamera(
+                                                CameraUpdate.newLatLng(
+                                                    currentUserLocationValue!
+                                                        .toGoogleMaps()),
+                                              ),
+                                            );
+                                          },
+                                          child: Icon(
+                                            Icons.location_searching_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

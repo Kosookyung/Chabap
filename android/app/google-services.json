@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "881904543510",
+    "project_id": "chabap-2a903",
+    "storage_bucket": "chabap-2a903.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881904543510:android:5124d74559dc4a47ae9237",
+        "android_client_info": {
+          "package_name": "com.mycompany.chabap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881904543510-2tcp0qm9m13etmtg4c4te1iricpa5lk3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.chabap",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "881904543510-s1mtblfj2khn518cmf20kv8ak7o97b68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.chabap",
+            "certificate_hash": "7c74585c18fc6b89c63d8078ac3633e26c8423bb"
+          }
+        },
+        {
+          "client_id": "881904543510-794efk4sisibddaivvvl3i03f8teidkk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH8hpxSHho8GPgDUakyli3hdFQiu6MmpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881904543510-794efk4sisibddaivvvl3i03f8teidkk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "881904543510-cbh8kvfce394u9mcn3kf4ijtivvjk1di.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.chabap"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
