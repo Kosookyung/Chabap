@@ -1,11 +1,14 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'search_account_model.dart';
+export 'search_account_model.dart';
 
 class SearchAccountWidget extends StatefulWidget {
   const SearchAccountWidget({Key? key}) : super(key: key);
@@ -15,21 +18,25 @@ class SearchAccountWidget extends StatefulWidget {
 }
 
 class _SearchAccountWidgetState extends State<SearchAccountWidget> {
-  TextEditingController? emailTextController;
-  final _unfocusNode = FocusNode();
+  late SearchAccountModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    emailTextController = TextEditingController();
+    _model = createModel(context, () => SearchAccountModel());
+
+    _model.emailTextController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    emailTextController?.dispose();
     super.dispose();
   }
 
@@ -47,13 +54,13 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
-                borderRadius: 30,
-                borderWidth: 1,
-                buttonSize: 60,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
                 icon: Icon(
                   Icons.arrow_back_rounded,
                   color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30,
+                  size: 30.0,
                 ),
                 onPressed: () async {
                   Navigator.pop(context);
@@ -66,7 +73,7 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: FlutterFlowTheme.of(context).title2Family,
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 22,
+                      fontSize: 22.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).title2Family),
@@ -74,23 +81,23 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
               ),
               actions: [],
               centerTitle: false,
-              elevation: 2,
+              elevation: 2.0,
             )
           : null,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: emailTextController,
+                    controller: _model.emailTextController,
                     onChanged: (_) => EasyDebounce.debounce(
-                      'emailTextController',
+                      '_model.emailTextController',
                       Duration(milliseconds: 2000),
                       () => setState(() {}),
                     ),
@@ -104,7 +111,7 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).primaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(4.0),
@@ -113,8 +120,8 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(4.0),
@@ -124,7 +131,7 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(4.0),
@@ -134,40 +141,42 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(4.0),
                           topRight: Radius.circular(4.0),
                         ),
                       ),
-                      suffixIcon: emailTextController!.text.isNotEmpty
+                      suffixIcon: _model.emailTextController!.text.isNotEmpty
                           ? InkWell(
                               onTap: () async {
-                                emailTextController?.clear();
+                                _model.emailTextController?.clear();
                                 setState(() {});
                               },
                               child: Icon(
                                 Icons.clear,
                                 color: Color(0xFF757575),
-                                size: 22,
+                                size: 22.0,
                               ),
                             )
                           : null,
                     ),
                     style: FlutterFlowTheme.of(context).bodyText1,
                     keyboardType: TextInputType.emailAddress,
+                    validator: _model.emailTextControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
-                          if (emailTextController!.text.isEmpty) {
+                          if (_model.emailTextController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -178,7 +187,7 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                             return;
                           }
                           await resetPassword(
-                            email: emailTextController!.text,
+                            email: _model.emailTextController.text,
                             context: context,
                           );
                         },
@@ -186,7 +195,11 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                           'dnhg63z1' /* 비밀번호 재설정 */,
                         ),
                         options: FFButtonOptions(
-                          height: 45,
+                          height: 45.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
@@ -200,9 +213,9 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
                               ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
-                            width: 1,
+                            width: 1.0,
                           ),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(16.0),
                         ),
                       ),
                     ],

@@ -1,10 +1,13 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'account_withdraw_model.dart';
+export 'account_withdraw_model.dart';
 
 class AccountWithdrawWidget extends StatefulWidget {
   const AccountWithdrawWidget({Key? key}) : super(key: key);
@@ -14,19 +17,23 @@ class AccountWithdrawWidget extends StatefulWidget {
 }
 
 class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
-  bool? checkboxListTileValue;
-  final _unfocusNode = FocusNode();
+  late AccountWithdrawModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => AccountWithdrawModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -45,13 +52,13 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
-                borderRadius: 30,
-                borderWidth: 1,
-                buttonSize: 60,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
                 icon: Icon(
                   Icons.arrow_back_rounded,
                   color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30,
+                  size: 30.0,
                 ),
                 onPressed: () async {
                   Navigator.pop(context);
@@ -64,7 +71,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: FlutterFlowTheme.of(context).title2Family,
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).title2Family),
@@ -72,7 +79,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
               ),
               actions: [],
               centerTitle: false,
-              elevation: 2,
+              elevation: 2.0,
             )
           : null,
       body: SafeArea(
@@ -83,22 +90,23 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        blurRadius: 7,
+                        blurRadius: 7.0,
                         color: Color(0x2F1D2429),
-                        offset: Offset(0, 3),
+                        offset: Offset(0.0, 3.0),
                       )
                     ],
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -118,7 +126,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                                       fontFamily: 'Roboto',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
-                                      fontSize: 18,
+                                      fontSize: 18.0,
                                       fontWeight: FontWeight.normal,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
@@ -136,7 +144,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -148,9 +156,10 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                                 FlutterFlowTheme.of(context).primaryText,
                           ),
                           child: CheckboxListTile(
-                            value: checkboxListTileValue ??= true,
+                            value: _model.checkboxListTileValue ??= true,
                             onChanged: (newValue) async {
-                              setState(() => checkboxListTileValue = newValue!);
+                              setState(() =>
+                                  _model.checkboxListTileValue = newValue!);
                             },
                             title: Text(
                               FFLocalizations.of(context).getText(
@@ -162,7 +171,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                                             .title3Family,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
-                                        fontSize: 18,
+                                        fontSize: 18.0,
                                         fontWeight: FontWeight.normal,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -186,7 +195,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -223,8 +232,12 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                           'prakymae' /* 회원탈퇴하기 */,
                         ),
                         options: FFButtonOptions(
-                          height: 45,
-                          color: checkboxListTileValue!
+                          height: 45.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: _model.checkboxListTileValue!
                               ? FlutterFlowTheme.of(context).primaryColor
                               : FlutterFlowTheme.of(context).secondaryText,
                           textStyle: FlutterFlowTheme.of(context)
@@ -239,9 +252,9 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                               ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
-                            width: 1,
+                            width: 1.0,
                           ),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ),

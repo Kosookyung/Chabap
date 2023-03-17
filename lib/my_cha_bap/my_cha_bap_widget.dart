@@ -1,12 +1,15 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../location_info_guide/location_info_guide_widget.dart';
-import '../personal_info_guide/personal_info_guide_widget.dart';
-import '../personal_setting/personal_setting_widget.dart';
-import '../user_guide/user_guide_widget.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/location_info_guide/location_info_guide_widget.dart';
+import '/personal_info_guide/personal_info_guide_widget.dart';
+import '/personal_setting/personal_setting_widget.dart';
+import '/user_guide/user_guide_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'my_cha_bap_model.dart';
+export 'my_cha_bap_model.dart';
 
 class MyChaBapWidget extends StatefulWidget {
   const MyChaBapWidget({Key? key}) : super(key: key);
@@ -16,18 +19,23 @@ class MyChaBapWidget extends StatefulWidget {
 }
 
 class _MyChaBapWidgetState extends State<MyChaBapWidget> {
-  final _unfocusNode = FocusNode();
+  late MyChaBapModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => MyChaBapModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -51,7 +59,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: FlutterFlowTheme.of(context).title2Family,
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 18,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).title2Family),
@@ -59,7 +67,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
               ),
               actions: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                   child: InkWell(
                     onTap: () async {
                       await Navigator.push(
@@ -72,13 +80,13 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                     child: Icon(
                       Icons.more_outlined,
                       color: Colors.black,
-                      size: 24,
+                      size: 30.0,
                     ),
                   ),
                 ),
               ],
               centerTitle: false,
-              elevation: 2,
+              elevation: 2.0,
             )
           : null,
       body: SafeArea(
@@ -93,27 +101,29 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 0,
+                              blurRadius: 0.0,
                               color: FlutterFlowTheme.of(context).tertiaryColor,
-                              offset: Offset(0, 1),
+                              offset: Offset(0.0, 1.0),
                             )
                           ],
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 8.0, 16.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -140,7 +150,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 4, 0, 0),
+                                          0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         currentUserEmail,
                                         style: FlutterFlowTheme.of(context)
@@ -149,7 +159,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText2Family,
-                                              fontSize: 16,
+                                              fontSize: 16.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
@@ -169,145 +179,33 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 0,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
-                              offset: Offset(0, 1),
-                            )
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      FFLocalizations.of(context).getText(
-                                        'u06ajy95' /* 차량정보 */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .title3
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .title3Family,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .title3Family),
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Text(
-                                            '현재87%',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyText2Family,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.normal,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText2Family),
-                                                ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10, 0, 0, 0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '963sk85a' /* 플러그 미연결 */,
-                                            ),
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyText1Family,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.normal,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1Family),
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 60,
+                        height: 60.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 5,
+                              blurRadius: 5.0,
                               color: Color(0x3416202A),
-                              offset: Offset(0, 2),
+                              offset: Offset(0.0, 2.0),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'tgbnq4k7' /* 즐겨찾는 충전소 */,
@@ -319,7 +217,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                             .bodyText2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 16,
+                                        fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -330,12 +228,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    size: 18,
+                                    size: 18.0,
                                   ),
                                 ),
                               ),
@@ -345,31 +243,33 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        height: 45,
+                        height: 45.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 5,
+                              blurRadius: 5.0,
                               color: Color(0x3416202A),
-                              offset: Offset(0, 2),
+                              offset: Offset(0.0, 2.0),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '9w0p4juo' /* 이용내역 */,
@@ -381,7 +281,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                             .bodyText2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 16,
+                                        fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -392,12 +292,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    size: 18,
+                                    size: 18.0,
                                   ),
                                 ),
                               ),
@@ -407,31 +307,33 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        height: 45,
+                        height: 45.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 5,
+                              blurRadius: 5.0,
                               color: Color(0x3416202A),
-                              offset: Offset(0, 2),
+                              offset: Offset(0.0, 2.0),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'klbkpgdl' /* 이벤트 */,
@@ -443,7 +345,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                             .bodyText2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 16,
+                                        fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -454,12 +356,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    size: 18,
+                                    size: 18.0,
                                   ),
                                 ),
                               ),
@@ -469,7 +371,8 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: InkWell(
                         onTap: () async {
                           await Navigator.push(
@@ -481,28 +384,29 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                         },
                         child: Container(
                           width: double.infinity,
-                          height: 45,
+                          height: 45.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             boxShadow: [
                               BoxShadow(
-                                blurRadius: 5,
+                                blurRadius: 5.0,
                                 color: Color(0x3416202A),
-                                offset: Offset(0, 2),
+                                offset: Offset(0.0, 2.0),
                               )
                             ],
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.0),
                             shape: BoxShape.rectangle,
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 8.0, 8.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12, 0, 0, 0),
+                                      12.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       '16kbui6p' /* 차밥 이용안내 */,
@@ -515,7 +419,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                                   .bodyText2Family,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
-                                          fontSize: 16,
+                                          fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
@@ -526,12 +430,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                 ),
                                 Expanded(
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.9, 0),
+                                    alignment: AlignmentDirectional(0.9, 0.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
-                                      size: 18,
+                                      size: 18.0,
                                     ),
                                   ),
                                 ),
@@ -542,7 +446,8 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: InkWell(
                         onTap: () async {
                           await Navigator.push(
@@ -554,28 +459,29 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                         },
                         child: Container(
                           width: double.infinity,
-                          height: 45,
+                          height: 45.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             boxShadow: [
                               BoxShadow(
-                                blurRadius: 5,
+                                blurRadius: 5.0,
                                 color: Color(0x3416202A),
-                                offset: Offset(0, 2),
+                                offset: Offset(0.0, 2.0),
                               )
                             ],
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.0),
                             shape: BoxShape.rectangle,
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 8.0, 8.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12, 0, 0, 0),
+                                      12.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       'yvnkzem5' /* 위치정보 이용약관 */,
@@ -588,7 +494,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                                   .bodyText2Family,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
-                                          fontSize: 16,
+                                          fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
@@ -599,12 +505,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                 ),
                                 Expanded(
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.9, 0),
+                                    alignment: AlignmentDirectional(0.9, 0.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
-                                      size: 18,
+                                      size: 18.0,
                                     ),
                                   ),
                                 ),
@@ -615,7 +521,8 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: InkWell(
                         onTap: () async {
                           await Navigator.push(
@@ -627,28 +534,29 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                         },
                         child: Container(
                           width: double.infinity,
-                          height: 45,
+                          height: 45.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             boxShadow: [
                               BoxShadow(
-                                blurRadius: 5,
+                                blurRadius: 5.0,
                                 color: Color(0x3416202A),
-                                offset: Offset(0, 2),
+                                offset: Offset(0.0, 2.0),
                               )
                             ],
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.0),
                             shape: BoxShape.rectangle,
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 8.0, 8.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12, 0, 0, 0),
+                                      12.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       '6mko9cri' /* 개인정보 수집 및 이용 */,
@@ -661,7 +569,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                                   .bodyText2Family,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
-                                          fontSize: 16,
+                                          fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
@@ -672,12 +580,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                 ),
                                 Expanded(
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.9, 0),
+                                    alignment: AlignmentDirectional(0.9, 0.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
-                                      size: 18,
+                                      size: 18.0,
                                     ),
                                   ),
                                 ),
@@ -688,31 +596,33 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        height: 45,
+                        height: 45.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 5,
+                              blurRadius: 5.0,
                               color: Color(0x3416202A),
-                              offset: Offset(0, 2),
+                              offset: Offset(0.0, 2.0),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'wiamf49q' /* 고객센터 */,
@@ -724,7 +634,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                             .bodyText2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 16,
+                                        fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -735,12 +645,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    size: 18,
+                                    size: 18.0,
                                   ),
                                 ),
                               ),
@@ -750,31 +660,33 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        height: 45,
+                        height: 45.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 5,
+                              blurRadius: 5.0,
                               color: Color(0x3416202A),
-                              offset: Offset(0, 2),
+                              offset: Offset(0.0, 2.0),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '6a1lg0we' /* 고장신고 */,
@@ -786,7 +698,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                             .bodyText2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 16,
+                                        fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -797,12 +709,12 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    size: 18,
+                                    size: 18.0,
                                   ),
                                 ),
                               ),

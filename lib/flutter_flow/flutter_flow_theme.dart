@@ -29,6 +29,17 @@ abstract class FlutterFlowTheme {
   late Color primaryBtnText;
   late Color lineColor;
   late Color backgroundComponents;
+  late Color grayIcon;
+  late Color gray200;
+  late Color gray600;
+  late Color black600;
+  late Color tertiary400;
+  late Color textColor;
+  late Color maximumBlueGreen;
+  late Color plumpPurple;
+  late Color platinum;
+  late Color ashGray;
+  late Color darkSeaGreen;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -76,6 +87,17 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color primaryBtnText = Color(0xFFFFFFFF);
   late Color lineColor = Color(0xFFE0E3E7);
   late Color backgroundComponents = Color(0xFF1D2428);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color gray200 = Color(0xFFDBE2E7);
+  late Color gray600 = Color(0xFF262D34);
+  late Color black600 = Color(0xFF090F13);
+  late Color tertiary400 = Color(0xFF39D2C0);
+  late Color textColor = Color(0xFF1E2429);
+  late Color maximumBlueGreen = Color(0xFF59C3C3);
+  late Color plumpPurple = Color(0xFF52489C);
+  late Color platinum = Color(0xFFEBEBEB);
+  late Color ashGray = Color(0xFFCAD2C5);
+  late Color darkSeaGreen = Color(0xFF84A98C);
 }
 
 abstract class Typography {
@@ -105,49 +127,49 @@ class MobileTypography extends Typography {
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 24,
+        fontSize: 24.0,
       );
   String get title2Family => 'AppleGothicSDNeo';
   TextStyle get title2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 22,
+        fontSize: 22.0,
       );
   String get title3Family => 'AppleGothicSDNeo';
   TextStyle get title3 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 20,
+        fontSize: 20.0,
       );
   String get subtitle1Family => 'AppleGothicSDNeo';
   TextStyle get subtitle1 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 18,
+        fontSize: 18.0,
       );
   String get subtitle2Family => 'AppleGothicSDNeo';
   TextStyle get subtitle2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get bodyText1Family => 'AppleGothicSDNeo';
   TextStyle get bodyText1 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontSize: 14.0,
       );
   String get bodyText2Family => 'AppleGothicSDNeo';
   TextStyle get bodyText2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontSize: 14.0,
       );
 }
 
@@ -161,49 +183,49 @@ class TabletTypography extends Typography {
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 24,
+        fontSize: 24.0,
       );
   String get title2Family => 'AppleGothicSDNeo';
   TextStyle get title2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 22,
+        fontSize: 22.0,
       );
   String get title3Family => 'AppleGothicSDNeo';
   TextStyle get title3 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 20,
+        fontSize: 20.0,
       );
   String get subtitle1Family => 'AppleGothicSDNeo';
   TextStyle get subtitle1 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 18,
+        fontSize: 18.0,
       );
   String get subtitle2Family => 'AppleGothicSDNeo';
   TextStyle get subtitle2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get bodyText1Family => 'AppleGothicSDNeo';
   TextStyle get bodyText1 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontSize: 14.0,
       );
   String get bodyText2Family => 'AppleGothicSDNeo';
   TextStyle get bodyText2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontSize: 14.0,
       );
 }
 
@@ -217,49 +239,49 @@ class DesktopTypography extends Typography {
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 24,
+        fontSize: 24.0,
       );
   String get title2Family => 'AppleGothicSDNeo';
   TextStyle get title2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 22,
+        fontSize: 22.0,
       );
   String get title3Family => 'AppleGothicSDNeo';
   TextStyle get title3 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 20,
+        fontSize: 20.0,
       );
   String get subtitle1Family => 'AppleGothicSDNeo';
   TextStyle get subtitle1 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 18,
+        fontSize: 18.0,
       );
   String get subtitle2Family => 'AppleGothicSDNeo';
   TextStyle get subtitle2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get bodyText1Family => 'AppleGothicSDNeo';
   TextStyle get bodyText1 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontSize: 14.0,
       );
   String get bodyText2Family => 'AppleGothicSDNeo';
   TextStyle get bodyText2 => TextStyle(
         fontFamily: 'AppleGothicSDNeo',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontSize: 14.0,
       );
 }
 

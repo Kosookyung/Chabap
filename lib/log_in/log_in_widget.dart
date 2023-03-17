@@ -1,13 +1,16 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../kakao_login/kakao_login_widget.dart';
-import '../main.dart';
-import '../registration/registration_widget.dart';
-import '../search_account/search_account_widget.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/kakao_login/kakao_login_widget.dart';
+import '/main.dart';
+import '/registration/registration_widget.dart';
+import '/search_account/search_account_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'log_in_model.dart';
+export 'log_in_model.dart';
 
 class LogInWidget extends StatefulWidget {
   const LogInWidget({Key? key}) : super(key: key);
@@ -17,28 +20,26 @@ class LogInWidget extends StatefulWidget {
 }
 
 class _LogInWidgetState extends State<LogInWidget> {
-  TextEditingController? emailFieldController;
-  TextEditingController? passWordFieldController;
-  late bool passWordFieldVisibility;
-  bool? checkboxListTileValue;
-  final _unfocusNode = FocusNode();
+  late LogInModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    emailFieldController = TextEditingController();
-    passWordFieldController = TextEditingController();
-    passWordFieldVisibility = false;
+    _model = createModel(context, () => LogInModel());
+
+    _model.emailFieldController ??= TextEditingController();
+    _model.passWordFieldController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    emailFieldController?.dispose();
-    passWordFieldController?.dispose();
     super.dispose();
   }
 
@@ -56,31 +57,32 @@ class _LogInWidgetState extends State<LogInWidget> {
               tabletLandscape: false,
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
                       child: Image.asset(
                         'assets/images/Chabap_BI.png',
                         width: 106.2,
-                        height: 73,
+                        height: 73.0,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Form(
-                      key: formKey,
+                      key: _model.formKey,
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 100.0, 0.0, 0.0),
                             child: TextFormField(
-                              controller: emailFieldController,
+                              controller: _model.emailFieldController,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -89,7 +91,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF090909),
-                                      fontSize: 13,
+                                      fontSize: 13.0,
                                       fontWeight: FontWeight.normal,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
@@ -102,11 +104,11 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'AppleGothicSDNeo',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.normal,
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w500,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
@@ -116,31 +118,30 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    width: 1,
+                                    color: Color(0x00000000),
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
                                 fillColor: FlutterFlowTheme.of(context)
@@ -156,35 +157,24 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: Color(0xFF090909),
-                                    fontSize: 13,
+                                    fontSize: 13.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
                                                 .bodyText1Family),
                                   ),
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return FFLocalizations.of(context).getText(
-                                    '7m579wa6' /* Field is required */,
-                                  );
-                                }
-
-                                if (!RegExp(kTextValidatorEmailRegex)
-                                    .hasMatch(val)) {
-                                  return 'Has to be a valid email address.';
-                                }
-                                return null;
-                              },
+                              validator: _model.emailFieldControllerValidator
+                                  .asValidator(context),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
                             child: TextFormField(
-                              controller: passWordFieldController,
+                              controller: _model.passWordFieldController,
                               autofocus: true,
-                              obscureText: !passWordFieldVisibility,
+                              obscureText: !_model.passWordFieldVisibility,
                               decoration: InputDecoration(
                                 hintText: FFLocalizations.of(context).getText(
                                   'svkhhryn' /* 비밀번호를 입력해주세요 */,
@@ -194,7 +184,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodyText2Family,
-                                      fontSize: 12,
+                                      fontSize: 13.0,
                                       fontWeight: FontWeight.w500,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
@@ -205,47 +195,46 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    width: 1,
+                                    color: Color(0x00000000),
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 prefixIcon: Icon(
                                   FFIcons.kfSICON1SVG11V11220427,
                                 ),
                                 suffixIcon: InkWell(
                                   onTap: () => setState(
-                                    () => passWordFieldVisibility =
-                                        !passWordFieldVisibility,
+                                    () => _model.passWordFieldVisibility =
+                                        !_model.passWordFieldVisibility,
                                   ),
                                   focusNode: FocusNode(skipTraversal: true),
                                   child: Icon(
-                                    passWordFieldVisibility
+                                    _model.passWordFieldVisibility
                                         ? Icons.visibility_outlined
                                         : Icons.visibility_off_outlined,
                                     color: Color(0xFF757575),
-                                    size: 22,
+                                    size: 22.0,
                                   ),
                                 ),
                               ),
@@ -254,37 +243,30 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: Color(0xFF090909),
-                                    fontSize: 12,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
                                                 .bodyText1Family),
                                   ),
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return FFLocalizations.of(context).getText(
-                                    'vjmqcj8m' /* Field is required */,
-                                  );
-                                }
-
-                                return null;
-                              },
+                              validator: _model.passWordFieldControllerValidator
+                                  .asValidator(context),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
                             child: Theme(
                               data: ThemeData(
                                 unselectedWidgetColor:
                                     FlutterFlowTheme.of(context).primaryText,
                               ),
                               child: CheckboxListTile(
-                                value: checkboxListTileValue ??= false,
+                                value: _model.checkboxListTileValue ??= false,
                                 onChanged: (newValue) async {
-                                  setState(
-                                      () => checkboxListTileValue = newValue!);
+                                  setState(() =>
+                                      _model.checkboxListTileValue = newValue!);
                                 },
                                 title: Text(
                                   FFLocalizations.of(context).getText(
@@ -295,7 +277,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       .title3
                                       .override(
                                         fontFamily: 'AppleGothicSDNeo',
-                                        fontSize: 13,
+                                        fontSize: 13.0,
                                         fontWeight: FontWeight.normal,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -318,8 +300,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                             onPressed: () async {
                               final user = await signInWithEmail(
                                 context,
-                                emailFieldController!.text,
-                                passWordFieldController!.text,
+                                _model.emailFieldController.text,
+                                _model.passWordFieldController.text,
                               );
                               if (user == null) {
                                 return;
@@ -338,15 +320,19 @@ class _LogInWidgetState extends State<LogInWidget> {
                               '176glhxg' /* 로그인 */,
                             ),
                             options: FFButtonOptions(
-                              width: 350,
-                              height: 50,
+                              width: 350.0,
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primaryColor,
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: Colors.white,
-                                    fontSize: 14,
+                                    fontSize: 14.0,
                                     fontWeight: FontWeight.w600,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
@@ -355,16 +341,17 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   ),
                               borderSide: BorderSide(
                                 color: Colors.transparent,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 20),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 20.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -386,7 +373,9 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   .bodyText1
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
-                                    fontSize: 12,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
@@ -396,8 +385,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'i1bitf2s' /* | */,
@@ -417,8 +406,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               onTap: () async {
                                 await Navigator.push(
@@ -438,7 +427,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       fontFamily: 'AppleGothicSDNeo',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
-                                      fontSize: 12,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
@@ -456,7 +445,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                       color: FlutterFlowTheme.of(context).secondaryText,
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -471,7 +461,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   fontFamily: 'AppleGothicSDNeo',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -482,7 +472,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -497,31 +488,31 @@ class _LogInWidgetState extends State<LogInWidget> {
                               );
                             },
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
                                 'assets/images/logo_kakao.png',
-                                width: 45,
-                                height: 45,
+                                width: 45.0,
+                                height: 45.0,
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
                                 'assets/images/logo_naver.png',
-                                width: 45,
-                                height: 45,
+                                width: 45.0,
+                                height: 45.0,
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               onTap: () async {
                                 final user = await signInWithGoogle(context);
@@ -538,19 +529,19 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 );
                               },
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
                                   'assets/images/logo_google.png',
-                                  width: 45,
-                                  height: 45,
+                                  width: 45.0,
+                                  height: 45.0,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               onTap: () async {
                                 final user = await signInWithFacebook(context);
@@ -567,19 +558,19 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 );
                               },
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
                                   'assets/images/logo_facebook.png',
-                                  width: 45,
-                                  height: 45,
+                                  width: 45.0,
+                                  height: 45.0,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               onTap: () async {
                                 final user = await signInWithApple(context);
@@ -596,11 +587,11 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 );
                               },
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
                                   'assets/images/logo_apple.png',
-                                  width: 45,
-                                  height: 45,
+                                  width: 45.0,
+                                  height: 45.0,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -610,7 +601,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -640,7 +632,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    fontSize: 12,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(

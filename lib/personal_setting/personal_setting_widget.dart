@@ -1,10 +1,13 @@
-import '../account_withdraw/account_withdraw_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../log_in/log_in_widget.dart';
+import '/account_withdraw/account_withdraw_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/log_in/log_in_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'personal_setting_model.dart';
+export 'personal_setting_model.dart';
 
 class PersonalSettingWidget extends StatefulWidget {
   const PersonalSettingWidget({Key? key}) : super(key: key);
@@ -14,19 +17,23 @@ class PersonalSettingWidget extends StatefulWidget {
 }
 
 class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
-  bool? switchValue;
-  final _unfocusNode = FocusNode();
+  late PersonalSettingModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => PersonalSettingModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -45,13 +52,13 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
-                borderRadius: 30,
-                borderWidth: 1,
-                buttonSize: 60,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
                 icon: Icon(
                   Icons.arrow_back_rounded,
                   color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30,
+                  size: 30.0,
                 ),
                 onPressed: () async {
                   Navigator.pop(context);
@@ -64,14 +71,14 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: FlutterFlowTheme.of(context).title2Family,
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24,
+                      fontSize: 24.0,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).title2Family),
                     ),
               ),
               actions: [],
               centerTitle: false,
-              elevation: 2,
+              elevation: 2.0,
             )
           : null,
       body: SafeArea(
@@ -81,7 +88,7 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,16 +100,16 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'AppleGothicSDNeo',
                             color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 16,
+                            fontSize: 16.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText1Family),
                           ),
                     ),
                     Switch(
-                      value: switchValue ??= true,
+                      value: _model.switchValue ??= true,
                       onChanged: (newValue) async {
-                        setState(() => switchValue = newValue!);
+                        setState(() => _model.switchValue = newValue!);
                       },
                       activeColor:
                           FlutterFlowTheme.of(context).primaryBackground,
@@ -113,7 +120,7 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -157,7 +164,7 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'AppleGothicSDNeo',
-                              fontSize: 16,
+                              fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -168,7 +175,7 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -188,7 +195,7 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'AppleGothicSDNeo',
-                              fontSize: 16,
+                              fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),

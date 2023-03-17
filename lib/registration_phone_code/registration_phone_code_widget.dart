@@ -1,11 +1,14 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../log_in/log_in_widget.dart';
-import '../main.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/log_in/log_in_widget.dart';
+import '/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'registration_phone_code_model.dart';
+export 'registration_phone_code_model.dart';
 
 class RegistrationPhoneCodeWidget extends StatefulWidget {
   const RegistrationPhoneCodeWidget({
@@ -28,38 +31,32 @@ class RegistrationPhoneCodeWidget extends StatefulWidget {
 
 class _RegistrationPhoneCodeWidgetState
     extends State<RegistrationPhoneCodeWidget> {
-  TextEditingController? confirmPassWordFieldController;
-  late bool confirmPassWordFieldVisibility;
-  TextEditingController? emailFieldController;
-  TextEditingController? passWordFieldController;
-  late bool passWordFieldVisibility;
-  TextEditingController? phoneFieldController;
-  TextEditingController? sMSFieldController;
-  final _unfocusNode = FocusNode();
+  late RegistrationPhoneCodeModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    confirmPassWordFieldController =
+    _model = createModel(context, () => RegistrationPhoneCodeModel());
+
+    _model.emailFieldController ??= TextEditingController(text: widget.email);
+    _model.passWordFieldController ??=
+        TextEditingController(text: widget.password);
+    _model.confirmPassWordFieldController ??=
         TextEditingController(text: widget.verifiedPassword);
-    confirmPassWordFieldVisibility = false;
-    emailFieldController = TextEditingController(text: widget.email);
-    passWordFieldController = TextEditingController(text: widget.password);
-    passWordFieldVisibility = false;
-    phoneFieldController = TextEditingController(text: widget.phoneNumber);
-    sMSFieldController = TextEditingController();
+    _model.phoneFieldController ??=
+        TextEditingController(text: widget.phoneNumber);
+    _model.sMSFieldController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    confirmPassWordFieldController?.dispose();
-    emailFieldController?.dispose();
-    passWordFieldController?.dispose();
-    phoneFieldController?.dispose();
-    sMSFieldController?.dispose();
     super.dispose();
   }
 
@@ -72,12 +69,12 @@ class _RegistrationPhoneCodeWidgetState
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -88,7 +85,7 @@ class _RegistrationPhoneCodeWidgetState
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
-                              fontSize: 30,
+                              fontSize: 30.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -107,7 +104,7 @@ class _RegistrationPhoneCodeWidgetState
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText1Family,
-                            fontSize: 30,
+                            fontSize: 30.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText1Family),
@@ -116,9 +113,9 @@ class _RegistrationPhoneCodeWidgetState
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: emailFieldController,
+                    controller: _model.emailFieldController,
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
@@ -130,7 +127,7 @@ class _RegistrationPhoneCodeWidgetState
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText2Family,
-                            fontSize: 12,
+                            fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText2Family),
@@ -138,30 +135,30 @@ class _RegistrationPhoneCodeWidgetState
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       prefixIcon: Icon(
                         FFIcons.kfSICON2SVG11V11220427,
@@ -170,20 +167,22 @@ class _RegistrationPhoneCodeWidgetState
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Roboto',
                           color: Color(0xFF090909),
-                          fontSize: 13,
+                          fontSize: 13.0,
                           fontWeight: FontWeight.normal,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyText1Family),
                         ),
                     keyboardType: TextInputType.emailAddress,
+                    validator: _model.emailFieldControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: passWordFieldController,
+                    controller: _model.passWordFieldController,
                     autofocus: true,
-                    obscureText: !passWordFieldVisibility,
+                    obscureText: !_model.passWordFieldVisibility,
                     decoration: InputDecoration(
                       hintText: FFLocalizations.of(context).getText(
                         '9o1qgoj6' /* 비밀번호 */,
@@ -193,7 +192,7 @@ class _RegistrationPhoneCodeWidgetState
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText2Family,
-                            fontSize: 12,
+                            fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText2Family),
@@ -201,46 +200,46 @@ class _RegistrationPhoneCodeWidgetState
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       prefixIcon: Icon(
                         FFIcons.kfSICON1SVG11V11220427,
                       ),
                       suffixIcon: InkWell(
                         onTap: () => setState(
-                          () => passWordFieldVisibility =
-                              !passWordFieldVisibility,
+                          () => _model.passWordFieldVisibility =
+                              !_model.passWordFieldVisibility,
                         ),
                         focusNode: FocusNode(skipTraversal: true),
                         child: Icon(
-                          passWordFieldVisibility
+                          _model.passWordFieldVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 22,
+                          size: 22.0,
                         ),
                       ),
                     ),
@@ -248,20 +247,22 @@ class _RegistrationPhoneCodeWidgetState
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyText1Family,
                           color: Color(0xFF090909),
-                          fontSize: 12,
+                          fontSize: 12.0,
                           fontWeight: FontWeight.w500,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyText1Family),
                         ),
                     keyboardType: TextInputType.visiblePassword,
+                    validator: _model.passWordFieldControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: confirmPassWordFieldController,
+                    controller: _model.confirmPassWordFieldController,
                     autofocus: true,
-                    obscureText: !confirmPassWordFieldVisibility,
+                    obscureText: !_model.confirmPassWordFieldVisibility,
                     decoration: InputDecoration(
                       hintText: FFLocalizations.of(context).getText(
                         '8cvigigf' /* 비밀번호 확인 */,
@@ -271,7 +272,7 @@ class _RegistrationPhoneCodeWidgetState
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText2Family,
-                            fontSize: 12,
+                            fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText2Family),
@@ -279,46 +280,46 @@ class _RegistrationPhoneCodeWidgetState
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       prefixIcon: Icon(
                         FFIcons.kfSICON1SVG11V11220427,
                       ),
                       suffixIcon: InkWell(
                         onTap: () => setState(
-                          () => confirmPassWordFieldVisibility =
-                              !confirmPassWordFieldVisibility,
+                          () => _model.confirmPassWordFieldVisibility =
+                              !_model.confirmPassWordFieldVisibility,
                         ),
                         focusNode: FocusNode(skipTraversal: true),
                         child: Icon(
-                          confirmPassWordFieldVisibility
+                          _model.confirmPassWordFieldVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 22,
+                          size: 22.0,
                         ),
                       ),
                     ),
@@ -326,18 +327,20 @@ class _RegistrationPhoneCodeWidgetState
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyText1Family,
                           color: Color(0xFF090909),
-                          fontSize: 12,
+                          fontSize: 12.0,
                           fontWeight: FontWeight.w500,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyText1Family),
                         ),
                     keyboardType: TextInputType.visiblePassword,
+                    validator: _model.confirmPassWordFieldControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: phoneFieldController,
+                    controller: _model.phoneFieldController,
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
@@ -349,7 +352,7 @@ class _RegistrationPhoneCodeWidgetState
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText2Family,
-                            fontSize: 12,
+                            fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText2Family),
@@ -357,30 +360,30 @@ class _RegistrationPhoneCodeWidgetState
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       prefixIcon: Icon(
                         Icons.phone_android_sharp,
@@ -389,22 +392,24 @@ class _RegistrationPhoneCodeWidgetState
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Roboto',
                           color: Color(0xFF090909),
-                          fontSize: 13,
+                          fontSize: 13.0,
                           fontWeight: FontWeight.normal,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyText1Family),
                         ),
                     keyboardType: TextInputType.phone,
+                    validator: _model.phoneFieldControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: TextFormField(
-                          controller: sMSFieldController,
+                          controller: _model.sMSFieldController,
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -416,7 +421,7 @@ class _RegistrationPhoneCodeWidgetState
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText2Family,
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -426,31 +431,30 @@ class _RegistrationPhoneCodeWidgetState
                               borderSide: BorderSide(
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                color: Color(0x00000000),
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                           style: FlutterFlowTheme.of(context)
@@ -458,19 +462,22 @@ class _RegistrationPhoneCodeWidgetState
                               .override(
                                 fontFamily: 'Roboto',
                                 color: Color(0xFF090909),
-                                fontSize: 13,
+                                fontSize: 13.0,
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyText1Family),
                               ),
+                          validator: _model.sMSFieldControllerValidator
+                              .asValidator(context),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final smsCodeVal = sMSFieldController!.text;
+                            final smsCodeVal = _model.sMSFieldController.text;
                             if (smsCodeVal == null || smsCodeVal.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -500,8 +507,12 @@ class _RegistrationPhoneCodeWidgetState
                             'iodh3w1j' /* 확인 */,
                           ),
                           options: FFButtonOptions(
-                            width: 100,
-                            height: 40,
+                            width: 100.0,
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primaryColor,
                             textStyle: FlutterFlowTheme.of(context)
                                 .subtitle2
@@ -509,7 +520,7 @@ class _RegistrationPhoneCodeWidgetState
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .subtitle2Family,
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 14.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -517,9 +528,9 @@ class _RegistrationPhoneCodeWidgetState
                                 ),
                             borderSide: BorderSide(
                               color: Colors.transparent,
-                              width: 1,
+                              width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                       ),
@@ -527,11 +538,11 @@ class _RegistrationPhoneCodeWidgetState
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      if (passWordFieldController?.text !=
-                          confirmPassWordFieldController?.text) {
+                      if (_model.passWordFieldController.text !=
+                          _model.confirmPassWordFieldController.text) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -544,8 +555,8 @@ class _RegistrationPhoneCodeWidgetState
 
                       final user = await createAccountWithEmail(
                         context,
-                        emailFieldController!.text,
-                        passWordFieldController!.text,
+                        _model.emailFieldController.text,
+                        _model.passWordFieldController.text,
                       );
                       if (user == null) {
                         return;
@@ -565,7 +576,11 @@ class _RegistrationPhoneCodeWidgetState
                     ),
                     options: FFButtonOptions(
                       width: double.infinity,
-                      height: 40,
+                      height: 40.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primaryBackground,
                       textStyle: FlutterFlowTheme.of(context)
                           .subtitle2
@@ -573,21 +588,21 @@ class _RegistrationPhoneCodeWidgetState
                             fontFamily:
                                 FlutterFlowTheme.of(context).subtitle2Family,
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 14,
+                            fontSize: 14.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).subtitle2Family),
                           ),
                       borderSide: BorderSide(
                         color: FlutterFlowTheme.of(context).secondaryText,
-                        width: 1,
+                        width: 1.0,
                       ),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -600,7 +615,7 @@ class _RegistrationPhoneCodeWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
                               color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 12,
+                              fontSize: 12.0,
                               fontWeight: FontWeight.w500,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -610,7 +625,7 @@ class _RegistrationPhoneCodeWidgetState
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -633,7 +648,7 @@ class _RegistrationPhoneCodeWidgetState
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyText1Family,
-                                fontSize: 12,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -642,7 +657,8 @@ class _RegistrationPhoneCodeWidgetState
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'm6c9q2sh' /* | */,
@@ -654,7 +670,7 @@ class _RegistrationPhoneCodeWidgetState
                                     .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 12,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -663,7 +679,8 @@ class _RegistrationPhoneCodeWidgetState
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'pqqkqqnk' /* 아이디/비밀번호 찾기 */,
@@ -675,7 +692,7 @@ class _RegistrationPhoneCodeWidgetState
                                     .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 12,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)

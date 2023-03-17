@@ -1,9 +1,12 @@
-import '../charge_start/charge_start_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/charge_start/charge_start_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'charge_connect_model.dart';
+export 'charge_connect_model.dart';
 
 class ChargeConnectWidget extends StatefulWidget {
   const ChargeConnectWidget({Key? key}) : super(key: key);
@@ -13,18 +16,23 @@ class ChargeConnectWidget extends StatefulWidget {
 }
 
 class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
-  final _unfocusNode = FocusNode();
+  late ChargeConnectModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => ChargeConnectModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -38,7 +46,7 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,7 +55,8 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -60,7 +69,7 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText1Family,
-                                  fontSize: 44,
+                                  fontSize: 44.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -71,7 +80,8 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -84,7 +94,7 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText1Family,
-                                  fontSize: 44,
+                                  fontSize: 44.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -95,7 +105,8 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -108,7 +119,7 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText1Family,
-                                  fontSize: 44,
+                                  fontSize: 44.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -137,7 +148,11 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                       ),
                       options: FFButtonOptions(
                         width: double.infinity,
-                        height: 45,
+                        height: 45.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
@@ -145,20 +160,21 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).subtitle2Family,
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).subtitle2Family),
                             ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 50),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 50.0),
                       child: InkWell(
                         onTap: () async {
                           Navigator.pop(context);
@@ -173,7 +189,7 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyText1Family,
                                 color: Color(0x80333333),
-                                fontSize: 15,
+                                fontSize: 15.0,
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)

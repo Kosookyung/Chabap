@@ -25,6 +25,10 @@ class FFLocalizations {
   }
 
   String get languageCode => locale.toString();
+  String? get languageShortCode =>
+      _languagesWithShortCode.contains(locale.toString())
+          ? '${locale.toString()}_short'
+          : null;
   int get languageIndex => languages().contains(languageCode)
       ? languages().indexOf(languageCode)
       : 0;
@@ -37,6 +41,39 @@ class FFLocalizations {
     String? enText = '',
   }) =>
       [koText, enText][languageIndex] ?? '';
+
+  static const Set<String> _languagesWithShortCode = {
+    'ar',
+    'az',
+    'ca',
+    'cs',
+    'da',
+    'de',
+    'dv',
+    'en',
+    'es',
+    'et',
+    'fi',
+    'fr',
+    'gr',
+    'he',
+    'hi',
+    'hu',
+    'it',
+    'km',
+    'ku',
+    'mn',
+    'ms',
+    'no',
+    'pt',
+    'ro',
+    'ru',
+    'rw',
+    'sv',
+    'th',
+    'uk',
+    'vi',
+  };
 }
 
 class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {
@@ -304,14 +341,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // MyChaBap
   {
-    'u06ajy95': {
-      'ko': '차량정보',
-      'en': '',
-    },
-    '963sk85a': {
-      'ko': '플러그 미연결',
-      'en': '',
-    },
     'tgbnq4k7': {
       'ko': '즐겨찾는 충전소',
       'en': '',
@@ -441,61 +470,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'co5t0ekc': {
       'ko': '바로 충전하기',
-      'en': '',
-    },
-  },
-  // MyChaBapTemp
-  {
-    'rkyup1kf': {
-      'ko': 'Joy Augustin',
-      'en': '',
-    },
-    'f5x7y770': {
-      'ko': 'joy@augustin.com',
-      'en': '',
-    },
-    'jp7sobqc': {
-      'ko': 'Account',
-      'en': '',
-    },
-    'gn7fyqk4': {
-      'ko': 'Payment Options',
-      'en': '',
-    },
-    'ukbk6sp8': {
-      'ko': 'Country',
-      'en': '',
-    },
-    'nwti9zin': {
-      'ko': 'Notification Settings',
-      'en': '',
-    },
-    'dqx074i5': {
-      'ko': 'Edit Profile',
-      'en': '',
-    },
-    'he58dcyx': {
-      'ko': 'General',
-      'en': '',
-    },
-    '4gg0xf3i': {
-      'ko': 'Support',
-      'en': '',
-    },
-    'gq1n843y': {
-      'ko': 'Terms of Service',
-      'en': '',
-    },
-    'y0dvhorm': {
-      'ko': 'Invite Friends',
-      'en': '',
-    },
-    'yq0jn4ez': {
-      'ko': 'Profile',
-      'en': '',
-    },
-    'kn69y3e6': {
-      'ko': 'Home',
       'en': '',
     },
   },
@@ -686,6 +660,372 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'kkpmuqat': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
+  // ChargeInProcess
+  {
+    'hlsybizw': {
+      'ko': '충전중',
+      'en': '',
+    },
+    'q91sbvaa': {
+      'ko': '충전이 완료되면\n결제가 진행됩니다',
+      'en': '',
+    },
+    'qtffdidy': {
+      'ko': '충전 중지',
+      'en': '',
+    },
+    '8zug1nuu': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
+  // ChargeComplete
+  {
+    'bde6knmv': {
+      'ko': '충전이 완료되었습니다.',
+      'en': '',
+    },
+    '1xwisp72': {
+      'ko': '충전량',
+      'en': '',
+    },
+    'tjwe3n88': {
+      'ko': 'kWh',
+      'en': '',
+    },
+    '6o1pg0xx': {
+      'ko': '충전 단가',
+      'en': '',
+    },
+    'kudhbope': {
+      'ko': '/',
+      'en': '',
+    },
+    'rzggx6u5': {
+      'ko': 'kWh',
+      'en': '',
+    },
+    '4rsming3': {
+      'ko': '충전 결제 금액',
+      'en': '',
+    },
+    '06tfwjfl': {
+      'ko': '원',
+      'en': '',
+    },
+    '8a7h1gjp': {
+      'ko': '확인',
+      'en': '',
+    },
+    'lh3roc4v': {
+      'ko': '충전 완료',
+      'en': '',
+    },
+    's4oeaf48': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
+  // Payment
+  {
+    '7kk6fob9': {
+      'ko': 'Page Title',
+      'en': '',
+    },
+    '829iz1w7': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
+  // userPaylist
+  {
+    'oqorajy2': {
+      'ko': '이용내역',
+      'en': '',
+    },
+    '80wemjvm': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
+  // PayHistory
+  {
+    'u34h3tib': {
+      'ko': 'This Month',
+      'en': '',
+    },
+    'gxxo2cc2': {
+      'ko': 'Walden Books',
+      'en': '',
+    },
+    'mmmfe9mt': {
+      'ko': 'Feb 15, 2022',
+      'en': '',
+    },
+    'psg72fik': {
+      'ko': '충전량',
+      'en': '',
+    },
+    'wnspf6xu': {
+      'ko': '\$52.20',
+      'en': '',
+    },
+    'hhbxiew8': {
+      'ko': 'TJ Maxx',
+      'en': '',
+    },
+    'i39aycj4': {
+      'ko': 'Feb 15, 2022',
+      'en': '',
+    },
+    '2johfnzb': {
+      'ko': '\$152.20',
+      'en': '',
+    },
+    'w0vcmhem': {
+      'ko': 'Nike Store',
+      'en': '',
+    },
+    'kyb0bzmd': {
+      'ko': 'Feb 15, 2022',
+      'en': '',
+    },
+    '68fn84kb': {
+      'ko': '\$552.20',
+      'en': '',
+    },
+    'tqxfsgfq': {
+      'ko': 'Border Bookstore',
+      'en': '',
+    },
+    '2l4gg60s': {
+      'ko': 'Feb 15, 2022',
+      'en': '',
+    },
+    'qb3ntdp0': {
+      'ko': '\$59.20',
+      'en': '',
+    },
+    '3b8sds1b': {
+      'ko': 'Last Month',
+      'en': '',
+    },
+    '4xoggrco': {
+      'ko': 'Walden Books',
+      'en': '',
+    },
+    'txnzx3rm': {
+      'ko': 'Feb 15, 2022',
+      'en': '',
+    },
+    '1gbm3rtj': {
+      'ko': '\$52.20',
+      'en': '',
+    },
+    'bzeyxc77': {
+      'ko': 'Border Bookstore',
+      'en': '',
+    },
+    'nfcvp6vt': {
+      'ko': 'Feb 15, 2022',
+      'en': '',
+    },
+    '11s61vdj': {
+      'ko': '\$59.20',
+      'en': '',
+    },
+    'pyqjfn5m': {
+      'ko': '이용내역',
+      'en': '',
+    },
+    '1y31lhxo': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
+  // capture
+  {
+    '9iutu04i': {
+      'ko': '입출금',
+      'en': '',
+    },
+    'a6t0pz52': {
+      'ko': '자립예탁금',
+      'en': '',
+    },
+    'rbbw3cnq': {
+      'ko': '계좌관리',
+      'en': '',
+    },
+    'yp95u5vg': {
+      'ko': '132-071-820511',
+      'en': '',
+    },
+    'r6481u0m': {
+      'ko': '(화성삼덕신협)',
+      'en': '',
+    },
+    '9vqau9kg': {
+      'ko': '1,500,000원',
+      'en': '',
+    },
+    '4y8vqgip': {
+      'ko': '출금가능금액',
+      'en': '',
+    },
+    '2lh8mct0': {
+      'ko': '1,500,000원',
+      'en': '',
+    },
+    'ongbuum0': {
+      'ko': '드리밍박스 신청',
+      'en': '',
+    },
+    '0corfxi3': {
+      'ko': '이체하기',
+      'en': '',
+    },
+    '5s2tfgiu': {
+      'ko': '1개월',
+      'en': '',
+    },
+    'dpphzfzr': {
+      'ko': '전체',
+      'en': '',
+    },
+    'c6bxn6by': {
+      'ko': '2023.02.17 ~ 2023.03.16',
+      'en': '',
+    },
+    't9vo11q5': {
+      'ko': '03.16',
+      'en': '',
+    },
+    '65znv3yv': {
+      'ko': '03.15',
+      'en': '',
+    },
+    'ce8ojtdm': {
+      'ko': '이지은',
+      'en': '',
+    },
+    'aaxh3vas': {
+      'ko': '00:35:10 스마트폰',
+      'en': '',
+    },
+    'yk650ock': {
+      'ko': '-3,000,000원',
+      'en': '',
+    },
+    '9z0y21jd': {
+      'ko': '1,500,000원',
+      'en': '',
+    },
+    'ul1etquf': {
+      'ko': '03.15',
+      'en': '',
+    },
+    'mpilq0ha': {
+      'ko': '03.15',
+      'en': '',
+    },
+    '8pmrt4n7': {
+      'ko': '이지은',
+      'en': '',
+    },
+    'a1ebt2tp': {
+      'ko': '17:23:35 스마트폰',
+      'en': '',
+    },
+    'mh03ulzb': {
+      'ko': '-3,000,000원',
+      'en': '',
+    },
+    '0gtn1w5f': {
+      'ko': '4,500,000원',
+      'en': '',
+    },
+    'd21a53ym': {
+      'ko': '03.15',
+      'en': '',
+    },
+    'xchxygrh': {
+      'ko': '03.15',
+      'en': '',
+    },
+    'jwax0iml': {
+      'ko': '정이영',
+      'en': '',
+    },
+    'y7a8hxib': {
+      'ko': '17:20:16 전자금융',
+      'en': '',
+    },
+    'sos0wywy': {
+      'ko': '7,500,000원',
+      'en': '',
+    },
+    'nce3f3en': {
+      'ko': '7,500,000원',
+      'en': '',
+    },
+    'sf8eim91': {
+      'ko': '03.14',
+      'en': '',
+    },
+    'ie1pyjhq': {
+      'ko': '03.15',
+      'en': '',
+    },
+    'yj75v5xm': {
+      'ko': '이지은',
+      'en': '',
+    },
+    'v3vscpsj': {
+      'ko': '22:37:14 스마트폰',
+      'en': '',
+    },
+    'j6nzl7nj': {
+      'ko': '-350,000원',
+      'en': '',
+    },
+    'jp5mghfa': {
+      'ko': '0원',
+      'en': '',
+    },
+    '4aobiatp': {
+      'ko': '03.14',
+      'en': '',
+    },
+    '9zpgnzuf': {
+      'ko': '03.15',
+      'en': '',
+    },
+    'ggj7vmx0': {
+      'ko': '이은자',
+      'en': '',
+    },
+    'ijy1falf': {
+      'ko': '22:36:16 전자금융',
+      'en': '',
+    },
+    'izz75njd': {
+      'ko': '350,000원',
+      'en': '',
+    },
+    'is28rczv': {
+      'ko': '350,000원',
+      'en': '',
+    },
+    '1qu2cjwm': {
+      'ko': '계좌상세조회',
+      'en': '',
+    },
+    'cc465xq8': {
       'ko': 'Home',
       'en': '',
     },
