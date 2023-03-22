@@ -100,8 +100,8 @@ class _KakaotalkLoginState extends State<KakaotalkLogin> {
               final data = {
                 'faUser.uid': faUser.uid,
                 'email': user.kakaoAccount?.email ?? '',
-                'nickname': user.kakaoAccount?.profile?.nickname,
-                'photoUrl': user.kakaoAccount?.profile?.thumbnailImageUrl,
+                'diaplay_name': user.kakaoAccount?.profile?.nickname,
+                'photo_url': user.kakaoAccount?.profile?.thumbnailImageUrl,
                 'created_time': DateTime.now(),
               };
               FirebaseFirestore.instance

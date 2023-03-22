@@ -849,183 +849,183 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // capture
   {
-    '9iutu04i': {
+    'qx3c8gb6': {
       'ko': '입출금',
       'en': '',
     },
-    'a6t0pz52': {
+    'lnpnh592': {
       'ko': '자립예탁금',
       'en': '',
     },
-    'rbbw3cnq': {
+    'qs7x2ncc': {
       'ko': '계좌관리',
       'en': '',
     },
-    'yp95u5vg': {
+    'rw0g9pks': {
       'ko': '132-071-820511',
       'en': '',
     },
-    'r6481u0m': {
+    'hknoxf51': {
       'ko': '(화성삼덕신협)',
       'en': '',
     },
-    '9vqau9kg': {
+    '9hz667hw': {
       'ko': '1,500,000원',
       'en': '',
     },
-    '4y8vqgip': {
+    'oikhz4zf': {
       'ko': '출금가능금액',
       'en': '',
     },
-    '2lh8mct0': {
+    '9ucs5ln5': {
       'ko': '1,500,000원',
       'en': '',
     },
-    'ongbuum0': {
+    'p39c281w': {
       'ko': '드리밍박스 신청',
       'en': '',
     },
-    '0corfxi3': {
+    'ww189sn1': {
       'ko': '이체하기',
       'en': '',
     },
-    '5s2tfgiu': {
+    '1nczm4yr': {
       'ko': '1개월',
       'en': '',
     },
-    'dpphzfzr': {
+    'l13o9kpw': {
       'ko': '전체',
       'en': '',
     },
-    'c6bxn6by': {
+    'hkwa7qyq': {
       'ko': '2023.02.17 ~ 2023.03.16',
       'en': '',
     },
-    't9vo11q5': {
+    'kzeq6tg8': {
       'ko': '03.16',
       'en': '',
     },
-    '65znv3yv': {
+    'k7ke2cnd': {
       'ko': '03.15',
       'en': '',
     },
-    'ce8ojtdm': {
+    'ax7bvykc': {
       'ko': '이지은',
       'en': '',
     },
-    'aaxh3vas': {
+    'e0k1b2b3': {
       'ko': '00:35:10 스마트폰',
       'en': '',
     },
-    'yk650ock': {
+    'gufewfaf': {
       'ko': '-3,000,000원',
       'en': '',
     },
-    '9z0y21jd': {
+    'utct95y1': {
       'ko': '1,500,000원',
       'en': '',
     },
-    'ul1etquf': {
+    'nqhf0hfj': {
       'ko': '03.15',
       'en': '',
     },
-    'mpilq0ha': {
+    'xoe9arkg': {
       'ko': '03.15',
       'en': '',
     },
-    '8pmrt4n7': {
+    'k6fhzs0c': {
       'ko': '이지은',
       'en': '',
     },
-    'a1ebt2tp': {
+    'g6hlyt11': {
       'ko': '17:23:35 스마트폰',
       'en': '',
     },
-    'mh03ulzb': {
+    'clp9zweh': {
       'ko': '-3,000,000원',
       'en': '',
     },
-    '0gtn1w5f': {
+    '15v10v8a': {
       'ko': '4,500,000원',
       'en': '',
     },
-    'd21a53ym': {
+    '3khj6a1w': {
       'ko': '03.15',
       'en': '',
     },
-    'xchxygrh': {
+    'n0atq42k': {
       'ko': '03.15',
       'en': '',
     },
-    'jwax0iml': {
+    'tt443nn2': {
       'ko': '정이영',
       'en': '',
     },
-    'y7a8hxib': {
+    'afztu1y9': {
       'ko': '17:20:16 전자금융',
       'en': '',
     },
-    'sos0wywy': {
+    '1c400ony': {
       'ko': '7,500,000원',
       'en': '',
     },
-    'nce3f3en': {
+    'mxbyr2mc': {
       'ko': '7,500,000원',
       'en': '',
     },
-    'sf8eim91': {
+    '5ooxic2y': {
       'ko': '03.14',
       'en': '',
     },
-    'ie1pyjhq': {
+    'b8j2xh6d': {
       'ko': '03.15',
       'en': '',
     },
-    'yj75v5xm': {
+    'vh4hlovz': {
       'ko': '이지은',
       'en': '',
     },
-    'v3vscpsj': {
+    'x76vs1ti': {
       'ko': '22:37:14 스마트폰',
       'en': '',
     },
-    'j6nzl7nj': {
+    'hgu6z4be': {
       'ko': '-350,000원',
       'en': '',
     },
-    'jp5mghfa': {
+    '4memqwec': {
       'ko': '0원',
       'en': '',
     },
-    '4aobiatp': {
+    '8qxohk8t': {
       'ko': '03.14',
       'en': '',
     },
-    '9zpgnzuf': {
+    '0xtm5hqm': {
       'ko': '03.15',
       'en': '',
     },
-    'ggj7vmx0': {
+    'v59vkbep': {
       'ko': '이은자',
       'en': '',
     },
-    'ijy1falf': {
+    'l6ux4asm': {
       'ko': '22:36:16 전자금융',
       'en': '',
     },
-    'izz75njd': {
+    'xr96ak58': {
       'ko': '350,000원',
       'en': '',
     },
-    'is28rczv': {
+    'b0wmse5u': {
       'ko': '350,000원',
       'en': '',
     },
-    '1qu2cjwm': {
+    'v10wuysq': {
       'ko': '계좌상세조회',
       'en': '',
     },
-    'cc465xq8': {
+    'kjb04l1x': {
       'ko': 'Home',
       'en': '',
     },

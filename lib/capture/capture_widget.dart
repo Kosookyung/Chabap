@@ -64,7 +64,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                 alignment: AlignmentDirectional(-0.1, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    '1qu2cjwm' /* 계좌상세조회 */,
+                    'v10wuysq' /* 계좌상세조회 */,
                   ),
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).subtitle2.override(
@@ -151,7 +151,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                                   8.0, 0.0, 8.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '9iutu04i' /* 입출금 */,
+                                              'qx3c8gb6' /* 입출금 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
@@ -175,7 +175,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                             5.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'a6t0pz52' /* 자립예탁금 */,
+                                            'lnpnh592' /* 자립예탁금 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -202,7 +202,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'rbbw3cnq' /* 계좌관리 */,
+                                        'qs7x2ncc' /* 계좌관리 */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
@@ -234,7 +234,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'yp95u5vg' /* 132-071-820511 */,
+                                    'rw0g9pks' /* 132-071-820511 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .title1
@@ -264,7 +264,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'r6481u0m' /* (화성삼덕신협) */,
+                                      'hknoxf51' /* (화성삼덕신협) */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
@@ -293,7 +293,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '9vqau9kg' /* 1,500,000원 */,
+                                    '9hz667hw' /* 1,500,000원 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText2
@@ -320,7 +320,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '4y8vqgip' /* 출금가능금액 */,
+                                    'oikhz4zf' /* 출금가능금액 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText2
@@ -341,7 +341,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '2lh8mct0' /* 1,500,000원 */,
+                                      '9ucs5ln5' /* 1,500,000원 */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
@@ -387,7 +387,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'ongbuum0' /* 드리밍박스 신청 */,
+                                      'p39c281w' /* 드리밍박스 신청 */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
@@ -422,7 +422,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      '0corfxi3' /* 이체하기 */,
+                                      'ww189sn1' /* 이체하기 */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
@@ -476,7 +476,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '5s2tfgiu' /* 1개월 */,
+                                    '1nczm4yr' /* 1개월 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
@@ -496,7 +496,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'dpphzfzr' /* 전체 */,
+                                    'l13o9kpw' /* 전체 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
@@ -537,7 +537,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                   0.0, 12.0, 0.0, 10.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'c6bxn6by' /* 2023.02.17 ~ 2023.03.16 */,
+                                  'hkwa7qyq' /* 2023.02.17 ~ 2023.03.16 */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
@@ -586,7 +586,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          't9vo11q5' /* 03.16 */,
+                                          'kzeq6tg8' /* 03.16 */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -616,7 +616,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            '65znv3yv' /* 03.15 */,
+                                            'k7ke2cnd' /* 03.15 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -652,7 +652,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'ce8ojtdm' /* 이지은 */,
+                                            'ax7bvykc' /* 이지은 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -678,7 +678,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'aaxh3vas' /* 00:35:10 스마트폰 */,
+                                              'e0k1b2b3' /* 00:35:10 스마트폰 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -717,7 +717,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'yk650ock' /* -3,000,000원 */,
+                                          'gufewfaf' /* -3,000,000원 */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -744,7 +744,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            '9z0y21jd' /* 1,500,000원 */,
+                                            'utct95y1' /* 1,500,000원 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -799,7 +799,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'ul1etquf' /* 03.15 */,
+                                          'nqhf0hfj' /* 03.15 */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -829,7 +829,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'mpilq0ha' /* 03.15 */,
+                                            'xoe9arkg' /* 03.15 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -865,7 +865,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            '8pmrt4n7' /* 이지은 */,
+                                            'k6fhzs0c' /* 이지은 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -891,7 +891,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'a1ebt2tp' /* 17:23:35 스마트폰 */,
+                                              'g6hlyt11' /* 17:23:35 스마트폰 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -930,7 +930,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'mh03ulzb' /* -3,000,000원 */,
+                                          'clp9zweh' /* -3,000,000원 */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -957,7 +957,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            '0gtn1w5f' /* 4,500,000원 */,
+                                            '15v10v8a' /* 4,500,000원 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1012,7 +1012,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'd21a53ym' /* 03.15 */,
+                                          '3khj6a1w' /* 03.15 */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -1042,7 +1042,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'xchxygrh' /* 03.15 */,
+                                            'n0atq42k' /* 03.15 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1079,7 +1079,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'jwax0iml' /* 정이영 */,
+                                            'tt443nn2' /* 정이영 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1105,7 +1105,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'y7a8hxib' /* 17:20:16 전자금융 */,
+                                              'afztu1y9' /* 17:20:16 전자금융 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -1144,7 +1144,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'sos0wywy' /* 7,500,000원 */,
+                                          '1c400ony' /* 7,500,000원 */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -1175,7 +1175,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'nce3f3en' /* 7,500,000원 */,
+                                              'mxbyr2mc' /* 7,500,000원 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -1231,7 +1231,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'sf8eim91' /* 03.14 */,
+                                          '5ooxic2y' /* 03.14 */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -1261,7 +1261,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'ie1pyjhq' /* 03.15 */,
+                                            'b8j2xh6d' /* 03.15 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1298,7 +1298,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'yj75v5xm' /* 이지은 */,
+                                            'vh4hlovz' /* 이지은 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1324,7 +1324,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'v3vscpsj' /* 22:37:14 스마트폰 */,
+                                              'x76vs1ti' /* 22:37:14 스마트폰 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -1363,7 +1363,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'j6nzl7nj' /* -350,000원 */,
+                                          'hgu6z4be' /* -350,000원 */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -1390,7 +1390,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'jp5mghfa' /* 0원 */,
+                                            '4memqwec' /* 0원 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1445,7 +1445,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '4aobiatp' /* 03.14 */,
+                                          '8qxohk8t' /* 03.14 */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -1475,7 +1475,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            '9zpgnzuf' /* 03.15 */,
+                                            '0xtm5hqm' /* 03.15 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1512,7 +1512,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'ggj7vmx0' /* 이은자 */,
+                                            'v59vkbep' /* 이은자 */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1538,7 +1538,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'ijy1falf' /* 22:36:16 전자금융 */,
+                                              'l6ux4asm' /* 22:36:16 전자금융 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -1577,7 +1577,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'izz75njd' /* 350,000원 */,
+                                          'xr96ak58' /* 350,000원 */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -1608,7 +1608,7 @@ class _CaptureWidgetState extends State<CaptureWidget> {
                                                   0.0, 0.0, 0.0, 10.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'is28rczv' /* 350,000원 */,
+                                              'b0wmse5u' /* 350,000원 */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
