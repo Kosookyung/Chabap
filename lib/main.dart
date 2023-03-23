@@ -19,7 +19,7 @@ void main() async {
   await initFirebase();
   
   /// 카카오 로그인 사용을 위한 셋팅
-  KakaoContext.clientId = "	8a75a6acc2aee4dcd96331240f84b157";  
+  KakaoContext.clientId = "8a75a6acc2aee4dcd96331240f84b157";  
 
   runApp(MyApp());
 }
