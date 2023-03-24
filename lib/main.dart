@@ -16,7 +16,7 @@ import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initFirebase();
+  await initFirebase(); 
 
   runApp(MyApp());
 }
@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser!.loggedIn
               ? NavBarPage()
-              : MainHomeEntryWidget(),
+              : LogInWidget(),
     );
   }
 }
@@ -150,12 +150,12 @@ class _NavBarPageState extends State<NavBarPage> {
           unselectedItemColor: FlutterFlowTheme.of(context).primaryText,
           selectedBackgroundColor:
               FlutterFlowTheme.of(context).primaryBackground,
-          borderRadius: 8,
-          itemBorderRadius: 8,
-          margin: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+          borderRadius: 8.0,
+          itemBorderRadius: 8.0,
+          margin: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
           width: double.infinity,
-          elevation: 0,
+          elevation: 0.0,
           items: [
             FloatingNavbarItem(
               customWidget: Column(
@@ -166,7 +166,7 @@ class _NavBarPageState extends State<NavBarPage> {
                     color: currentIndex == 0
                         ? FlutterFlowTheme.of(context).primaryColor
                         : FlutterFlowTheme.of(context).primaryText,
-                    size: 24,
+                    size: 24.0,
                   ),
                   Text(
                     FFLocalizations.of(context).getText(
@@ -192,7 +192,7 @@ class _NavBarPageState extends State<NavBarPage> {
                     color: currentIndex == 1
                         ? FlutterFlowTheme.of(context).primaryColor
                         : FlutterFlowTheme.of(context).primaryText,
-                    size: 24,
+                    size: 24.0,
                   ),
                   Text(
                     FFLocalizations.of(context).getText(
@@ -218,7 +218,7 @@ class _NavBarPageState extends State<NavBarPage> {
                     color: currentIndex == 2
                         ? FlutterFlowTheme.of(context).primaryColor
                         : FlutterFlowTheme.of(context).primaryText,
-                    size: 24,
+                    size: 24.0,
                   ),
                   Text(
                     FFLocalizations.of(context).getText(

@@ -1,12 +1,15 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../log_in/log_in_widget.dart';
-import '../main.dart';
-import '../search_account/search_account_widget.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/log_in/log_in_widget.dart';
+import '/main.dart';
+import '/search_account/search_account_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'registration_model.dart';
+export 'registration_model.dart';
 
 class RegistrationWidget extends StatefulWidget {
   const RegistrationWidget({Key? key}) : super(key: key);
@@ -16,31 +19,27 @@ class RegistrationWidget extends StatefulWidget {
 }
 
 class _RegistrationWidgetState extends State<RegistrationWidget> {
-  TextEditingController? confirmPassWordFieldController;
-  late bool confirmPassWordFieldVisibility;
-  TextEditingController? emailFieldController;
-  TextEditingController? passWordFieldController;
-  late bool passWordFieldVisibility;
-  final _unfocusNode = FocusNode();
+  late RegistrationModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    confirmPassWordFieldController = TextEditingController();
-    confirmPassWordFieldVisibility = false;
-    emailFieldController = TextEditingController();
-    passWordFieldController = TextEditingController();
-    passWordFieldVisibility = false;
+    _model = createModel(context, () => RegistrationModel());
+
+    _model.emailFieldController ??= TextEditingController();
+    _model.passWordFieldController ??= TextEditingController();
+    _model.confirmPassWordFieldController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    confirmPassWordFieldController?.dispose();
-    emailFieldController?.dispose();
-    passWordFieldController?.dispose();
     super.dispose();
   }
 
@@ -53,12 +52,12 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -69,7 +68,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
-                              fontSize: 30,
+                              fontSize: 30.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -88,7 +87,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText1Family,
-                            fontSize: 30,
+                            fontSize: 30.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText1Family),
@@ -97,9 +96,9 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: emailFieldController,
+                    controller: _model.emailFieldController,
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
@@ -111,7 +110,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText2Family,
-                            fontSize: 12,
+                            fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText2Family),
@@ -119,30 +118,30 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       prefixIcon: Icon(
                         FFIcons.kfSICON2SVG11V11220427,
@@ -151,20 +150,22 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Roboto',
                           color: Color(0xFF090909),
-                          fontSize: 13,
+                          fontSize: 13.0,
                           fontWeight: FontWeight.normal,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyText1Family),
                         ),
                     keyboardType: TextInputType.emailAddress,
+                    validator: _model.emailFieldControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: passWordFieldController,
+                    controller: _model.passWordFieldController,
                     autofocus: true,
-                    obscureText: !passWordFieldVisibility,
+                    obscureText: !_model.passWordFieldVisibility,
                     decoration: InputDecoration(
                       hintText: FFLocalizations.of(context).getText(
                         'r3qkinss' /* 비밀번호 */,
@@ -174,7 +175,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText2Family,
-                            fontSize: 12,
+                            fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText2Family),
@@ -182,46 +183,46 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       prefixIcon: Icon(
                         FFIcons.kfSICON1SVG11V11220427,
                       ),
                       suffixIcon: InkWell(
                         onTap: () => setState(
-                          () => passWordFieldVisibility =
-                              !passWordFieldVisibility,
+                          () => _model.passWordFieldVisibility =
+                              !_model.passWordFieldVisibility,
                         ),
                         focusNode: FocusNode(skipTraversal: true),
                         child: Icon(
-                          passWordFieldVisibility
+                          _model.passWordFieldVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 22,
+                          size: 22.0,
                         ),
                       ),
                     ),
@@ -229,20 +230,22 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyText1Family,
                           color: Color(0xFF090909),
-                          fontSize: 12,
+                          fontSize: 12.0,
                           fontWeight: FontWeight.w500,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyText1Family),
                         ),
                     keyboardType: TextInputType.visiblePassword,
+                    validator: _model.passWordFieldControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: confirmPassWordFieldController,
+                    controller: _model.confirmPassWordFieldController,
                     autofocus: true,
-                    obscureText: !confirmPassWordFieldVisibility,
+                    obscureText: !_model.confirmPassWordFieldVisibility,
                     decoration: InputDecoration(
                       hintText: FFLocalizations.of(context).getText(
                         'fqqtxqr7' /* 비밀번호 확인 */,
@@ -252,7 +255,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText2Family,
-                            fontSize: 12,
+                            fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText2Family),
@@ -260,46 +263,46 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 1,
+                          color: Color(0x00000000),
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                       prefixIcon: Icon(
                         FFIcons.kfSICON1SVG11V11220427,
                       ),
                       suffixIcon: InkWell(
                         onTap: () => setState(
-                          () => confirmPassWordFieldVisibility =
-                              !confirmPassWordFieldVisibility,
+                          () => _model.confirmPassWordFieldVisibility =
+                              !_model.confirmPassWordFieldVisibility,
                         ),
                         focusNode: FocusNode(skipTraversal: true),
                         child: Icon(
-                          confirmPassWordFieldVisibility
+                          _model.confirmPassWordFieldVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 22,
+                          size: 22.0,
                         ),
                       ),
                     ),
@@ -307,20 +310,22 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyText1Family,
                           color: Color(0xFF090909),
-                          fontSize: 12,
+                          fontSize: 12.0,
                           fontWeight: FontWeight.w500,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyText1Family),
                         ),
                     keyboardType: TextInputType.visiblePassword,
+                    validator: _model.confirmPassWordFieldControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      if (passWordFieldController?.text !=
-                          confirmPassWordFieldController?.text) {
+                      if (_model.passWordFieldController.text !=
+                          _model.confirmPassWordFieldController.text) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -333,8 +338,8 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
 
                       final user = await createAccountWithEmail(
                         context,
-                        emailFieldController!.text,
-                        passWordFieldController!.text,
+                        _model.emailFieldController.text,
+                        _model.passWordFieldController.text,
                       );
                       if (user == null) {
                         return;
@@ -354,7 +359,11 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                     ),
                     options: FFButtonOptions(
                       width: double.infinity,
-                      height: 40,
+                      height: 40.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primaryBackground,
                       textStyle: FlutterFlowTheme.of(context)
                           .subtitle2
@@ -362,21 +371,21 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).subtitle2Family,
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 14,
+                            fontSize: 14.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).subtitle2Family),
                           ),
                       borderSide: BorderSide(
                         color: FlutterFlowTheme.of(context).secondaryText,
-                        width: 1,
+                        width: 1.0,
                       ),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -389,7 +398,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
                               color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 12,
+                              fontSize: 12.0,
                               fontWeight: FontWeight.w500,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -399,7 +408,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -422,7 +431,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyText1Family,
-                                fontSize: 12,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -431,7 +440,8 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'g8n52mpf' /* | */,
@@ -443,7 +453,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                     .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 12,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -452,7 +462,8 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         child: InkWell(
                           onTap: () async {
                             await Navigator.push(
@@ -473,7 +484,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       .bodyText1Family,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)

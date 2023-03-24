@@ -1,10 +1,17 @@
-import '../charge_connect/charge_connect_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/charge_connect/charge_connect_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'charge_model.dart';
+export 'charge_model.dart';
 
 class ChargeWidget extends StatefulWidget {
   const ChargeWidget({Key? key}) : super(key: key);
@@ -14,21 +21,24 @@ class ChargeWidget extends StatefulWidget {
 }
 
 class _ChargeWidgetState extends State<ChargeWidget> {
-  TextEditingController? pinCodeController;
-  final _unfocusNode = FocusNode();
+  late ChargeModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    pinCodeController = TextEditingController();
+    _model = createModel(context, () => ChargeModel());
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    pinCodeController?.dispose();
     super.dispose();
   }
 
@@ -41,170 +51,210 @@ class _ChargeWidgetState extends State<ChargeWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Color(0x15333314),
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'fhgg1yid' /* 이미 충전기 앞이신가요? */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyText1Family,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1Family),
+                    child: FutureBuilder<ApiCallResponse>(
+                      future: SteveTransActionsCall.call(),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        final columnSteveTransActionsResponse = snapshot.data!;
+                        return Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'fhgg1yid' /* 이미 충전기 앞이신가요? */,
                                     ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(15, 10, 15, 10),
-                          child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              '2wuz3oi7' /* 충전기 번호를 입력해주세요 */,
-                            ),
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 45,
-                              color: Color(0x34333333),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .subtitle2Family,
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .subtitle2Family),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText1Family,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family),
+                                        ),
                                   ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
+                                ],
                               ),
-                              borderRadius: BorderRadius.circular(0),
                             ),
-                          ),
-                        ),
-                        PinCodeTextField(
-                          appContext: context,
-                          length: 8,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .subtitle2
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .subtitle2Family,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .subtitle2Family),
-                              ),
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          enableActiveFill: false,
-                          autoFocus: true,
-                          showCursor: true,
-                          cursorColor:
-                              FlutterFlowTheme.of(context).primaryBackground,
-                          obscureText: false,
-                          pinTheme: PinTheme(
-                            fieldHeight: 40,
-                            fieldWidth: 40,
-                            borderWidth: 2,
-                            borderRadius: BorderRadius.circular(12),
-                            shape: PinCodeFieldShape.box,
-                            activeColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            inactiveColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            selectedColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            activeFillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            inactiveFillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            selectedFillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                          ),
-                          controller: pinCodeController,
-                          onChanged: (_) => {},
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(15, 10, 15, 10),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChargeConnectWidget(),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 10.0, 15.0, 10.0),
+                              child: FFButtonWidget(
+                                onPressed: () {
+                                  print('Button pressed ...');
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  '2wuz3oi7' /* 충전기 번호를 입력해주세요 */,
                                 ),
-                              );
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              '6b2dr2gy' /* 확인 */,
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 45.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: Color(0x34333333),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .subtitle2Family,
+                                        color: Colors.white,
+                                        fontSize: 17.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .subtitle2Family),
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(0.0),
+                                ),
+                              ),
                             ),
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 45,
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                            PinCodeTextField(
+                              appContext: context,
+                              length: 8,
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .subtitle2Family,
-                                    color: Colors.white,
-                                    fontSize: 17,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 18.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
                                                 .subtitle2Family),
                                   ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              enableActiveFill: false,
+                              autoFocus: true,
+                              showCursor: true,
+                              cursorColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              obscureText: false,
+                              pinTheme: PinTheme(
+                                fieldHeight: 40.0,
+                                fieldWidth: 40.0,
+                                borderWidth: 2.0,
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: PinCodeFieldShape.box,
+                                activeColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                inactiveColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                selectedColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                activeFillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                inactiveFillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                selectedFillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                               ),
-                              borderRadius: BorderRadius.circular(0),
+                              controller: _model.pinCodeController,
+                              onChanged: (_) => {},
                             ),
-                          ),
-                        ),
-                      ],
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 10.0, 15.0, 10.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  final chargeProFileCreateData =
+                                      createChargeProFileRecordData(
+                                    chargeBoxId: _model.pinCodeController!.text,
+                                  );
+                                  await ChargeProFileRecord.collection
+                                      .doc()
+                                      .set(chargeProFileCreateData);
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ChargeConnectWidget(),
+                                    ),
+                                  );
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  '6b2dr2gy' /* 확인 */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 45.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .subtitle2Family,
+                                        color: Colors.white,
+                                        fontSize: 17.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .subtitle2Family),
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(0.0),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -215,7 +265,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
-                              fontSize: 18,
+                              fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -225,20 +275,21 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 0.0),
                   child: Container(
                     width: double.infinity,
-                    height: 180,
+                    height: 180.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.0),
                       border: Border.all(
                         color: FlutterFlowTheme.of(context).secondaryText,
-                        width: 2,
+                        width: 2.0,
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -256,7 +307,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodyText1Family,
-                                      fontSize: 15,
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
@@ -272,14 +323,14 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                   Icons.clear,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  size: 16,
+                                  size: 16.0,
                                 ),
                               ),
                             ],
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
                             child: ListView(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
@@ -300,7 +351,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText1Family,
-                                            fontSize: 15,
+                                            fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
@@ -312,16 +363,17 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
-                                          width: 1,
+                                          width: 1.0,
                                         ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 5, 0),
+                                            5.0, 0.0, 5.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'lfsgifdj' /*  최근  */,
@@ -335,7 +387,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
-                                                fontSize: 13,
+                                                fontSize: 13.0,
                                                 fontWeight: FontWeight.normal,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -351,7 +403,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 5, 0, 0),
+                                      0.0, 5.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -374,7 +426,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
-                                                  fontSize: 15,
+                                                  fontSize: 15.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -387,7 +439,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                                    10.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -405,7 +457,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
-                                                        fontSize: 15,
+                                                        fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                         useGoogleFonts: GoogleFonts
@@ -420,7 +472,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    15, 0, 0, 0),
+                                                    15.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -437,7 +489,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .tertiaryColor,
-                                                    fontSize: 15,
+                                                    fontSize: 15.0,
                                                     fontWeight: FontWeight.bold,
                                                     useGoogleFonts: GoogleFonts
                                                             .asMap()
@@ -451,7 +503,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                                    10.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -469,7 +521,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
-                                                        fontSize: 15,
+                                                        fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                         useGoogleFonts: GoogleFonts
@@ -484,7 +536,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    15, 0, 0, 0),
+                                                    15.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -502,7 +554,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
-                                                        fontSize: 15,
+                                                        fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                         useGoogleFonts: GoogleFonts
@@ -533,7 +585,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
-                                                  fontSize: 15,
+                                                  fontSize: 15.0,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -552,8 +604,8 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
                             child: ListView(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
@@ -574,7 +626,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText1Family,
-                                            fontSize: 15,
+                                            fontSize: 15.0,
                                             fontWeight: FontWeight.bold,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
@@ -586,16 +638,17 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
-                                          width: 1,
+                                          width: 1.0,
                                         ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 5, 0),
+                                            5.0, 0.0, 5.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'ujhboelc' /* 가까운 */,
@@ -609,7 +662,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
-                                                fontSize: 13,
+                                                fontSize: 13.0,
                                                 fontWeight: FontWeight.normal,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -625,7 +678,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 5, 0, 0),
+                                      0.0, 5.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -648,7 +701,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
-                                                  fontSize: 15,
+                                                  fontSize: 15.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -661,7 +714,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                                    10.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -679,7 +732,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
-                                                        fontSize: 15,
+                                                        fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                         useGoogleFonts: GoogleFonts
@@ -694,7 +747,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    15, 0, 0, 0),
+                                                    15.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -711,7 +764,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .tertiaryColor,
-                                                    fontSize: 15,
+                                                    fontSize: 15.0,
                                                     fontWeight: FontWeight.bold,
                                                     useGoogleFonts: GoogleFonts
                                                             .asMap()
@@ -725,7 +778,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                                    10.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -743,7 +796,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
-                                                        fontSize: 15,
+                                                        fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                         useGoogleFonts: GoogleFonts
@@ -758,7 +811,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    15, 0, 0, 0),
+                                                    15.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -776,7 +829,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
-                                                        fontSize: 15,
+                                                        fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                         useGoogleFonts: GoogleFonts
@@ -807,7 +860,7 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
-                                                  fontSize: 15,
+                                                  fontSize: 15.0,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -831,9 +884,9 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Image.asset(
-                    'assets/images/u65dh_.png',
+                    'assets/images/d1ufq_.png',
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),

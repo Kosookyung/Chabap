@@ -16,7 +16,8 @@ import 'lat_lng.dart';
 
 export 'lat_lng.dart';
 export 'place.dart';
-export 'local_file.dart';
+export 'uploaded_file.dart';
+export 'flutter_flow_model.dart';
 export 'dart:math' show min, max;
 export 'dart:typed_data' show Uint8List;
 export 'dart:convert' show jsonEncode, jsonDecode;
@@ -33,6 +34,7 @@ T valueOrDefault<T>(T? value, T defaultValue) =>
 void _setTimeagoLocales() {
   timeago.setLocaleMessages('ko', timeago.KoMessages());
   timeago.setLocaleMessages('en', timeago.EnMessages());
+  timeago.setLocaleMessages('en_short', timeago.EnShortMessages());
 }
 
 String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {
@@ -140,6 +142,13 @@ String formatNumber(
 }
 
 DateTime get getCurrentTimestamp => DateTime.now();
+DateTime dateTimeFromSecondsSinceEpoch(int seconds) {
+  return DateTime.fromMillisecondsSinceEpoch(seconds * 1000);
+}
+
+extension DateTimeConversionExtension on DateTime {
+  int get secondsSinceEpoch => (millisecondsSinceEpoch / 1000).round();
+}
 
 extension DateTimeComparisonOperators on DateTime {
   bool operator <(DateTime other) => isBefore(other);
@@ -247,8 +256,9 @@ Future<LatLng?> queryCurrentUserLocation() async {
       : null;
 }
 
-extension StringDocRef on String {
-  DocumentReference get ref => FirebaseFirestore.instance.doc(this);
+extension FFTextEditingControllerExt on TextEditingController? {
+  String get text => this == null ? '' : this!.text;
+  set text(String newText) => this?.text = newText;
 }
 
 extension IterableExt<T> on Iterable<T> {
@@ -257,6 +267,10 @@ extension IterableExt<T> on Iterable<T> {
       .map((index, value) => MapEntry(index, func(index, value)))
       .values
       .toList();
+}
+
+extension StringDocRef on String {
+  DocumentReference get ref => FirebaseFirestore.instance.doc(this);
 }
 
 void setAppLanguage(BuildContext context, String language) =>

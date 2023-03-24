@@ -1,13 +1,17 @@
-import '../auth/firebase_user_provider.dart';
-import '../backend/backend.dart';
-import '../components/bottom_sheet_place_info_widget.dart';
-import '../flutter_flow/flutter_flow_choice_chips.dart';
-import '../flutter_flow/flutter_flow_google_map.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../log_in/log_in_widget.dart';
+import '/auth/firebase_user_provider.dart';
+import '/backend/backend.dart';
+import '/components/bottom_sheet_place_info_widget.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
+import '/flutter_flow/flutter_flow_google_map.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/log_in/log_in_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'main_home_entry_model.dart';
+export 'main_home_entry_model.dart';
 
 class MainHomeEntryWidget extends StatefulWidget {
   const MainHomeEntryWidget({Key? key}) : super(key: key);
@@ -17,22 +21,24 @@ class MainHomeEntryWidget extends StatefulWidget {
 }
 
 class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
-  LatLng? currentUserLocationValue;
-  final _unfocusNode = FocusNode();
+  late MainHomeEntryModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? googleMapsCenter;
-  final googleMapsController = Completer<GoogleMapController>();
-  String? choiceChipsValue;
+  final _unfocusNode = FocusNode();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => MainHomeEntryModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -46,8 +52,8 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50,
-              height: 50,
+              width: 50.0,
+              height: 50.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primaryColor,
               ),
@@ -75,12 +81,12 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0, 0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FlutterFlowGoogleMap(
-                              controller: googleMapsController,
+                              controller: _model.googleMapsController,
                               onCameraIdle: (latLng) =>
-                                  googleMapsCenter = latLng,
-                              initialLocation: googleMapsCenter ??=
+                                  _model.googleMapsCenter = latLng,
+                              initialLocation: _model.googleMapsCenter ??=
                                   LatLng(37.5150049, 127.1041651),
                               markers: mainHomeEntryChargeMarkerRecordList
                                   .map(
@@ -100,7 +106,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                                 padding: MediaQuery.of(context)
                                                     .viewInsets,
                                                 child: Container(
-                                                  height: 180,
+                                                  height: 180.0,
                                                   child:
                                                       BottomSheetPlaceInfoWidget(
                                                     placeName:
@@ -159,7 +165,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                               markerColor: GoogleMarkerColor.red,
                               mapType: MapType.normal,
                               style: GoogleMapStyle.standard,
-                              initialZoom: 14,
+                              initialZoom: 14.0,
                               allowInteraction: true,
                               allowZoom: true,
                               showZoomControls: true,
@@ -171,13 +177,13 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0, 0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
+                                      0.0, 20.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -202,7 +208,8 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                             ))
                                           ],
                                           onChanged: (val) => setState(() =>
-                                              choiceChipsValue = val?.first),
+                                              _model.choiceChipsValue =
+                                                  val?.first),
                                           selectedChipStyle: ChipStyle(
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
@@ -216,7 +223,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                                                   context)
                                                               .bodyText1Family,
                                                       color: Colors.white,
-                                                      fontSize: 12,
+                                                      fontSize: 12.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       useGoogleFonts: GoogleFonts
@@ -227,8 +234,8 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                                                   .bodyText1Family),
                                                     ),
                                             iconColor: Color(0x00000000),
-                                            iconSize: 18,
-                                            elevation: 4,
+                                            iconSize: 18.0,
+                                            elevation: 4.0,
                                           ),
                                           unselectedChipStyle: ChipStyle(
                                             backgroundColor: Colors.white,
@@ -243,7 +250,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
-                                                  fontSize: 12,
+                                                  fontSize: 12.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -253,22 +260,27 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                                               .bodyText2Family),
                                                 ),
                                             iconColor: Color(0x00000000),
-                                            iconSize: 18,
-                                            elevation: 4,
+                                            iconSize: 18.0,
+                                            elevation: 4.0,
                                           ),
-                                          chipSpacing: 0,
+                                          chipSpacing: 0.0,
                                           multiselect: false,
                                           alignment: WrapAlignment.start,
+                                          controller: _model
+                                                  .choiceChipsController ??=
+                                              FormFieldController<List<String>>(
+                                            [],
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
+                                        0.0, 10.0, 0.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -277,7 +289,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            3, 3, 3, 3),
+                                            3.0, 3.0, 3.0, 3.0),
                                         child: InkWell(
                                           onTap: () async {
                                             setAppLanguage(context, 'ko');
@@ -286,7 +298,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                             Icons.refresh_sharp,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
-                                            size: 30,
+                                            size: 30.0,
                                           ),
                                         ),
                                       ),
@@ -294,10 +306,10 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
+                                        0.0, 10.0, 0.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -306,22 +318,22 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            3, 3, 3, 3),
+                                            3.0, 3.0, 3.0, 3.0),
                                         child: Icon(
                                           Icons.star_sharp,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
-                                          size: 30,
+                                          size: 30.0,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.9, 0),
+                                  alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
+                                        0.0, 10.0, 0.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -330,14 +342,15 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            3, 3, 3, 3),
+                                            3.0, 3.0, 3.0, 3.0),
                                         child: InkWell(
                                           onTap: () async {
                                             currentUserLocationValue =
                                                 await getCurrentUserLocation(
                                                     defaultLocation:
                                                         LatLng(0.0, 0.0));
-                                            await googleMapsController.future
+                                            await _model
+                                                .googleMapsController.future
                                                 .then(
                                               (c) => c.animateCamera(
                                                 CameraUpdate.newLatLng(
@@ -350,7 +363,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                             Icons.location_searching_sharp,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
-                                            size: 30,
+                                            size: 30.0,
                                           ),
                                         ),
                                       ),

@@ -1,10 +1,13 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../registration_phone_code/registration_phone_code_widget.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/registration_phone_code/registration_phone_code_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'registration_phone_model.dart';
+export 'registration_phone_model.dart';
 
 class RegistrationPhoneWidget extends StatefulWidget {
   const RegistrationPhoneWidget({Key? key}) : super(key: key);
@@ -15,35 +18,28 @@ class RegistrationPhoneWidget extends StatefulWidget {
 }
 
 class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
-  TextEditingController? emailFieldController;
-  TextEditingController? passWordFieldController1;
-  late bool passWordFieldVisibility1;
-  TextEditingController? passWordFieldController2;
-  late bool passWordFieldVisibility2;
-  TextEditingController? phoneFieldController;
-  final _unfocusNode = FocusNode();
+  late RegistrationPhoneModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    emailFieldController = TextEditingController();
-    passWordFieldController1 = TextEditingController();
-    passWordFieldVisibility1 = false;
-    passWordFieldController2 = TextEditingController();
-    passWordFieldVisibility2 = false;
-    phoneFieldController = TextEditingController();
+    _model = createModel(context, () => RegistrationPhoneModel());
+
+    _model.emailFieldController ??= TextEditingController();
+    _model.passWordFieldController1 ??= TextEditingController();
+    _model.passWordFieldController2 ??= TextEditingController();
+    _model.phoneFieldController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    emailFieldController?.dispose();
-    passWordFieldController1?.dispose();
-    passWordFieldController2?.dispose();
-    phoneFieldController?.dispose();
     super.dispose();
   }
 
@@ -56,12 +52,12 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -72,7 +68,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
-                              fontSize: 30,
+                              fontSize: 30.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -91,7 +87,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText1Family,
-                            fontSize: 30,
+                            fontSize: 30.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText1Family),
@@ -100,15 +96,16 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                   ],
                 ),
                 Form(
-                  key: formKey,
+                  key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                         child: TextFormField(
-                          controller: emailFieldController,
+                          controller: _model.emailFieldController,
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -120,7 +117,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText2Family,
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -130,31 +127,30 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               borderSide: BorderSide(
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                color: Color(0x00000000),
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             prefixIcon: Icon(
                               FFIcons.kfSICON2SVG11V11220427,
@@ -166,21 +162,24 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               .override(
                                 fontFamily: 'Roboto',
                                 color: Color(0xFF090909),
-                                fontSize: 13,
+                                fontSize: 13.0,
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyText1Family),
                               ),
                           keyboardType: TextInputType.emailAddress,
+                          validator: _model.emailFieldControllerValidator
+                              .asValidator(context),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: TextFormField(
-                          controller: passWordFieldController1,
+                          controller: _model.passWordFieldController1,
                           autofocus: true,
-                          obscureText: !passWordFieldVisibility1,
+                          obscureText: !_model.passWordFieldVisibility1,
                           decoration: InputDecoration(
                             hintText: FFLocalizations.of(context).getText(
                               'psvm7dyl' /* 비밀번호 */,
@@ -190,7 +189,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText2Family,
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -200,31 +199,30 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               borderSide: BorderSide(
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                color: Color(0x00000000),
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             prefixIcon: Icon(
                               FFIcons.kfSICON1SVG11V11220427,
@@ -232,17 +230,17 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                             ),
                             suffixIcon: InkWell(
                               onTap: () => setState(
-                                () => passWordFieldVisibility1 =
-                                    !passWordFieldVisibility1,
+                                () => _model.passWordFieldVisibility1 =
+                                    !_model.passWordFieldVisibility1,
                               ),
                               focusNode: FocusNode(skipTraversal: true),
                               child: Icon(
-                                passWordFieldVisibility1
+                                _model.passWordFieldVisibility1
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 22,
+                                size: 22.0,
                               ),
                             ),
                           ),
@@ -252,21 +250,24 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyText1Family,
                                 color: Color(0xFF090909),
-                                fontSize: 12,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyText1Family),
                               ),
                           keyboardType: TextInputType.visiblePassword,
+                          validator: _model.passWordFieldController1Validator
+                              .asValidator(context),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: TextFormField(
-                          controller: passWordFieldController2,
+                          controller: _model.passWordFieldController2,
                           autofocus: true,
-                          obscureText: !passWordFieldVisibility2,
+                          obscureText: !_model.passWordFieldVisibility2,
                           decoration: InputDecoration(
                             hintText: FFLocalizations.of(context).getText(
                               'tbvbf9hu' /* 비밀번호 확인 */,
@@ -276,7 +277,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText2Family,
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -286,31 +287,30 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               borderSide: BorderSide(
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                color: Color(0x00000000),
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             prefixIcon: Icon(
                               FFIcons.kfSICON1SVG11V11220427,
@@ -318,17 +318,17 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                             ),
                             suffixIcon: InkWell(
                               onTap: () => setState(
-                                () => passWordFieldVisibility2 =
-                                    !passWordFieldVisibility2,
+                                () => _model.passWordFieldVisibility2 =
+                                    !_model.passWordFieldVisibility2,
                               ),
                               focusNode: FocusNode(skipTraversal: true),
                               child: Icon(
-                                passWordFieldVisibility2
+                                _model.passWordFieldVisibility2
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 22,
+                                size: 22.0,
                               ),
                             ),
                           ),
@@ -338,19 +338,22 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyText1Family,
                                 color: Color(0xFF090909),
-                                fontSize: 12,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyText1Family),
                               ),
                           keyboardType: TextInputType.visiblePassword,
+                          validator: _model.passWordFieldController2Validator
+                              .asValidator(context),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: TextFormField(
-                          controller: phoneFieldController,
+                          controller: _model.phoneFieldController,
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -362,7 +365,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText2Family,
-                                  fontSize: 12,
+                                  fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -372,31 +375,30 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               borderSide: BorderSide(
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                width: 1,
+                                color: Color(0x00000000),
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             prefixIcon: Icon(
                               Icons.phone_android_sharp,
@@ -408,20 +410,24 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               .override(
                                 fontFamily: 'Roboto',
                                 color: Color(0xFF090909),
-                                fontSize: 13,
+                                fontSize: 13.0,
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyText1Family),
                               ),
                           keyboardType: TextInputType.phone,
+                          validator: _model.phoneFieldControllerValidator
+                              .asValidator(context),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final phoneNumberVal = phoneFieldController!.text;
+                            final phoneNumberVal =
+                                _model.phoneFieldController.text;
                             if (phoneNumberVal == null ||
                                 phoneNumberVal.isEmpty ||
                                 !phoneNumberVal.startsWith('+')) {
@@ -453,7 +459,11 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                           ),
                           options: FFButtonOptions(
                             width: double.infinity,
-                            height: 45,
+                            height: 45.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primaryColor,
                             textStyle: FlutterFlowTheme.of(context)
                                 .subtitle2
@@ -461,7 +471,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .subtitle2Family,
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 14.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -469,9 +479,9 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 ),
                             borderSide: BorderSide(
                               color: Colors.transparent,
-                              width: 1,
+                              width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                       ),

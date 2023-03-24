@@ -8,6 +8,8 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ChargeMarkerRecord.serializer)
+      ..add(ChargeProFileRecord.serializer)
+      ..add(ChargeProfileStruct.serializer)
       ..add(UsersRecord.serializer))
     .build();
 

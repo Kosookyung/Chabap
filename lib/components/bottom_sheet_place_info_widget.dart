@@ -1,9 +1,12 @@
-import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'bottom_sheet_place_info_model.dart';
+export 'bottom_sheet_place_info_model.dart';
 
 class BottomSheetPlaceInfoWidget extends StatefulWidget {
   const BottomSheetPlaceInfoWidget({
@@ -20,36 +23,52 @@ class BottomSheetPlaceInfoWidget extends StatefulWidget {
 
 class _BottomSheetPlaceInfoWidgetState
     extends State<BottomSheetPlaceInfoWidget> {
+  late BottomSheetPlaceInfoModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => BottomSheetPlaceInfoModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
-      elevation: 5,
+      elevation: 5.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0),
-          bottomRight: Radius.circular(0),
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
+          bottomLeft: Radius.circular(0.0),
+          bottomRight: Radius.circular(0.0),
+          topLeft: Radius.circular(16.0),
+          topRight: Radius.circular(16.0),
         ),
       ),
       child: Container(
         width: double.infinity,
-        height: 370,
+        height: 370.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(0),
-            bottomRight: Radius.circular(0),
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16),
+            bottomLeft: Radius.circular(0.0),
+            bottomRight: Radius.circular(0.0),
+            topLeft: Radius.circular(16.0),
+            topRight: Radius.circular(16.0),
           ),
         ),
         child: SingleChildScrollView(
@@ -62,17 +81,18 @@ class _BottomSheetPlaceInfoWidgetState
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: InkWell(
                       onTap: () async {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        width: 50,
-                        height: 4,
+                        width: 50.0,
+                        height: 4.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).lineColor,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ),
@@ -80,14 +100,14 @@ class _BottomSheetPlaceInfoWidgetState
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 12, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 12.0, 0.0, 0.0),
                 child: Text(
                   widget.placeName!.name!,
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).title2.override(
                         fontFamily: FlutterFlowTheme.of(context).title2Family,
                         color: FlutterFlowTheme.of(context).primaryText,
-                        fontSize: 15,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.bold,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).title2Family),
@@ -95,7 +115,7 @@ class _BottomSheetPlaceInfoWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -107,14 +127,15 @@ class _BottomSheetPlaceInfoWidgetState
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyText1Family,
                             color: FlutterFlowTheme.of(context).alternate,
-                            fontSize: 15,
+                            fontSize: 15.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyText1Family),
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '0tru669b' /* 0대 */,
@@ -123,7 +144,7 @@ class _BottomSheetPlaceInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
                               color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 15,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.normal,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -131,7 +152,8 @@ class _BottomSheetPlaceInfoWidgetState
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'gj23fnkg' /* 완속 */,
@@ -140,7 +162,7 @@ class _BottomSheetPlaceInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
                               color: FlutterFlowTheme.of(context).tertiaryColor,
-                              fontSize: 15,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -148,7 +170,8 @@ class _BottomSheetPlaceInfoWidgetState
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '8m1jqv9z' /* 4대 */,
@@ -157,7 +180,7 @@ class _BottomSheetPlaceInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
                               color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 15,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.normal,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -165,7 +188,8 @@ class _BottomSheetPlaceInfoWidgetState
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '1jke8qy1' /* 가능 */,
@@ -174,7 +198,7 @@ class _BottomSheetPlaceInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyText1Family,
                               color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 15,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.normal,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).bodyText1Family),
@@ -185,14 +209,15 @@ class _BottomSheetPlaceInfoWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 44),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           var confirmDialogResponse = await showDialog<bool>(
@@ -221,8 +246,12 @@ class _BottomSheetPlaceInfoWidgetState
                           'wh039ju4' /* 안내시작 */,
                         ),
                         options: FFButtonOptions(
-                          width: 270,
-                          height: 50,
+                          width: 270.0,
+                          height: 50.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle1
@@ -234,10 +263,10 @@ class _BottomSheetPlaceInfoWidgetState
                                     FlutterFlowTheme.of(context)
                                         .subtitle1Family),
                               ),
-                          elevation: 3,
+                          elevation: 3.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
-                            width: 1,
+                            width: 1.0,
                           ),
                         ),
                       ),

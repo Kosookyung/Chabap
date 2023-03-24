@@ -1,8 +1,11 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'user_guide_model.dart';
+export 'user_guide_model.dart';
 
 class UserGuideWidget extends StatefulWidget {
   const UserGuideWidget({Key? key}) : super(key: key);
@@ -12,18 +15,23 @@ class UserGuideWidget extends StatefulWidget {
 }
 
 class _UserGuideWidgetState extends State<UserGuideWidget> {
-  final _unfocusNode = FocusNode();
+  late UserGuideModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => UserGuideModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -42,13 +50,13 @@ class _UserGuideWidgetState extends State<UserGuideWidget> {
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
-                borderRadius: 30,
-                borderWidth: 1,
-                buttonSize: 60,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
                 icon: Icon(
                   Icons.arrow_back_rounded,
                   color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30,
+                  size: 30.0,
                 ),
                 onPressed: () async {
                   Navigator.pop(context);
@@ -61,7 +69,7 @@ class _UserGuideWidgetState extends State<UserGuideWidget> {
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: FlutterFlowTheme.of(context).title2Family,
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 18,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).title2Family),
@@ -69,20 +77,21 @@ class _UserGuideWidgetState extends State<UserGuideWidget> {
               ),
               actions: [],
               centerTitle: false,
-              elevation: 2,
+              elevation: 2.0,
             )
           : null,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'my8omqet' /* 제1조 (목적)

@@ -3,6 +3,7 @@ import 'package:from_css_color/from_css_color.dart';
 
 import 'users_record.dart';
 import 'charge_marker_record.dart';
+import 'charge_pro_file_record.dart';
 
 import 'index.dart';
 
@@ -15,6 +16,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
 @SerializersFor(const [
   UsersRecord,
   ChargeMarkerRecord,
+  ChargeProFileRecord,
+  ChargeProfileStruct,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
