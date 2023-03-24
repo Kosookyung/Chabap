@@ -4,8 +4,8 @@ export '/main_home_logged_in/main_home_logged_in_widget.dart'
     show MainHomeLoggedInWidget;
 export '/registration_phone/registration_phone_widget.dart'
     show RegistrationPhoneWidget;
-export '/kakao_login/kakao_login_widget.dart' show KakaoLoginWidget;
 export '/registration/registration_widget.dart' show RegistrationWidget;
+export '/kakao_login/kakao_login_widget.dart' show KakaoLoginWidget;
 export '/registration_phone_code/registration_phone_code_widget.dart'
     show RegistrationPhoneCodeWidget;
 export '/my_cha_bap/my_cha_bap_widget.dart' show MyChaBapWidget;
@@ -29,4 +29,4 @@ export '/charge_complete/charge_complete_widget.dart' show ChargeCompleteWidget;
 export '/payment/payment_widget.dart' show PaymentWidget;
 export '/user_paylist/user_paylist_widget.dart' show UserPaylistWidget;
 export '/pay_history/pay_history_widget.dart' show PayHistoryWidget;
-export '/capture/capture_widget.dart' show CaptureWidget;
+export '/navi_select/navi_select_widget.dart' show NaviSelectWidget;

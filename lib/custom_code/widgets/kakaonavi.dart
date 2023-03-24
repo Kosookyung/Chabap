@@ -12,6 +12,13 @@ import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
+void main() {
+  KakaoSdk.init(
+      nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157',
+      javaScriptAppKey: 'c42d32dfb92ce9cfc0d4351d9aaab89b');
+  runApp(Kakaonavi());
+}
+
 class Kakaonavi extends StatefulWidget {
   const Kakaonavi({
     Key? key,

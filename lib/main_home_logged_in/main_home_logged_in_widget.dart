@@ -39,6 +39,7 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
       await showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.black,
+        barrierColor: Color(0x00000000),
         context: context,
         builder: (context) {
           return Padding(
@@ -121,6 +122,7 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
+                                            barrierColor: Color(0x00000000),
                                             context: context,
                                             builder: (context) {
                                               return Padding(

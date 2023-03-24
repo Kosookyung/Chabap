@@ -16,7 +16,7 @@ import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initFirebase(); 
+  await initFirebase();
 
   runApp(MyApp());
 }

@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/navi_select/navi_select_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -220,27 +221,12 @@ class _BottomSheetDirectChargeWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('길 안내하기'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('티맵'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('카카오내비'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NaviSelectWidget(),
+                            ),
+                          );
                         },
                         text: FFLocalizations.of(context).getText(
                           '10ytqbtu' /* 안내시작 */,

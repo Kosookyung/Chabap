@@ -222,17 +222,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // KakaoLogin
-  {
-    '3fgi12u7': {
-      'ko': 'Page Title',
-      'en': '',
-    },
-    'jkin56kf': {
-      'ko': 'Home',
-      'en': '',
-    },
-  },
   // Registration
   {
     '9hvy4fgq': {
@@ -276,6 +265,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'undr5kwh': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
+  // KakaoLogin
+  {
+    '3fgi12u7': {
+      'ko': 'Page Title',
+      'en': '',
+    },
+    'jkin56kf': {
       'ko': 'Home',
       'en': '',
     },
@@ -847,185 +847,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // capture
+  // NaviSelect
   {
-    'qx3c8gb6': {
-      'ko': '입출금',
+    'iqmyvpm4': {
+      'ko': '길 안내하기',
       'en': '',
     },
-    'lnpnh592': {
-      'ko': '자립예탁금',
+    'moke5koh': {
+      'ko': '티맵',
       'en': '',
     },
-    'qs7x2ncc': {
-      'ko': '계좌관리',
+    'j2duhd1h': {
+      'ko': '카카오내비',
       'en': '',
     },
-    'rw0g9pks': {
-      'ko': '132-071-820511',
+    'matvndxf': {
+      'ko': '경로 안내하기',
       'en': '',
     },
-    'hknoxf51': {
-      'ko': '(화성삼덕신협)',
-      'en': '',
-    },
-    '9hz667hw': {
-      'ko': '1,500,000원',
-      'en': '',
-    },
-    'oikhz4zf': {
-      'ko': '출금가능금액',
-      'en': '',
-    },
-    '9ucs5ln5': {
-      'ko': '1,500,000원',
-      'en': '',
-    },
-    'p39c281w': {
-      'ko': '드리밍박스 신청',
-      'en': '',
-    },
-    'ww189sn1': {
-      'ko': '이체하기',
-      'en': '',
-    },
-    '1nczm4yr': {
-      'ko': '1개월',
-      'en': '',
-    },
-    'l13o9kpw': {
-      'ko': '전체',
-      'en': '',
-    },
-    'hkwa7qyq': {
-      'ko': '2023.02.17 ~ 2023.03.16',
-      'en': '',
-    },
-    'kzeq6tg8': {
-      'ko': '03.16',
-      'en': '',
-    },
-    'k7ke2cnd': {
-      'ko': '03.15',
-      'en': '',
-    },
-    'ax7bvykc': {
-      'ko': '이지은',
-      'en': '',
-    },
-    'e0k1b2b3': {
-      'ko': '00:35:10 스마트폰',
-      'en': '',
-    },
-    'gufewfaf': {
-      'ko': '-3,000,000원',
-      'en': '',
-    },
-    'utct95y1': {
-      'ko': '1,500,000원',
-      'en': '',
-    },
-    'nqhf0hfj': {
-      'ko': '03.15',
-      'en': '',
-    },
-    'xoe9arkg': {
-      'ko': '03.15',
-      'en': '',
-    },
-    'k6fhzs0c': {
-      'ko': '이지은',
-      'en': '',
-    },
-    'g6hlyt11': {
-      'ko': '17:23:35 스마트폰',
-      'en': '',
-    },
-    'clp9zweh': {
-      'ko': '-3,000,000원',
-      'en': '',
-    },
-    '15v10v8a': {
-      'ko': '4,500,000원',
-      'en': '',
-    },
-    '3khj6a1w': {
-      'ko': '03.15',
-      'en': '',
-    },
-    'n0atq42k': {
-      'ko': '03.15',
-      'en': '',
-    },
-    'tt443nn2': {
-      'ko': '정이영',
-      'en': '',
-    },
-    'afztu1y9': {
-      'ko': '17:20:16 전자금융',
-      'en': '',
-    },
-    '1c400ony': {
-      'ko': '7,500,000원',
-      'en': '',
-    },
-    'mxbyr2mc': {
-      'ko': '7,500,000원',
-      'en': '',
-    },
-    '5ooxic2y': {
-      'ko': '03.14',
-      'en': '',
-    },
-    'b8j2xh6d': {
-      'ko': '03.15',
-      'en': '',
-    },
-    'vh4hlovz': {
-      'ko': '이지은',
-      'en': '',
-    },
-    'x76vs1ti': {
-      'ko': '22:37:14 스마트폰',
-      'en': '',
-    },
-    'hgu6z4be': {
-      'ko': '-350,000원',
-      'en': '',
-    },
-    '4memqwec': {
-      'ko': '0원',
-      'en': '',
-    },
-    '8qxohk8t': {
-      'ko': '03.14',
-      'en': '',
-    },
-    '0xtm5hqm': {
-      'ko': '03.15',
-      'en': '',
-    },
-    'v59vkbep': {
-      'ko': '이은자',
-      'en': '',
-    },
-    'l6ux4asm': {
-      'ko': '22:36:16 전자금융',
-      'en': '',
-    },
-    'xr96ak58': {
-      'ko': '350,000원',
-      'en': '',
-    },
-    'b0wmse5u': {
-      'ko': '350,000원',
-      'en': '',
-    },
-    'v10wuysq': {
-      'ko': '계좌상세조회',
-      'en': '',
-    },
-    'kjb04l1x': {
+    'niihie6k': {
       'ko': 'Home',
       'en': '',
     },
@@ -1155,21 +995,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // BottomSelectNavi
-  {
-    'ojhm67gg': {
-      'ko': 'Hayes Valley Espresso • \$7',
-      'en': '',
-    },
-    'v156qlex': {
-      'ko': 'Night Light Decaf • \$7',
-      'en': '',
-    },
-    'xtwpdsmn': {
-      'ko': 'Half Caffeine • \$7',
-      'en': '',
-    },
-  },
   // BottomSheetDirectCharge
   {
     'ilyvgeve': {
@@ -1194,6 +1019,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '10ytqbtu': {
       'ko': '안내시작',
+      'en': '',
+    },
+  },
+  // BottomSheetNavi
+  {
+    'se8z0d5w': {
+      'ko': '길 안내하기',
+      'en': '',
+    },
+    'b7uhbsvl': {
+      'ko': '티맵',
+      'en': '',
+    },
+    'xpqtj2qe': {
+      'ko': '카카오내비',
       'en': '',
     },
   },
@@ -1268,6 +1108,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '8o9kkonm': {
+      'ko': '',
+      'en': '',
+    },
+    '7hi9btan': {
       'ko': '',
       'en': '',
     },
