@@ -76,6 +76,7 @@ dependencies:
   json_path: 0.4.1
   json_serializable: 6.6.1
   kakao_flutter_sdk: ^1.4.2
+  kakao_flutter_sdk_auth: ^1.4.2
   kakao_flutter_sdk_user: ^1.4.2
   lottie: 1.2.1
   mime_type: 1.0.0
