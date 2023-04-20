@@ -159,6 +159,10 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                                         BottomSheetPlaceInfoWidget(
                                                       placeName:
                                                           mainHomeLoggedInChargeMarkerRecord,
+                                                      longitude:
+                                                          mainHomeLoggedInChargeMarkerRecord,
+                                                      latitude:
+                                                          mainHomeLoggedInChargeMarkerRecord,
                                                     ),
                                                   ),
                                                 ),

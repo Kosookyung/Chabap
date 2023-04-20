@@ -1,6 +1,4 @@
-import '/auth/firebase_auth/firebase_user_provider.dart';
 import '/backend/backend.dart';
-import '/components/bottom_sheet_place_info_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -113,74 +111,45 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                           .reference.path,
                                       mainHomeEntryChargeMarkerRecord.location!,
                                       () async {
-                                        if (loggedIn) {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            barrierColor: Color(0x00000000),
-                                            context: context,
-                                            builder: (bottomSheetContext) {
-                                              return GestureDetector(
-                                                onTap: () => FocusScope.of(
-                                                        context)
-                                                    .requestFocus(_unfocusNode),
-                                                child: Padding(
-                                                  padding: MediaQuery.of(
-                                                          bottomSheetContext)
-                                                      .viewInsets,
-                                                  child: Container(
-                                                    height: 180.0,
-                                                    child:
-                                                        BottomSheetPlaceInfoWidget(
-                                                      placeName:
-                                                          mainHomeEntryChargeMarkerRecord,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then((value) => setState(() {}));
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text('로그인 필요'),
+                                                      content: Text(
+                                                          '로드인후 사용 가능합니다. 로그인 하시려면 확인 버튼을 누르세요.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: Text('취소'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child: Text('확인'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LogInWidget(),
+                                            ),
+                                          );
                                         } else {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('로그인 필요'),
-                                                        content: Text(
-                                                            '로드인후 사용 가능합니다. 로그인 하시려면 확인 버튼을 누르세요.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child: Text('취소'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: Text('확인'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LogInWidget(),
-                                              ),
-                                            );
-                                          } else {
-                                            Navigator.pop(context);
-                                          }
+                                          Navigator.pop(context);
                                         }
                                       },
                                     ),

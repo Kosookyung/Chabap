@@ -1,6 +1,4 @@
-import '/auth/firebase_auth/firebase_user_provider.dart';
 import '/backend/backend.dart';
-import '/components/bottom_sheet_place_info_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
