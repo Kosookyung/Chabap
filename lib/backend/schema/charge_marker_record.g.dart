@@ -36,6 +36,20 @@ class _$ChargeMarkerRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(LatLng)));
     }
+    value = object.latitude;
+    if (value != null) {
+      result
+        ..add('latitude')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.logittude;
+    if (value != null) {
+      result
+        ..add('logittude')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -67,6 +81,14 @@ class _$ChargeMarkerRecordSerializer
           result.location = serializers.deserialize(value,
               specifiedType: const FullType(LatLng)) as LatLng?;
           break;
+        case 'latitude':
+          result.latitude = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'logittude':
+          result.logittude = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -86,13 +108,19 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
   @override
   final LatLng? location;
   @override
+  final double? latitude;
+  @override
+  final double? logittude;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$ChargeMarkerRecord(
           [void Function(ChargeMarkerRecordBuilder)? updates]) =>
       (new ChargeMarkerRecordBuilder()..update(updates))._build();
 
-  _$ChargeMarkerRecord._({this.name, this.location, this.ffRef}) : super._();
+  _$ChargeMarkerRecord._(
+      {this.name, this.location, this.latitude, this.logittude, this.ffRef})
+      : super._();
 
   @override
   ChargeMarkerRecord rebuild(
@@ -109,13 +137,21 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
     return other is ChargeMarkerRecord &&
         name == other.name &&
         location == other.location &&
+        latitude == other.latitude &&
+        logittude == other.logittude &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, name.hashCode), location.hashCode), ffRef.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, location.hashCode);
+    _$hash = $jc(_$hash, latitude.hashCode);
+    _$hash = $jc(_$hash, logittude.hashCode);
+    _$hash = $jc(_$hash, ffRef.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -123,6 +159,8 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
     return (newBuiltValueToStringHelper(r'ChargeMarkerRecord')
           ..add('name', name)
           ..add('location', location)
+          ..add('latitude', latitude)
+          ..add('logittude', logittude)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -140,6 +178,14 @@ class ChargeMarkerRecordBuilder
   LatLng? get location => _$this._location;
   set location(LatLng? location) => _$this._location = location;
 
+  double? _latitude;
+  double? get latitude => _$this._latitude;
+  set latitude(double? latitude) => _$this._latitude = latitude;
+
+  double? _logittude;
+  double? get logittude => _$this._logittude;
+  set logittude(double? logittude) => _$this._logittude = logittude;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -153,6 +199,8 @@ class ChargeMarkerRecordBuilder
     if ($v != null) {
       _name = $v.name;
       _location = $v.location;
+      _latitude = $v.latitude;
+      _logittude = $v.logittude;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -176,10 +224,14 @@ class ChargeMarkerRecordBuilder
   _$ChargeMarkerRecord _build() {
     final _$result = _$v ??
         new _$ChargeMarkerRecord._(
-            name: name, location: location, ffRef: ffRef);
+            name: name,
+            location: location,
+            latitude: latitude,
+            logittude: logittude,
+            ffRef: ffRef);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -272,7 +272,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // KakaoLogin
   {
     '3fgi12u7': {
-      'ko': 'Page Title',
+      'ko': '카카오 로그인',
       'en': '',
     },
     'jkin56kf': {
