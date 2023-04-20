@@ -14,13 +14,11 @@ import 'package:kakao_flutter_sdk_navi/kakao_flutter_sdk_navi.dart';
 import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-void main() {
+Future kakaoNavi(BuildContext context) async {
   KakaoSdk.init(
       nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157',
       javaScriptAppKey: 'c42d32dfb92ce9cfc0d4351d9aaab89b');
-}
 
-Future kakaoNavi(BuildContext context) async {
   bool result = await NaviApi.instance.isKakaoNaviInstalled();
   if (result) {
     print('카카오내비 앱으로 길안내 가능');
