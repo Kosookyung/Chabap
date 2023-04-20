@@ -260,7 +260,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                             child: Theme(
                               data: ThemeData(
                                 unselectedWidgetColor:
-                                    FlutterFlowTheme.of(context).primaryText,
+                                    FlutterFlowTheme.of(context)
+                                        .primaryBackground,
                               ),
                               child: CheckboxListTile(
                                 value: _model.checkboxListTileValue ??= false,
@@ -277,6 +278,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'AppleGothicSDNeo',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         fontSize: 13.0,
                                         fontWeight: FontWeight.normal,
                                         useGoogleFonts: GoogleFonts.asMap()
@@ -485,7 +488,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           InkWell(
                             splashColor: Colors.transparent,
@@ -513,13 +516,38 @@ class _LogInWidgetState extends State<LogInWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/logo_naver.png',
-                                width: 45.0,
-                                height: 45.0,
-                                fit: BoxFit.cover,
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('안내'),
+                                      content: Text(
+                                          '네이버 로그인은 네이버 검수중입니다. 네이버에서 승인 후 이용 가능하십니다.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('확인'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/logo_naver.png',
+                                  width: 45.0,
+                                  height: 45.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
@@ -591,40 +619,41 @@ class _LogInWidgetState extends State<LogInWidget> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                final user =
-                                    await authManager.signInWithApple(context);
-                                if (user == null) {
-                                  return;
-                                }
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => NavBarPage(
-                                        initialPage: 'MainHomeLoggedIn'),
+                          if (isiOS)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  final user = await authManager
+                                      .signInWithApple(context);
+                                  if (user == null) {
+                                    return;
+                                  }
+                                  await Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => NavBarPage(
+                                          initialPage: 'MainHomeLoggedIn'),
+                                    ),
+                                    (r) => false,
+                                  );
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/logo_apple.png',
+                                    width: 45.0,
+                                    height: 45.0,
+                                    fit: BoxFit.cover,
                                   ),
-                                  (r) => false,
-                                );
-                              },
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/logo_apple.png',
-                                  width: 45.0,
-                                  height: 45.0,
-                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                          ),
                         ],
                       ),
                     ),
@@ -664,7 +693,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                        .primaryBackground,
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: GoogleFonts.asMap()
