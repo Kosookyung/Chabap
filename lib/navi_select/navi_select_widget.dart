@@ -199,8 +199,24 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 36.0, 0.0, 0.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('안내'),
+                                          content: Text(
+                                              'Tmap은 검수중입니다. 승인 후 이용 가능하십니다.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('확인'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'moke5koh' /* 티맵 */,
