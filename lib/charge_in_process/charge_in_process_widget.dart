@@ -106,39 +106,15 @@ class _ChargeInProcessWidgetState extends State<ChargeInProcessWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      var confirmDialogResponse = await showDialog<bool>(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('충전 중지 안내'),
-                                content: Text('충전기에서 충전중지를 실행해주세요.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(
-                                        alertDialogContext, false),
-                                    child: Text('취소'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext, true),
-                                    child: Text('확인'),
-                                  ),
-                                ],
-                              );
-                            },
-                          ) ??
-                          false;
-                      if (confirmDialogResponse) {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ChargeCompleteWidget(),
-                          ),
-                        );
-                      }
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChargeCompleteWidget(),
+                        ),
+                      );
                     },
                     text: FFLocalizations.of(context).getText(
-                      'qtffdidy' /* 충전 중지 */,
+                      'qtffdidy' /* 충전 완료 */,
                     ),
                     options: FFButtonOptions(
                       width: double.infinity,
