@@ -29,6 +29,8 @@ class KakaotalkLogin extends StatefulWidget {
   final double? height;
   final Future<dynamic> Function() action;
 
+  // KakaoSdk.init(nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157');
+
   @override
   _KakaotalkLoginState createState() => _KakaotalkLoginState();
 }
