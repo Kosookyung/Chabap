@@ -18,8 +18,8 @@ class NaviSelectWidget extends StatefulWidget {
   }) : super(key: key);
 
   final String? nmae;
-  final double? longitude;
-  final double? latitude;
+  final String? longitude;
+  final String? latitude;
 
   @override
   _NaviSelectWidgetState createState() => _NaviSelectWidgetState();

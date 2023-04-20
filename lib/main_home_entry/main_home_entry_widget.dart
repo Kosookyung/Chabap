@@ -32,6 +32,8 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
     super.initState();
     _model = createModel(context, () => MainHomeEntryModel());
 
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+        .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -45,6 +47,21 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              color: FlutterFlowTheme.of(context).primary,
+            ),
+          ),
+        ),
+      );
+    }
+
     return StreamBuilder<List<ChargeMarkerRecord>>(
       stream: queryChargeMarkerRecord(),
       builder: (context, snapshot) {
@@ -87,7 +104,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                               onCameraIdle: (latLng) =>
                                   _model.googleMapsCenter = latLng,
                               initialLocation: _model.googleMapsCenter ??=
-                                  LatLng(37.5150049, 127.1041651),
+                                  currentUserLocationValue!,
                               markers: mainHomeEntryChargeMarkerRecordList
                                   .map(
                                     (mainHomeEntryChargeMarkerRecord) =>

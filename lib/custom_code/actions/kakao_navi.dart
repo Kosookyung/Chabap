@@ -17,8 +17,8 @@ import 'package:json_annotation/json_annotation.dart';
 Future kakaoNavi(
   BuildContext context,
   String? name,
-  double? longitude,
-  double? latitude,
+  String? longitude,
+  String? latitude,
 ) async {
   KakaoSdk.init(
       nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157',
