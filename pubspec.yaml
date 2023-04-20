@@ -41,8 +41,8 @@ dependencies:
   equatable: 2.0.3
   firebase_auth: ^4.4.2
   firebase_auth_platform_interface: ^6.13.0
-  firebase_auth_web: ^5.3.1
-  firebase_core: ^2.9.0
+  firebase_auth_web: ^5.3.2
+  firebase_core: ^2.10.0
   firebase_core_platform_interface: ^4.6.0
   firebase_core_web: ^2.3.0
   floating_bottom_navigation_bar: 1.5.2
@@ -77,10 +77,12 @@ dependencies:
   json_annotation: ^4.8.0
   json_path: 0.4.1
   json_serializable: 6.6.1
+  kakao_flutter_sdk_auth: ^1.4.2
   kakao_flutter_sdk_common: ^1.4.2
   kakao_flutter_sdk_navi: ^1.4.2
   kakao_flutter_sdk_user: ^1.4.2
   lottie: 1.2.1
+  meta: ^1.8.0
   mime_type: 1.0.0
   package_info: ^2.0.2
   page_transition: 2.0.4
