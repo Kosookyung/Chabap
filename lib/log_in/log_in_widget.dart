@@ -358,6 +358,10 @@ class _LogInWidgetState extends State<LogInWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await Navigator.push(
                                 context,
@@ -410,6 +414,10 @@ class _LogInWidgetState extends State<LogInWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 await Navigator.push(
                                   context,
@@ -480,6 +488,10 @@ class _LogInWidgetState extends State<LogInWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await Navigator.push(
                                 context,
@@ -515,6 +527,10 @@ class _LogInWidgetState extends State<LogInWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 final user =
                                     await authManager.signInWithGoogle(context);
@@ -545,6 +561,10 @@ class _LogInWidgetState extends State<LogInWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 final user = await authManager
                                     .signInWithFacebook(context);
@@ -575,6 +595,10 @@ class _LogInWidgetState extends State<LogInWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 final user =
                                     await authManager.signInWithApple(context);
@@ -612,6 +636,10 @@ class _LogInWidgetState extends State<LogInWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               final user =
                                   await authManager.signInAnonymously(context);

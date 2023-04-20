@@ -83,6 +83,10 @@ class _BottomSheetNaviWidgetState extends State<BottomSheetNaviWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         Navigator.pop(context);
                       },
@@ -188,6 +192,9 @@ class _BottomSheetNaviWidgetState extends State<BottomSheetNaviWidget> {
                         onPressed: () async {
                           await actions.kakaoNavi(
                             context,
+                            '카카오 판교오피스',
+                            127.108640,
+                            37.402111,
                           );
                         },
                         text: FFLocalizations.of(context).getText(

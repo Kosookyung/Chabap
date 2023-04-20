@@ -125,6 +125,10 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         var confirmDialogResponse = await showDialog<bool>(
                               context: context,
@@ -181,6 +185,10 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         await Navigator.push(
                           context,

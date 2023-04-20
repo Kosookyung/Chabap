@@ -323,6 +323,10 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             3.0, 3.0, 3.0, 3.0),
                                         child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                           onTap: () async {
                                             setAppLanguage(context, 'ko');
                                           },
@@ -376,6 +380,10 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             3.0, 3.0, 3.0, 3.0),
                                         child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                           onTap: () async {
                                             currentUserLocationValue =
                                                 await getCurrentUserLocation(
