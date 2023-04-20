@@ -17,7 +17,7 @@ abstract class ChargeMarkerRecord
 
   double? get latitude;
 
-  double? get logittude;
+  double? get longitude;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -26,7 +26,7 @@ abstract class ChargeMarkerRecord
   static void _initializeBuilder(ChargeMarkerRecordBuilder builder) => builder
     ..name = ''
     ..latitude = 0.0
-    ..logittude = 0.0;
+    ..longitude = 0.0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('ChargeMarker');
@@ -54,7 +54,7 @@ Map<String, dynamic> createChargeMarkerRecordData({
   String? name,
   LatLng? location,
   double? latitude,
-  double? logittude,
+  double? longitude,
 }) {
   final firestoreData = serializers.toFirestore(
     ChargeMarkerRecord.serializer,
@@ -63,7 +63,7 @@ Map<String, dynamic> createChargeMarkerRecordData({
         ..name = name
         ..location = location
         ..latitude = latitude
-        ..logittude = logittude,
+        ..longitude = longitude,
     ),
   );
 

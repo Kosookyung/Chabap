@@ -12,10 +12,14 @@ export 'navi_select_model.dart';
 class NaviSelectWidget extends StatefulWidget {
   const NaviSelectWidget({
     Key? key,
-    this.location,
+    this.nmae,
+    this.longitude,
+    this.latitude,
   }) : super(key: key);
 
-  final LatLng? location;
+  final String? nmae;
+  final double? longitude;
+  final double? latitude;
 
   @override
   _NaviSelectWidgetState createState() => _NaviSelectWidgetState();
@@ -91,6 +95,7 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
         body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Material(
                 color: Colors.transparent,
@@ -118,6 +123,7 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
@@ -245,9 +251,9 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                   onPressed: () async {
                                     await actions.kakaoNavi(
                                       context,
-                                      '판교역 1번출구',
-                                      127.111492,
-                                      127.111492,
+                                      widget.nmae,
+                                      widget.longitude,
+                                      widget.latitude,
                                     );
                                   },
                                   text: FFLocalizations.of(context).getText(

@@ -43,10 +43,10 @@ class _$ChargeMarkerRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    value = object.logittude;
+    value = object.longitude;
     if (value != null) {
       result
-        ..add('logittude')
+        ..add('longitude')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
@@ -85,8 +85,8 @@ class _$ChargeMarkerRecordSerializer
           result.latitude = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double?;
           break;
-        case 'logittude':
-          result.logittude = serializers.deserialize(value,
+        case 'longitude':
+          result.longitude = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double?;
           break;
         case 'Document__Reference__Field':
@@ -110,7 +110,7 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
   @override
   final double? latitude;
   @override
-  final double? logittude;
+  final double? longitude;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -119,7 +119,7 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
       (new ChargeMarkerRecordBuilder()..update(updates))._build();
 
   _$ChargeMarkerRecord._(
-      {this.name, this.location, this.latitude, this.logittude, this.ffRef})
+      {this.name, this.location, this.latitude, this.longitude, this.ffRef})
       : super._();
 
   @override
@@ -138,7 +138,7 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
         name == other.name &&
         location == other.location &&
         latitude == other.latitude &&
-        logittude == other.logittude &&
+        longitude == other.longitude &&
         ffRef == other.ffRef;
   }
 
@@ -148,7 +148,7 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, latitude.hashCode);
-    _$hash = $jc(_$hash, logittude.hashCode);
+    _$hash = $jc(_$hash, longitude.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -160,7 +160,7 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
           ..add('name', name)
           ..add('location', location)
           ..add('latitude', latitude)
-          ..add('logittude', logittude)
+          ..add('longitude', longitude)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -182,9 +182,9 @@ class ChargeMarkerRecordBuilder
   double? get latitude => _$this._latitude;
   set latitude(double? latitude) => _$this._latitude = latitude;
 
-  double? _logittude;
-  double? get logittude => _$this._logittude;
-  set logittude(double? logittude) => _$this._logittude = logittude;
+  double? _longitude;
+  double? get longitude => _$this._longitude;
+  set longitude(double? longitude) => _$this._longitude = longitude;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -200,7 +200,7 @@ class ChargeMarkerRecordBuilder
       _name = $v.name;
       _location = $v.location;
       _latitude = $v.latitude;
-      _logittude = $v.logittude;
+      _longitude = $v.longitude;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -227,7 +227,7 @@ class ChargeMarkerRecordBuilder
             name: name,
             location: location,
             latitude: latitude,
-            logittude: logittude,
+            longitude: longitude,
             ffRef: ffRef);
     replace(_$result);
     return _$result;
