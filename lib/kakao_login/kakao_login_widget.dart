@@ -52,7 +52,7 @@ class _KakaoLoginWidgetState extends State<KakaoLoginWidget> {
                 automaticallyImplyLeading: false,
                 title: Text(
                   FFLocalizations.of(context).getText(
-                    '3fgi12u7' /* Page Title */,
+                    '3fgi12u7' /* 카카오 로그인 */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily:
@@ -73,11 +73,11 @@ class _KakaoLoginWidgetState extends State<KakaoLoginWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                width: 115.0,
-                height: 20.0,
+                width: 100.0,
+                height: 50.0,
                 child: custom_widgets.KakaotalkLogin(
-                  width: 115.0,
-                  height: 20.0,
+                  width: 100.0,
+                  height: 50.0,
                   action: () async {},
                 ),
               ),
