@@ -636,6 +636,10 @@ class _RegistrationPhoneCodeWidgetState
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await Navigator.push(
                             context,

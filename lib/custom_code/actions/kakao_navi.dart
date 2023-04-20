@@ -14,7 +14,12 @@ import 'package:kakao_flutter_sdk_navi/kakao_flutter_sdk_navi.dart';
 import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-Future kakaoNavi(BuildContext context) async {
+Future kakaoNavi(
+  BuildContext context,
+  String? name,
+  double? longitude,
+  double? latitude,
+) async {
   KakaoSdk.init(
       nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157',
       javaScriptAppKey: 'c42d32dfb92ce9cfc0d4351d9aaab89b');
@@ -31,7 +36,7 @@ Future kakaoNavi(BuildContext context) async {
   if (await NaviApi.instance.isKakaoNaviInstalled()) {
     // 카카오내비 앱으로 길 안내하기, WGS84 좌표계 사용
     await NaviApi.instance.navigate(
-      destination: Location(name: '카카오 판교오피스', x: '127.108640', y: '37.402111'),
+      destination: Location(name: 'name', x: 'longitude', y: 'latitude'),
       option: NaviOption(coordType: CoordType.wgs84),
       //viaList: [
       //  Location(name: '판교역 1번출구', x: '127.111492', y: '37.395225'),

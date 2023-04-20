@@ -128,6 +128,10 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   Navigator.pop(context);
                                 },
@@ -241,6 +245,9 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                   onPressed: () async {
                                     await actions.kakaoNavi(
                                       context,
+                                      '판교역 1번출구',
+                                      127.111492,
+                                      127.111492,
                                     );
                                   },
                                   text: FFLocalizations.of(context).getText(
