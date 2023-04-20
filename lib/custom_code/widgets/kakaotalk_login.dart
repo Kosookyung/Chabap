@@ -12,6 +12,15 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' as Fa;
 import 'package:flutter/services.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:dio/dio.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
+import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:firebase_auth_web/firebase_auth_web.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
+import 'package:meta/meta.dart';
+import 'package:firebase_core_web/firebase_core_web.dart';
 
 void main() {
   KakaoSdk.init(nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157');
