@@ -193,8 +193,8 @@ class _BottomSheetNaviWidgetState extends State<BottomSheetNaviWidget> {
                           await actions.kakaoNavi(
                             context,
                             '카카오 판교오피스',
-                            127.108640,
-                            37.402111,
+                            '127.108640',
+                            '37.402111',
                           );
                         },
                         text: FFLocalizations.of(context).getText(

@@ -13,9 +13,13 @@ class BottomSheetPlaceInfoWidget extends StatefulWidget {
   const BottomSheetPlaceInfoWidget({
     Key? key,
     this.placeName,
+    this.longitude,
+    this.latitude,
   }) : super(key: key);
 
   final ChargeMarkerRecord? placeName;
+  final ChargeMarkerRecord? longitude;
+  final ChargeMarkerRecord? latitude;
 
   @override
   _BottomSheetPlaceInfoWidgetState createState() =>
@@ -233,7 +237,11 @@ class _BottomSheetPlaceInfoWidgetState
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => NaviSelectWidget(),
+                              builder: (context) => NaviSelectWidget(
+                                nmae: widget.placeName!.name,
+                                longitude: widget.longitude!.longitude,
+                                latitude: widget.latitude!.latitude,
+                              ),
                             ),
                           );
                         },

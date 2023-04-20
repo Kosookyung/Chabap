@@ -17,8 +17,8 @@ import 'package:json_annotation/json_annotation.dart';
 Future kakaoNavi(
   BuildContext context,
   String? name,
-  double? longitude,
-  double? latitude,
+  String? longitude,
+  String? latitude,
 ) async {
   KakaoSdk.init(
       nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157',
@@ -36,7 +36,8 @@ Future kakaoNavi(
   if (await NaviApi.instance.isKakaoNaviInstalled()) {
     // 카카오내비 앱으로 길 안내하기, WGS84 좌표계 사용
     await NaviApi.instance.navigate(
-      destination: Location(name: 'name', x: 'longitude', y: 'latitude'),
+      destination: Location(
+          name: 'widget.name', x: 'widget.longitude', y: 'widget.latitude'),
       option: NaviOption(coordType: CoordType.wgs84),
       //viaList: [
       //  Location(name: '판교역 1번출구', x: '127.111492', y: '37.395225'),
