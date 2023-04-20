@@ -40,12 +40,12 @@ class _ChargeInProcessWidgetState extends State<ChargeInProcessWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
             child: Column(
@@ -73,12 +73,13 @@ class _ChargeInProcessWidgetState extends State<ChargeInProcessWidget> {
                   FFLocalizations.of(context).getText(
                     'hlsybizw' /* 충전중 */,
                   ),
-                  style: FlutterFlowTheme.of(context).title2.override(
-                        fontFamily: FlutterFlowTheme.of(context).title2Family,
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        color: FlutterFlowTheme.of(context).primary,
                         fontSize: 32.0,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).title2Family),
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
                       ),
                 ),
                 Padding(
@@ -90,14 +91,14 @@ class _ChargeInProcessWidgetState extends State<ChargeInProcessWidget> {
                       ,
                     ),
                     textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).subtitle2.override(
+                    style: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
-                              FlutterFlowTheme.of(context).subtitle2Family,
+                              FlutterFlowTheme.of(context).titleSmallFamily,
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 20.0,
                           fontWeight: FontWeight.w300,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).subtitle2Family),
+                              FlutterFlowTheme.of(context).titleSmallFamily),
                         ),
                   ),
                 ),
@@ -146,18 +147,19 @@ class _ChargeInProcessWidgetState extends State<ChargeInProcessWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: FlutterFlowTheme.of(context).primary,
                       textStyle: FlutterFlowTheme.of(context)
-                          .subtitle2
+                          .titleSmall
                           .override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).subtitle2Family,
+                                FlutterFlowTheme.of(context).titleSmallFamily,
                             color: Colors.white,
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).subtitle2Family),
+                                FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
+                      elevation: 2.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,

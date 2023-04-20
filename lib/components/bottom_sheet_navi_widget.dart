@@ -112,13 +112,16 @@ class _BottomSheetNaviWidgetState extends State<BottomSheetNaviWidget> {
                           'se8z0d5w' /* 길 안내하기 */,
                         ),
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).title2.override(
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
                               fontFamily: 'Noto Sans',
                               color: FlutterFlowTheme.of(context).primaryText,
                               fontSize: 20.0,
                               fontWeight: FontWeight.w600,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).title2Family),
+                                  FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily),
                             ),
                       ),
                     ),
@@ -149,16 +152,16 @@ class _BottomSheetNaviWidgetState extends State<BottomSheetNaviWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           textStyle: FlutterFlowTheme.of(context)
-                              .subtitle1
+                              .titleMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .subtitle1Family,
+                                    .titleMediumFamily,
                                 color: Colors.white,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .subtitle1Family),
+                                        .titleMediumFamily),
                               ),
                           elevation: 3.0,
                           borderSide: BorderSide(
@@ -197,16 +200,16 @@ class _BottomSheetNaviWidgetState extends State<BottomSheetNaviWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           textStyle: FlutterFlowTheme.of(context)
-                              .subtitle1
+                              .titleMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .subtitle1Family,
+                                    .titleMediumFamily,
                                 color: Colors.white,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .subtitle1Family),
+                                        .titleMediumFamily),
                               ),
                           elevation: 3.0,
                           borderSide: BorderSide(

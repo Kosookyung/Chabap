@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'auth/firebase_user_provider.dart';
-import 'auth/auth_util.dart';
+import 'auth/firebase_auth/firebase_user_provider.dart';
+import 'auth/firebase_auth/auth_util.dart';
 
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -34,8 +34,8 @@ class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
 
-  late Stream<ChaBapFirebaseUser> userStream;
-  ChaBapFirebaseUser? initialUser;
+  late Stream<BaseAuthUser> userStream;
+  BaseAuthUser? initialUser;
   bool displaySplashImage = true;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
@@ -146,7 +146,7 @@ class _NavBarPageState extends State<NavBarPage> {
             _currentPageName = tabs.keys.toList()[i];
           }),
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
+          selectedItemColor: FlutterFlowTheme.of(context).primary,
           unselectedItemColor: FlutterFlowTheme.of(context).primaryText,
           selectedBackgroundColor:
               FlutterFlowTheme.of(context).primaryBackground,
@@ -164,7 +164,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icon(
                     FFIcons.kmap02,
                     color: currentIndex == 0
-                        ? FlutterFlowTheme.of(context).primaryColor
+                        ? FlutterFlowTheme.of(context).primary
                         : FlutterFlowTheme.of(context).primaryText,
                     size: 24.0,
                   ),
@@ -175,7 +175,7 @@ class _NavBarPageState extends State<NavBarPage> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: currentIndex == 0
-                          ? FlutterFlowTheme.of(context).primaryColor
+                          ? FlutterFlowTheme.of(context).primary
                           : FlutterFlowTheme.of(context).primaryText,
                       fontSize: 11.0,
                     ),
@@ -190,7 +190,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icon(
                     FFIcons.kzap02,
                     color: currentIndex == 1
-                        ? FlutterFlowTheme.of(context).primaryColor
+                        ? FlutterFlowTheme.of(context).primary
                         : FlutterFlowTheme.of(context).primaryText,
                     size: 24.0,
                   ),
@@ -201,7 +201,7 @@ class _NavBarPageState extends State<NavBarPage> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: currentIndex == 1
-                          ? FlutterFlowTheme.of(context).primaryColor
+                          ? FlutterFlowTheme.of(context).primary
                           : FlutterFlowTheme.of(context).primaryText,
                       fontSize: 11.0,
                     ),
@@ -216,7 +216,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icon(
                     FFIcons.kuser02,
                     color: currentIndex == 2
-                        ? FlutterFlowTheme.of(context).primaryColor
+                        ? FlutterFlowTheme.of(context).primary
                         : FlutterFlowTheme.of(context).primaryText,
                     size: 24.0,
                   ),
@@ -227,7 +227,7 @@ class _NavBarPageState extends State<NavBarPage> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: currentIndex == 2
-                          ? FlutterFlowTheme.of(context).primaryColor
+                          ? FlutterFlowTheme.of(context).primary
                           : FlutterFlowTheme.of(context).primaryText,
                       fontSize: 11.0,
                     ),

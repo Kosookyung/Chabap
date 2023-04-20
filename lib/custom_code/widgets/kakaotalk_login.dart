@@ -11,11 +11,11 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart' as Fa;
 import 'package:flutter/services.dart';
-import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
-import 'index.dart'; // Imports other custom widgets
+void main() {
+  KakaoSdk.init(nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157');
+}
 
 class KakaotalkLogin extends StatefulWidget {
   const KakaotalkLogin({
@@ -36,6 +36,8 @@ class KakaotalkLogin extends StatefulWidget {
 class _KakaotalkLoginState extends State<KakaotalkLogin> {
   @override
   Widget build(BuildContext context) {
+    //  KakaoContext.clientId = '2b58c2c4c6792abc05e9d323b1ebab4e';
+    //KakaoSdk.init(nativeAppKey: '2b58c2c4c6792abc05e9d323b1ebab4e');
     return Container(
       child: ElevatedButton(
           onPressed: () async {
@@ -86,7 +88,7 @@ class _KakaotalkLoginState extends State<KakaotalkLogin> {
             }
 
             final email = 'kakao${user.id}@email.com';
-            final password = 'ka8~${user.id}A,*';
+            final password = 'kakao${user.id}';
 
             Fa.User? faUser;
 
@@ -102,13 +104,13 @@ class _KakaotalkLoginState extends State<KakaotalkLogin> {
               final data = {
                 'faUser.uid': faUser.uid,
                 'email': user.kakaoAccount?.email ?? '',
-                'diaplay_name': user.kakaoAccount?.profile?.nickname,
-                'photo_url': user.kakaoAccount?.profile?.thumbnailImageUrl,
+                'nickname': user.kakaoAccount?.profile?.nickname,
+                'photoUrl': user.kakaoAccount?.profile?.thumbnailImageUrl,
                 'created_time': DateTime.now(),
               };
               FirebaseFirestore.instance
                   .collection('users')
-                  .doc(faUser.uid)
+                  .doc('uid')
                   .set(data);
 
               print('파이어베이스 -> 회원 가입 성공');
@@ -131,7 +133,7 @@ class _KakaotalkLoginState extends State<KakaotalkLogin> {
               rethrow;
             }
           },
-          child: Text('Kakao Login')),
+          child: Text('카카오 로그인')),
     );
   }
 }

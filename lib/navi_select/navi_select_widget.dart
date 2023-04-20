@@ -45,50 +45,50 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: responsiveVisibility(
-        context: context,
-        tabletLandscape: false,
-      )
-          ? AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: responsiveVisibility(
+          context: context,
+          tabletLandscape: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
-              ),
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'matvndxf' /* 경로 안내하기 */,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'matvndxf' /* 경로 안내하기 */,
+                  ),
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily: 'Poppins',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 22.0,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                      ),
                 ),
-                style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Poppins',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 22.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).title2Family),
-                    ),
-              ),
-              actions: [],
-              centerTitle: false,
-              elevation: 2.0,
-            )
-          : null,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+                actions: [],
+                centerTitle: false,
+                elevation: 2.0,
+              )
+            : null,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -160,7 +160,7 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                   ),
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
-                                      .title2
+                                      .headlineMedium
                                       .override(
                                         fontFamily: 'Noto Sans',
                                         color: FlutterFlowTheme.of(context)
@@ -170,7 +170,7 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .title2Family),
+                                                    .headlineMediumFamily),
                                       ),
                                 ),
                               ),
@@ -202,19 +202,18 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                         0.0, 0.0, 0.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle1
+                                        .titleMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle1Family,
+                                                  .titleMediumFamily,
                                           color: Colors.white,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .subtitle1Family),
+                                                      .titleMediumFamily),
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(
@@ -254,19 +253,18 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                         0.0, 0.0, 0.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle1
+                                        .titleMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle1Family,
+                                                  .titleMediumFamily,
                                           color: Colors.white,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .subtitle1Family),
+                                                      .titleMediumFamily),
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(

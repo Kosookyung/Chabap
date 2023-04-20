@@ -1,4 +1,4 @@
-import '/auth/firebase_user_provider.dart';
+import '/auth/firebase_auth/firebase_user_provider.dart';
 import '/backend/backend.dart';
 import '/components/bottom_sheet_place_info_widget.dart';
 import '/components/bottom_sheets_recommend_charge_widget.dart';
@@ -21,7 +21,7 @@ class MainHomeLoggedInModel extends FlutterFlowModel {
   final googleMapsController = Completer<GoogleMapController>();
   // State field(s) for ChoiceChips widget.
   String? choiceChipsValue;
-  FormFieldController<List<String>>? choiceChipsController;
+  FormFieldController<List<String>>? choiceChipsValueController;
 
   /// Initialization and disposal methods.
 

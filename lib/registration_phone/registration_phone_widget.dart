@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -45,12 +45,12 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: Column(
@@ -65,13 +65,14 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                         FFLocalizations.of(context).getText(
                           'mhfj29mf' /* 30초만에 */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily:
-                                  FlutterFlowTheme.of(context).bodyText1Family,
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               fontSize: 30.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                     ],
@@ -84,13 +85,13 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                       FFLocalizations.of(context).getText(
                         'qjsfb75e' /* 회원가입하기 */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyText1Family,
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyText1Family),
+                                FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
                     ),
                   ],
@@ -113,15 +114,15 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               'rrvy3z8e' /* 이메일 아이디를 입력해주세요 */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyText2Family,
+                                      .bodySmallFamily,
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -158,7 +159,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: 'Roboto',
                                 color: Color(0xFF090909),
@@ -166,7 +167,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
+                                        .bodyMediumFamily),
                               ),
                           keyboardType: TextInputType.emailAddress,
                           validator: _model.emailFieldControllerValidator
@@ -185,15 +186,15 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               'psvm7dyl' /* 비밀번호 */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyText2Family,
+                                      .bodySmallFamily,
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -245,16 +246,16 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyText1Family,
+                                    .bodyMediumFamily,
                                 color: Color(0xFF090909),
                                 fontSize: 12.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
+                                        .bodyMediumFamily),
                               ),
                           keyboardType: TextInputType.visiblePassword,
                           validator: _model.passWordFieldController1Validator
@@ -273,15 +274,15 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               'tbvbf9hu' /* 비밀번호 확인 */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyText2Family,
+                                      .bodySmallFamily,
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -333,16 +334,16 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyText1Family,
+                                    .bodyMediumFamily,
                                 color: Color(0xFF090909),
                                 fontSize: 12.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
+                                        .bodyMediumFamily),
                               ),
                           keyboardType: TextInputType.visiblePassword,
                           validator: _model.passWordFieldController2Validator
@@ -361,15 +362,15 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               '4a6ndgms' /* 휴대폰 번호를 입력해주세요 */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyText2Family,
+                                      .bodySmallFamily,
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -406,7 +407,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: 'Roboto',
                                 color: Color(0xFF090909),
@@ -414,7 +415,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
+                                        .bodyMediumFamily),
                               ),
                           keyboardType: TextInputType.phone,
                           validator: _model.phoneFieldControllerValidator
@@ -439,7 +440,7 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                               );
                               return;
                             }
-                            await beginPhoneAuth(
+                            await authManager.beginPhoneAuth(
                               context: context,
                               phoneNumber: phoneNumberVal,
                               onCodeSent: () async {
@@ -464,19 +465,20 @@ class _RegistrationPhoneWidgetState extends State<RegistrationPhoneWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
-                                .subtitle2
+                                .titleSmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .subtitle2Family,
+                                      .titleSmallFamily,
                                   color: Colors.white,
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .subtitle2Family),
+                                          .titleSmallFamily),
                                 ),
+                            elevation: 2.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -40,51 +40,52 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: responsiveVisibility(
-        context: context,
-        tabletLandscape: false,
-      )
-          ? AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: responsiveVisibility(
+          context: context,
+          tabletLandscape: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
-              ),
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'dn4nj9kj' /* 회원탈퇴 */,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'dn4nj9kj' /* 회원탈퇴 */,
+                  ),
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                      ),
                 ),
-                style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: FlutterFlowTheme.of(context).title2Family,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).title2Family),
-                    ),
-              ),
-              actions: [],
-              centerTitle: false,
-              elevation: 2.0,
-            )
-          : null,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+                actions: [],
+                centerTitle: false,
+                elevation: 2.0,
+              )
+            : null,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -121,7 +122,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                                   ,
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText2
+                                    .bodySmall
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: FlutterFlowTheme.of(context)
@@ -131,7 +132,7 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText2Family),
+                                                  .bodySmallFamily),
                                     ),
                               ),
                             ),
@@ -165,24 +166,24 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                               FFLocalizations.of(context).getText(
                                 '9ua6hzei' /* 주의사항을 모두 확인했습니다. */,
                               ),
-                              style:
-                                  FlutterFlowTheme.of(context).title3.override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .title3Family,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .title3Family),
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineSmallFamily),
+                                  ),
                             ),
                             tileColor:
                                 FlutterFlowTheme.of(context).primaryBackground,
-                            activeColor:
-                                FlutterFlowTheme.of(context).primaryColor,
+                            activeColor: FlutterFlowTheme.of(context).primary,
                             checkColor:
                                 FlutterFlowTheme.of(context).primaryBackground,
                             dense: true,
@@ -238,18 +239,19 @@ class _AccountWithdrawWidgetState extends State<AccountWithdrawWidget> {
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: _model.checkboxListTileValue!
-                              ? FlutterFlowTheme.of(context).primaryColor
+                              ? FlutterFlowTheme.of(context).primary
                               : FlutterFlowTheme.of(context).secondaryText,
                           textStyle: FlutterFlowTheme.of(context)
-                              .subtitle2
+                              .titleSmall
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .subtitle2Family,
+                                    .titleSmallFamily,
                                 color: Colors.white,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .subtitle2Family),
+                                        .titleSmallFamily),
                               ),
+                          elevation: 2.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,

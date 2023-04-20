@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/charge_connect/charge_connect_widget.dart';
@@ -16,6 +16,7 @@ class ChargeModel extends FlutterFlowModel {
 
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
+  String? Function(BuildContext, String?)? pinCodeControllerValidator;
 
   /// Initialization and disposal methods.
 

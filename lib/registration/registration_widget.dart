@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -45,12 +45,12 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: Column(
@@ -65,13 +65,14 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         FFLocalizations.of(context).getText(
                           '9hvy4fgq' /* 30초만에 */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily:
-                                  FlutterFlowTheme.of(context).bodyText1Family,
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               fontSize: 30.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                     ],
@@ -84,13 +85,13 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                       FFLocalizations.of(context).getText(
                         'cyzp78fm' /* 회원가입하기 */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyText1Family,
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyText1Family),
+                                FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
                     ),
                   ],
@@ -106,14 +107,14 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         'b330vcug' /* 이메일 아이디를 입력해주세요 */,
                       ),
                       hintStyle: FlutterFlowTheme.of(context)
-                          .bodyText2
+                          .bodySmall
                           .override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyText2Family,
+                                FlutterFlowTheme.of(context).bodySmallFamily,
                             fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyText2Family),
+                                FlutterFlowTheme.of(context).bodySmallFamily),
                           ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -147,13 +148,13 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         FFIcons.kfSICON2SVG11V11220427,
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Roboto',
                           color: Color(0xFF090909),
                           fontSize: 13.0,
                           fontWeight: FontWeight.normal,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyText1Family),
+                              FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
                     keyboardType: TextInputType.emailAddress,
                     validator: _model.emailFieldControllerValidator
@@ -171,14 +172,14 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         'r3qkinss' /* 비밀번호 */,
                       ),
                       hintStyle: FlutterFlowTheme.of(context)
-                          .bodyText2
+                          .bodySmall
                           .override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyText2Family,
+                                FlutterFlowTheme.of(context).bodySmallFamily,
                             fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyText2Family),
+                                FlutterFlowTheme.of(context).bodySmallFamily),
                           ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -226,14 +227,14 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         ),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily:
-                              FlutterFlowTheme.of(context).bodyText1Family,
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           color: Color(0xFF090909),
                           fontSize: 12.0,
                           fontWeight: FontWeight.w500,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyText1Family),
+                              FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
                     keyboardType: TextInputType.visiblePassword,
                     validator: _model.passWordFieldControllerValidator
@@ -251,14 +252,14 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         'fqqtxqr7' /* 비밀번호 확인 */,
                       ),
                       hintStyle: FlutterFlowTheme.of(context)
-                          .bodyText2
+                          .bodySmall
                           .override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyText2Family,
+                                FlutterFlowTheme.of(context).bodySmallFamily,
                             fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyText2Family),
+                                FlutterFlowTheme.of(context).bodySmallFamily),
                           ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -306,14 +307,14 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         ),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily:
-                              FlutterFlowTheme.of(context).bodyText1Family,
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           color: Color(0xFF090909),
                           fontSize: 12.0,
                           fontWeight: FontWeight.w500,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyText1Family),
+                              FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
                     keyboardType: TextInputType.visiblePassword,
                     validator: _model.confirmPassWordFieldControllerValidator
@@ -336,7 +337,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         return;
                       }
 
-                      final user = await createAccountWithEmail(
+                      final user = await authManager.createAccountWithEmail(
                         context,
                         _model.emailFieldController.text,
                         _model.passWordFieldController.text,
@@ -366,16 +367,17 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primaryBackground,
                       textStyle: FlutterFlowTheme.of(context)
-                          .subtitle2
+                          .titleSmall
                           .override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).subtitle2Family,
+                                FlutterFlowTheme.of(context).titleSmallFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).subtitle2Family),
+                                FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
+                      elevation: 2.0,
                       borderSide: BorderSide(
                         color: FlutterFlowTheme.of(context).secondaryText,
                         width: 1.0,
@@ -394,14 +396,15 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         FFLocalizations.of(context).getText(
                           't2kck5xk' /* 이미 차밥회원이신가요? */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily:
-                                  FlutterFlowTheme.of(context).bodyText1Family,
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 12.0,
                               fontWeight: FontWeight.w500,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                     ],
@@ -427,15 +430,15 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                             'zzhxyhyg' /* 로그인 */,
                           ),
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyText1Family,
+                                    .bodyMediumFamily,
                                 fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
+                                        .bodyMediumFamily),
                               ),
                         ),
                       ),
@@ -447,17 +450,17 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                             'g8n52mpf' /* | */,
                           ),
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyText1Family,
+                                    .bodyMediumFamily,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
+                                        .bodyMediumFamily),
                               ),
                         ),
                       ),
@@ -478,17 +481,17 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                               'c7959e8m' /* 아이디/비밀번호 찾기 */,
                             ),
                             style: FlutterFlowTheme.of(context)
-                                .bodyText1
+                                .bodyMedium
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyText1Family,
+                                      .bodyMediumFamily,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText1Family),
+                                          .bodyMediumFamily),
                                 ),
                           ),
                         ),

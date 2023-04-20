@@ -38,36 +38,37 @@ class _KakaoLoginWidgetState extends State<KakaoLoginWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: responsiveVisibility(
-        context: context,
-        tabletLandscape: false,
-      )
-          ? AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-              automaticallyImplyLeading: false,
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  '3fgi12u7' /* Page Title */,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: responsiveVisibility(
+          context: context,
+          tabletLandscape: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primary,
+                automaticallyImplyLeading: false,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    '3fgi12u7' /* Page Title */,
+                  ),
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        color: Colors.white,
+                        fontSize: 22.0,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                      ),
                 ),
-                style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: FlutterFlowTheme.of(context).title2Family,
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).title2Family),
-                    ),
-              ),
-              actions: [],
-              centerTitle: false,
-              elevation: 2.0,
-            )
-          : null,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+                actions: [],
+                centerTitle: false,
+                elevation: 2.0,
+              )
+            : null,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

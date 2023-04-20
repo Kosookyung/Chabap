@@ -56,12 +56,13 @@ class _RecommendChargeWidgetState extends State<RecommendChargeWidget> {
                 FFLocalizations.of(context).getText(
                   'kvlabtsc' /* 추천 중전소 */,
                 ),
-                style: FlutterFlowTheme.of(context).title3.override(
-                      fontFamily: FlutterFlowTheme.of(context).title3Family,
+                style: FlutterFlowTheme.of(context).headlineSmall.override(
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineSmallFamily,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).title3Family),
+                          FlutterFlowTheme.of(context).headlineSmallFamily),
                     ),
               ),
             ),
@@ -71,7 +72,7 @@ class _RecommendChargeWidgetState extends State<RecommendChargeWidget> {
                 FFLocalizations.of(context).getText(
                   'vc9ikcp4' /* Subtitle for the needs of desc... */,
                 ),
-                style: FlutterFlowTheme.of(context).bodyText2,
+                style: FlutterFlowTheme.of(context).bodySmall,
               ),
             ),
             Container(
@@ -112,7 +113,7 @@ class _RecommendChargeWidgetState extends State<RecommendChargeWidget> {
                               FFLocalizations.of(context).getText(
                                 'k9p9lost' /* Share */,
                               ),
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -160,7 +161,7 @@ class _RecommendChargeWidgetState extends State<RecommendChargeWidget> {
                               FFLocalizations.of(context).getText(
                                 'y1dyqnyy' /* Get Link */,
                               ),
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -208,7 +209,7 @@ class _RecommendChargeWidgetState extends State<RecommendChargeWidget> {
                               FFLocalizations.of(context).getText(
                                 '3p6tninl' /* Edit */,
                               ),
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -256,7 +257,7 @@ class _RecommendChargeWidgetState extends State<RecommendChargeWidget> {
                               FFLocalizations.of(context).getText(
                                 'v4nqd4wj' /* Delete */,
                               ),
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),

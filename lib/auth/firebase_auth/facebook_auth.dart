@@ -29,6 +29,3 @@ Future<UserCredential> facebookSignIn() async {
   // Once signed in, return the UserCredential
   return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 }
-
-Future<User?> signInWithFacebook(BuildContext context) =>
-    signInOrCreateAccount(context, facebookSignIn, 'FACEBOOK');

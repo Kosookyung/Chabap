@@ -1,4 +1,4 @@
-import '/auth/firebase_user_provider.dart';
+import '/auth/firebase_auth/firebase_user_provider.dart';
 import '/backend/backend.dart';
 import '/components/bottom_sheet_place_info_widget.dart';
 import '/components/bottom_sheets_recommend_charge_widget.dart';
@@ -41,12 +41,15 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
         backgroundColor: Colors.black,
         barrierColor: Color(0x00000000),
         context: context,
-        builder: (context) {
-          return Padding(
-            padding: MediaQuery.of(context).viewInsets,
-            child: Container(
-              height: 180.0,
-              child: BottomSheetsRecommendChargeWidget(),
+        builder: (bottomSheetContext) {
+          return GestureDetector(
+            onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+            child: Padding(
+              padding: MediaQuery.of(bottomSheetContext).viewInsets,
+              child: Container(
+                height: 180.0,
+                child: BottomSheetsRecommendChargeWidget(),
+              ),
             ),
           );
         },
@@ -76,20 +79,20 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
         }
         List<ChargeMarkerRecord> mainHomeLoggedInChargeMarkerRecordList =
             snapshot.data!;
-        return Scaffold(
-          key: scaffoldKey,
-          resizeToAvoidBottomInset: false,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            resizeToAvoidBottomInset: false,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: SafeArea(
               child: Visibility(
                 visible: responsiveVisibility(
                   context: context,
@@ -124,16 +127,22 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                             backgroundColor: Colors.transparent,
                                             barrierColor: Color(0x00000000),
                                             context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding: MediaQuery.of(context)
-                                                    .viewInsets,
-                                                child: Container(
-                                                  height: 180.0,
-                                                  child:
-                                                      BottomSheetPlaceInfoWidget(
-                                                    placeName:
-                                                        mainHomeLoggedInChargeMarkerRecord,
+                                            builder: (bottomSheetContext) {
+                                              return GestureDetector(
+                                                onTap: () => FocusScope.of(
+                                                        context)
+                                                    .requestFocus(_unfocusNode),
+                                                child: Padding(
+                                                  padding: MediaQuery.of(
+                                                          bottomSheetContext)
+                                                      .viewInsets,
+                                                  child: Container(
+                                                    height: 180.0,
+                                                    child:
+                                                        BottomSheetPlaceInfoWidget(
+                                                      placeName:
+                                                          mainHomeLoggedInChargeMarkerRecord,
+                                                    ),
                                                   ),
                                                 ),
                                               );
@@ -236,15 +245,15 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                           selectedChipStyle: ChipStyle(
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryColor,
+                                                    .primary,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1Family,
+                                                              .bodyMediumFamily,
                                                       color: Colors.white,
                                                       fontSize: 12.0,
                                                       fontWeight:
@@ -254,7 +263,7 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                                           .containsKey(
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyText1Family),
+                                                                  .bodyMediumFamily),
                                                     ),
                                             iconColor: Color(0x00000000),
                                             iconSize: 25.0,
@@ -264,12 +273,12 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                             backgroundColor: Colors.white,
                                             textStyle: FlutterFlowTheme.of(
                                                     context)
-                                                .bodyText2
+                                                .bodySmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyText2Family,
+                                                          .bodySmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
@@ -280,7 +289,7 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                                 ),
                                             iconColor: Color(0x00000000),
                                             iconSize: 18.0,
@@ -290,7 +299,7 @@ class _MainHomeLoggedInWidgetState extends State<MainHomeLoggedInWidget> {
                                           multiselect: false,
                                           alignment: WrapAlignment.center,
                                           controller: _model
-                                                  .choiceChipsController ??=
+                                                  .choiceChipsValueController ??=
                                               FormFieldController<List<String>>(
                                             [],
                                           ),

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/location_info_guide/location_info_guide_widget.dart';
@@ -42,56 +42,58 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: responsiveVisibility(
-        context: context,
-        tabletLandscape: false,
-      )
-          ? AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              automaticallyImplyLeading: false,
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'j8jm3y0h' /* 마이 차밥 */,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: responsiveVisibility(
+          context: context,
+          tabletLandscape: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                automaticallyImplyLeading: false,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'j8jm3y0h' /* 마이 차밥 */,
+                  ),
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                      ),
                 ),
-                style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: FlutterFlowTheme.of(context).title2Family,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).title2Family),
-                    ),
-              ),
-              actions: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
-                  child: InkWell(
-                    onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PersonalSettingWidget(),
-                        ),
-                      );
-                    },
-                    child: Icon(
-                      Icons.more_outlined,
-                      color: Colors.black,
-                      size: 30.0,
+                actions: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PersonalSettingWidget(),
+                          ),
+                        );
+                      },
+                      child: Icon(
+                        Icons.more_outlined,
+                        color: Colors.black,
+                        size: 30.0,
+                      ),
                     ),
                   ),
-                ),
-              ],
-              centerTitle: false,
-              elevation: 2.0,
-            )
-          : null,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+                ],
+                centerTitle: false,
+                elevation: 2.0,
+              )
+            : null,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -110,7 +112,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 0.0,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              color: FlutterFlowTheme.of(context).tertiary,
                               offset: Offset(0.0, 1.0),
                             )
                           ],
@@ -133,18 +135,18 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                       builder: (context) => Text(
                                         currentUserDisplayName,
                                         style: FlutterFlowTheme.of(context)
-                                            .title3
+                                            .headlineSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .title3Family,
+                                                      .headlineSmallFamily,
                                               fontWeight: FontWeight.bold,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .title3Family),
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmallFamily),
                                             ),
                                       ),
                                     ),
@@ -154,11 +156,11 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                       child: Text(
                                         currentUserEmail,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2Family,
+                                                      .bodySmallFamily,
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts:
@@ -166,7 +168,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                             ),
                                       ),
                                     ),
@@ -211,10 +213,10 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                     'tgbnq4k7' /* 즐겨찾는 충전소 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyText2Family,
+                                            .bodySmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 16.0,
@@ -222,7 +224,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ),
@@ -275,10 +277,10 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                     '9w0p4juo' /* 이용내역 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyText2Family,
+                                            .bodySmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 16.0,
@@ -286,7 +288,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ),
@@ -339,10 +341,10 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                     'klbkpgdl' /* 이벤트 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyText2Family,
+                                            .bodySmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 16.0,
@@ -350,7 +352,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ),
@@ -412,11 +414,11 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                       '16kbui6p' /* 차밥 이용안내 */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText2
+                                        .bodySmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText2Family,
+                                                  .bodySmallFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16.0,
@@ -424,7 +426,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2Family),
+                                                      .bodySmallFamily),
                                         ),
                                   ),
                                 ),
@@ -487,11 +489,11 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                       'yvnkzem5' /* 위치정보 이용약관 */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText2
+                                        .bodySmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText2Family,
+                                                  .bodySmallFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16.0,
@@ -499,7 +501,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2Family),
+                                                      .bodySmallFamily),
                                         ),
                                   ),
                                 ),
@@ -562,11 +564,11 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                       '6mko9cri' /* 개인정보 수집 및 이용 */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText2
+                                        .bodySmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText2Family,
+                                                  .bodySmallFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16.0,
@@ -574,7 +576,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2Family),
+                                                      .bodySmallFamily),
                                         ),
                                   ),
                                 ),
@@ -628,10 +630,10 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                     'wiamf49q' /* 고객센터 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyText2Family,
+                                            .bodySmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 16.0,
@@ -639,7 +641,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ),
@@ -692,10 +694,10 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                     '6a1lg0we' /* 고장신고 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyText2Family,
+                                            .bodySmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 16.0,
@@ -703,7 +705,7 @@ class _MyChaBapWidgetState extends State<MyChaBapWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ),

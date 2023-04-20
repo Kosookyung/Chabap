@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -45,12 +45,12 @@ class _LogInWidgetState extends State<LogInWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+        body: SafeArea(
           child: Visibility(
             visible: responsiveVisibility(
               context: context,
@@ -87,7 +87,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF090909),
@@ -96,13 +96,13 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1Family),
+                                                  .bodyMediumFamily),
                                     ),
                                 hintText: FFLocalizations.of(context).getText(
                                   'b311222x' /* 이메일 아이디를 입력해주세요 */,
                                 ),
                                 hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'AppleGothicSDNeo',
                                       color: FlutterFlowTheme.of(context)
@@ -112,7 +112,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1Family),
+                                                  .bodyMediumFamily),
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -153,7 +153,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: Color(0xFF090909),
@@ -162,7 +162,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText1Family),
+                                                .bodyMediumFamily),
                                   ),
                               validator: _model.emailFieldControllerValidator
                                   .asValidator(context),
@@ -180,16 +180,16 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   'svkhhryn' /* 비밀번호를 입력해주세요 */,
                                 ),
                                 hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyText2
+                                    .bodySmall
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyText2Family,
+                                          .bodySmallFamily,
                                       fontSize: 13.0,
                                       fontWeight: FontWeight.w500,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText2Family),
+                                                  .bodySmallFamily),
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -239,7 +239,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: Color(0xFF090909),
@@ -248,7 +248,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText1Family),
+                                                .bodyMediumFamily),
                                   ),
                               validator: _model.passWordFieldControllerValidator
                                   .asValidator(context),
@@ -274,7 +274,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   ),
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
-                                      .title3
+                                      .headlineSmall
                                       .override(
                                         fontFamily: 'AppleGothicSDNeo',
                                         fontSize: 13.0,
@@ -282,7 +282,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .title3Family),
+                                                    .headlineSmallFamily),
                                       ),
                                 ),
                                 tileColor:
@@ -298,7 +298,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              final user = await signInWithEmail(
+                              final user = await authManager.signInWithEmail(
                                 context,
                                 _model.emailFieldController.text,
                                 _model.passWordFieldController.text,
@@ -326,9 +326,9 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
+                                  .titleSmall
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: Colors.white,
@@ -337,8 +337,9 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .subtitle2Family),
+                                                .titleSmallFamily),
                                   ),
+                              elevation: 2.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
@@ -370,7 +371,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 'tyxyif05' /* 회원가입 */,
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: FlutterFlowTheme.of(context)
@@ -380,7 +381,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText1Family),
+                                                .bodyMediumFamily),
                                   ),
                             ),
                           ),
@@ -392,16 +393,16 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 'i1bitf2s' /* | */,
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyText1Family,
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText1Family),
+                                                .bodyMediumFamily),
                                   ),
                             ),
                           ),
@@ -422,7 +423,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   'xw9kxyoe' /* 아이디/비밀번호찾기 */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'AppleGothicSDNeo',
                                       color: FlutterFlowTheme.of(context)
@@ -432,7 +433,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1Family),
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),
@@ -456,7 +457,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                               'lv1qbnvl' /* 다음 계정으로 로그인/회원가입 */,
                             ),
                             style: FlutterFlowTheme.of(context)
-                                .bodyText1
+                                .bodyMedium
                                 .override(
                                   fontFamily: 'AppleGothicSDNeo',
                                   color: FlutterFlowTheme.of(context)
@@ -465,7 +466,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText1Family),
+                                          .bodyMediumFamily),
                                 ),
                           ),
                         ],
@@ -515,7 +516,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               onTap: () async {
-                                final user = await signInWithGoogle(context);
+                                final user =
+                                    await authManager.signInWithGoogle(context);
                                 if (user == null) {
                                   return;
                                 }
@@ -544,7 +546,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               onTap: () async {
-                                final user = await signInWithFacebook(context);
+                                final user = await authManager
+                                    .signInWithFacebook(context);
                                 if (user == null) {
                                   return;
                                 }
@@ -573,7 +576,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 10.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               onTap: () async {
-                                final user = await signInWithApple(context);
+                                final user =
+                                    await authManager.signInWithApple(context);
                                 if (user == null) {
                                   return;
                                 }
@@ -609,7 +613,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                         children: [
                           InkWell(
                             onTap: () async {
-                              final user = await signInAnonymously(context);
+                              final user =
+                                  await authManager.signInAnonymously(context);
                               if (user == null) {
                                 return;
                               }
@@ -627,7 +632,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                 'hmxdtp6h' /* 비회원으로 이용하기 */,
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'AppleGothicSDNeo',
                                     color: FlutterFlowTheme.of(context)
@@ -637,7 +642,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText1Family),
+                                                .bodyMediumFamily),
                                   ),
                             ),
                           ),

@@ -1,4 +1,4 @@
-import '/auth/firebase_user_provider.dart';
+import '/auth/firebase_auth/firebase_user_provider.dart';
 import '/backend/backend.dart';
 import '/components/bottom_sheet_place_info_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -55,20 +55,20 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
         }
         List<ChargeMarkerRecord> mainHomeEntryChargeMarkerRecordList =
             snapshot.data!;
-        return Scaffold(
-          key: scaffoldKey,
-          resizeToAvoidBottomInset: false,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            resizeToAvoidBottomInset: false,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: SafeArea(
               child: Visibility(
                 visible: responsiveVisibility(
                   context: context,
@@ -102,16 +102,22 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                             backgroundColor: Colors.transparent,
                                             barrierColor: Color(0x00000000),
                                             context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding: MediaQuery.of(context)
-                                                    .viewInsets,
-                                                child: Container(
-                                                  height: 180.0,
-                                                  child:
-                                                      BottomSheetPlaceInfoWidget(
-                                                    placeName:
-                                                        mainHomeEntryChargeMarkerRecord,
+                                            builder: (bottomSheetContext) {
+                                              return GestureDetector(
+                                                onTap: () => FocusScope.of(
+                                                        context)
+                                                    .requestFocus(_unfocusNode),
+                                                child: Padding(
+                                                  padding: MediaQuery.of(
+                                                          bottomSheetContext)
+                                                      .viewInsets,
+                                                  child: Container(
+                                                    height: 180.0,
+                                                    child:
+                                                        BottomSheetPlaceInfoWidget(
+                                                      placeName:
+                                                          mainHomeEntryChargeMarkerRecord,
+                                                    ),
                                                   ),
                                                 ),
                                               );
@@ -214,15 +220,15 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                           selectedChipStyle: ChipStyle(
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryColor,
+                                                    .primary,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1Family,
+                                                              .bodyMediumFamily,
                                                       color: Colors.white,
                                                       fontSize: 12.0,
                                                       fontWeight:
@@ -232,7 +238,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                                           .containsKey(
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyText1Family),
+                                                                  .bodyMediumFamily),
                                                     ),
                                             iconColor: Color(0x00000000),
                                             iconSize: 18.0,
@@ -242,12 +248,12 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                             backgroundColor: Colors.white,
                                             textStyle: FlutterFlowTheme.of(
                                                     context)
-                                                .bodyText2
+                                                .bodySmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyText2Family,
+                                                          .bodySmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
@@ -258,7 +264,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                                 ),
                                             iconColor: Color(0x00000000),
                                             iconSize: 18.0,
@@ -268,7 +274,7 @@ class _MainHomeEntryWidgetState extends State<MainHomeEntryWidget> {
                                           multiselect: false,
                                           alignment: WrapAlignment.start,
                                           controller: _model
-                                                  .choiceChipsController ??=
+                                                  .choiceChipsValueController ??=
                                               FormFieldController<List<String>>(
                                             [],
                                           ),
