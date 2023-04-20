@@ -8,7 +8,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+import 'package:dio/dio.dart';
+import 'package:platform/platform.dart';
+import 'package:kakao_flutter_sdk_navi/kakao_flutter_sdk_navi.dart';
+import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 void main() {
   KakaoSdk.init(
