@@ -675,7 +675,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'qtffdidy': {
-      'ko': '충전 중지',
+      'ko': '충전 완료',
       'en': '',
     },
     '8zug1nuu': {

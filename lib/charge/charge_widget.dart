@@ -213,13 +213,34 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                   await ChargeProFileRecord.collection
                                       .doc()
                                       .set(chargeProFileCreateData);
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          ChargeConnectWidget(),
-                                    ),
-                                  );
+                                  if (_model.pinCodeController!.text ==
+                                      '00000001') {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ChargeConnectWidget(),
+                                      ),
+                                    );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('안내'),
+                                          content:
+                                              Text('정확한 충전기 ID를 입력하여 주십시오.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('확인'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   '6b2dr2gy' /* 확인 */,

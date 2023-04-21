@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/kakao_login/kakao_login_widget.dart';
 import '/main.dart';
 import '/registration/registration_widget.dart';
 import '/search_account/search_account_widget.dart';

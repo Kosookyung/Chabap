@@ -267,7 +267,7 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                   onPressed: () async {
                                     await actions.kakaoNavi(
                                       context,
-                                      widget.nmae,
+                                      widget.nmae!,
                                       widget.longitude,
                                       widget.latitude,
                                     );
