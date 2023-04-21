@@ -135,7 +135,7 @@ class _BootpayTestState extends State<BootpayTest> {
 
     User user = User(); // 구매자 정보
     user.username = "이름";
-    user.email = "이메일";
+    user.email = "chabap@email.com";
     user.area = "서울";
     user.phone = "010-4033-4678";
     user.addr = '서울시 동작구 상도로 222';

@@ -752,6 +752,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
+  // NaviSelect
+  {
+    'iqmyvpm4': {
+      'ko': '길 안내하기',
+      'en': '',
+    },
+    'moke5koh': {
+      'ko': '티맵',
+      'en': '',
+    },
+    'j2duhd1h': {
+      'ko': '카카오내비',
+      'en': '',
+    },
+    'matvndxf': {
+      'ko': '경로 안내하기',
+      'en': '',
+    },
+    'niihie6k': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
   // PayHistory
   {
     'u34h3tib': {
@@ -843,29 +866,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '1y31lhxo': {
-      'ko': 'Home',
-      'en': '',
-    },
-  },
-  // NaviSelect
-  {
-    'iqmyvpm4': {
-      'ko': '길 안내하기',
-      'en': '',
-    },
-    'moke5koh': {
-      'ko': '티맵',
-      'en': '',
-    },
-    'j2duhd1h': {
-      'ko': '카카오내비',
-      'en': '',
-    },
-    'matvndxf': {
-      'ko': '경로 안내하기',
-      'en': '',
-    },
-    'niihie6k': {
       'ko': 'Home',
       'en': '',
     },

@@ -28,5 +28,5 @@ export '/charge_in_process/charge_in_process_widget.dart'
 export '/charge_complete/charge_complete_widget.dart' show ChargeCompleteWidget;
 export '/payment/payment_widget.dart' show PaymentWidget;
 export '/user_paylist/user_paylist_widget.dart' show UserPaylistWidget;
-export '/pay_history/pay_history_widget.dart' show PayHistoryWidget;
 export '/navi_select/navi_select_widget.dart' show NaviSelectWidget;
+export '/pay_history/pay_history_widget.dart' show PayHistoryWidget;
