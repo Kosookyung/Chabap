@@ -74,13 +74,21 @@ class _KakaoLoginWidgetState extends State<KakaoLoginWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 150.0,
-                height: 50.0,
-                child: custom_widgets.KakaotalkLogin(
-                  width: 150.0,
-                  height: 50.0,
-                  action: () async {},
+              Expanded(
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 120.0,
+                      height: 30.0,
+                      child: custom_widgets.KakaotalkLogin(
+                        width: 120.0,
+                        height: 30.0,
+                        action: () async {},
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

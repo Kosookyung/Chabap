@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' as Fa;
 import 'package:flutter/services.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:dio/dio.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 void main() {
   KakaoSdk.init(
