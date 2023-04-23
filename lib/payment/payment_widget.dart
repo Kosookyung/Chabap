@@ -103,6 +103,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     widget.price,
                     0.0,
                   ),
+                  userEmail: widget.userEmail,
                 ),
               ),
             ],
