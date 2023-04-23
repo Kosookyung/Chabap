@@ -14,6 +14,13 @@ import 'package:flutter/services.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core_web/firebase_core_web.dart';
+import 'package:firebase_auth_web/firebase_auth_web.dart';
+import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:firebase_auth_web/firebase_auth_web.dart';
+import 'package:meta/meta.dart';
 
 void main() {
   KakaoSdk.init(
