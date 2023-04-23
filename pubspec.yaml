@@ -83,7 +83,6 @@ dependencies:
   kakao_flutter_sdk_navi: ^1.4.2
   kakao_flutter_sdk_user: ^1.4.2
   lottie: 1.2.1
-  meta: ^1.8.0
   mime_type: 1.0.0
   package_info: ^2.0.2
   page_transition: 2.0.4
