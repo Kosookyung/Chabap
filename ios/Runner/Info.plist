@@ -42,7 +42,7 @@
 	    <key>CFBundleTypeRole</key>
 	    <string>Editor</string>
 	    <key>CFBundleURLName</key>
- 	    <string>com.flutterflow.flexsquare</string>
+ 	    <string>com.mycompany.chabap</string>
 	    <key>CFBundleURLSchemes</key>
 	    <array>
 		<string>bootpayFlutterExample</string>
