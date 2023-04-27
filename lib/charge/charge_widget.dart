@@ -1,12 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
-import '/charge_connect/charge_connect_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -205,42 +201,8 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 10.0, 15.0, 10.0),
                               child: FFButtonWidget(
-                                onPressed: () async {
-                                  final chargeProFileCreateData =
-                                      createChargeProFileRecordData(
-                                    chargeBoxId: _model.pinCodeController!.text,
-                                  );
-                                  await ChargeProFileRecord.collection
-                                      .doc()
-                                      .set(chargeProFileCreateData);
-                                  if (_model.pinCodeController!.text ==
-                                      '00000001') {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChargeConnectWidget(),
-                                      ),
-                                    );
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('안내'),
-                                          content:
-                                              Text('정확한 충전기 ID를 입력하여 주십시오.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('확인'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }
+                                onPressed: () {
+                                  print('Button pressed ...');
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   '6b2dr2gy' /* 확인 */,

@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
       home: initialUser == null || displaySplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Colors.transparent,
+                color: FlutterFlowTheme.of(context).primaryBackground,
                 child: Image.asset(
                   'assets/images/icon_w.png',
                   fit: BoxFit.contain,
