@@ -90,23 +90,29 @@ class _PaymentWidgetState extends State<PaymentWidget> {
               )
             : null,
         body: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                width: double.infinity,
-                height: 750.0,
-                child: custom_widgets.BootpayTest(
+          child: Visibility(
+            visible: responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
                   width: double.infinity,
                   height: 750.0,
-                  price: valueOrDefault<double>(
-                    widget.price,
-                    0.0,
+                  child: custom_widgets.BootpayTest(
+                    width: double.infinity,
+                    height: 750.0,
+                    price: valueOrDefault<double>(
+                      widget.price,
+                      0.0,
+                    ),
+                    userEmail: widget.userEmail,
                   ),
-                  userEmail: widget.userEmail,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

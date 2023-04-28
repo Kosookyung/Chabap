@@ -84,25 +84,31 @@ class _UserGuideWidgetState extends State<UserGuideWidget> {
               )
             : null,
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'my8omqet' /* 제1조 (목적)
+          child: Visibility(
+            visible: responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'my8omqet' /* 제1조 (목적)
 본 약관은 주식회사 차밥(이하 '회사'... */
-                        ,
+                          ,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

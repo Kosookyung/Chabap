@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -82,9 +83,31 @@ class _UserPaylistWidgetState extends State<UserPaylistWidget> {
               )
             : null,
         body: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [],
+          child: Visibility(
+            visible: responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                    ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      height: double.infinity,
+                      child: custom_widgets.TestWebSocket(
+                        width: MediaQuery.of(context).size.width * 1.0,
+                        height: double.infinity,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
