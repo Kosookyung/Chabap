@@ -9,23 +9,19 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+// Set your widget name, define your parameter, and then add the
+// boilerplate code using the button on the right!
 import 'package:firebase_auth/firebase_auth.dart' as Fa;
 import 'package:flutter/services.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+//import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+//import 'package:firebase_auth_web/firebase_auth_web.dart';
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
+//import 'package:firebase_core_web/firebase_core_web.dart';
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_core_web/firebase_core_web.dart';
-import 'package:firebase_auth_web/firebase_auth_web.dart';
-import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
-import 'package:firebase_auth_web/firebase_auth_web.dart';
-
-void main() {
-  KakaoSdk.init(
-      nativeAppKey: '8a75a6acc2aee4dcd96331240f84b157',
-      javaScriptAppKey: 'c42d32dfb92ce9cfc0d4351d9aaab89b');
-}
 
 class KakaotalkLogin extends StatefulWidget {
   const KakaotalkLogin({
@@ -98,7 +94,7 @@ class _KakaotalkLoginState extends State<KakaotalkLogin> {
             }
 
             final email = 'kakao${user.id}@email.com';
-            final password = 'kakao${user.id}';
+            final password = 'ka8~${user.id}A,*';
 
             Fa.User? faUser;
 
@@ -120,7 +116,7 @@ class _KakaotalkLoginState extends State<KakaotalkLogin> {
               };
               FirebaseFirestore.instance
                   .collection('users')
-                  .doc('uid')
+                  .doc('faUser.uid')
                   .set(data);
 
               print('파이어베이스 -> 회원 가입 성공');

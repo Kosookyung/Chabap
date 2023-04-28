@@ -89,8 +89,8 @@ class _MyAppState extends State<MyApp> {
               builder: (context) => Container(
                 color: FlutterFlowTheme.of(context).primaryBackground,
                 child: Image.asset(
-                  'assets/images/Chabap_BI.png',
-                  fit: BoxFit.none,
+                  'assets/images/icon_w.png',
+                  fit: BoxFit.contain,
                 ),
               ),
             )
