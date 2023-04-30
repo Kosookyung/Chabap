@@ -218,7 +218,10 @@ class _ChargeWidgetState extends State<ChargeWidget> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            ChargeConnectWidget(),
+                                            ChargeConnectWidget(
+                                          chargeBoxId:
+                                              _model.pinCodeController!.text,
+                                        ),
                                       ),
                                     );
                                   },

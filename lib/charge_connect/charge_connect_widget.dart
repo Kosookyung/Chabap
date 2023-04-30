@@ -9,7 +9,12 @@ import 'charge_connect_model.dart';
 export 'charge_connect_model.dart';
 
 class ChargeConnectWidget extends StatefulWidget {
-  const ChargeConnectWidget({Key? key}) : super(key: key);
+  const ChargeConnectWidget({
+    Key? key,
+    required this.chargeBoxId,
+  }) : super(key: key);
+
+  final String? chargeBoxId;
 
   @override
   _ChargeConnectWidgetState createState() => _ChargeConnectWidgetState();
@@ -147,7 +152,9 @@ class _ChargeConnectWidgetState extends State<ChargeConnectWidget> {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ChargeStartWidget(),
+                              builder: (context) => ChargeStartWidget(
+                                chargeBoxId: widget.chargeBoxId!,
+                              ),
                             ),
                           );
                         },
