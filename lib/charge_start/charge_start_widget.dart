@@ -4,6 +4,7 @@ import '/charge_in_process/charge_in_process_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,12 @@ import 'charge_start_model.dart';
 export 'charge_start_model.dart';
 
 class ChargeStartWidget extends StatefulWidget {
-  const ChargeStartWidget({Key? key}) : super(key: key);
+  const ChargeStartWidget({
+    Key? key,
+    required this.chargeBoxId,
+  }) : super(key: key);
+
+  final String? chargeBoxId;
 
   @override
   _ChargeStartWidgetState createState() => _ChargeStartWidgetState();
@@ -189,39 +195,17 @@ class _ChargeStartWidgetState extends State<ChargeStartWidget> {
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
-                                  var confirmDialogResponse = await showDialog<
-                                          bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('충전 시작 안내 '),
-                                            content:
-                                                Text('충전기에서 충전 시작을 실행해주세요.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('취소'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('확인'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                                  if (confirmDialogResponse) {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChargeInProcessWidget(),
-                                      ),
-                                    );
-                                  }
+                                  await actions.executeRemoteStart(
+                                    widget.chargeBoxId!,
+                                    2,
+                                  );
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ChargeInProcessWidget(),
+                                    ),
+                                  );
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'egiu1tya' /* 다음 */,
