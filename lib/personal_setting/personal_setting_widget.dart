@@ -85,28 +85,89 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
               )
             : null,
         body: SafeArea(
-          child: Visibility(
-            visible: responsiveVisibility(
-              context: context,
-              tabletLandscape: false,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'ksoksg2j' /* 홈화면에서 즐겨찾는 충전소 보기 */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'AppleGothicSDNeo',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                          ),
+                    ),
+                    Switch(
+                      value: _model.switchValue ??= true,
+                      onChanged: (newValue) async {
+                        setState(() => _model.switchValue = newValue!);
+                      },
+                      activeColor:
+                          FlutterFlowTheme.of(context).primaryBackground,
+                      activeTrackColor: FlutterFlowTheme.of(context).primary,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        var confirmDialogResponse = await showDialog<bool>(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('로그아웃'),
+                                  content: Text('로그아웃 하시겠습니까?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(
+                                          alertDialogContext, false),
+                                      child: Text('취소'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(
+                                          alertDialogContext, true),
+                                      child: Text('로그아웃'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ) ??
+                            false;
+                        if (confirmDialogResponse) {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LogInWidget(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(
                         FFLocalizations.of(context).getText(
-                          'ksoksg2j' /* 홈화면에서 즐겨찾는 충전소 보기 */,
+                          '8rzp5bt8' /* 로그아웃 */,
                         ),
+                        textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'AppleGothicSDNeo',
-                              color: FlutterFlowTheme.of(context).primaryText,
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
@@ -114,122 +175,47 @@ class _PersonalSettingWidgetState extends State<PersonalSettingWidget> {
                                       .bodyMediumFamily),
                             ),
                       ),
-                      Switch(
-                        value: _model.switchValue ??= true,
-                        onChanged: (newValue) async {
-                          setState(() => _model.switchValue = newValue!);
-                        },
-                        activeColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                        activeTrackColor: FlutterFlowTheme.of(context).primary,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('로그아웃'),
-                                    content: Text('로그아웃 하시겠습니까?'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('취소'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('로그아웃'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LogInWidget(),
-                              ),
-                            );
-                          }
-                        },
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '8rzp5bt8' /* 로그아웃 */,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AccountWithdrawWidget(),
                           ),
-                          textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'AppleGothicSDNeo',
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
-                              ),
+                        );
+                      },
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'eg4x1nv7' /* 회원탈퇴 */,
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AccountWithdrawWidget(),
+                        textAlign: TextAlign.start,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'AppleGothicSDNeo',
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
-                          );
-                        },
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'eg4x1nv7' /* 회원탈퇴 */,
-                          ),
-                          textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'AppleGothicSDNeo',
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
-                              ),
-                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
