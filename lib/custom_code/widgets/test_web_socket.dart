@@ -12,9 +12,6 @@ import 'package:flutter/material.dart';
 // Set your widget name, define your parameter, and then add the
 // boilerplate code using the button on the right!
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:async/async.dart';
-import 'package:crypto/crypto.dart';
-import 'package:stream_channel/stream_channel.dart';
 
 class TestWebSocket extends StatefulWidget {
   const TestWebSocket({
@@ -34,7 +31,7 @@ class _TestWebSocketState extends State<TestWebSocket> {
   final TextEditingController _controller = TextEditingController();
   final _channel = WebSocketChannel.connect(
     Uri.parse(
-        'ws://18.193.243.175:8080/steve/websocket/CentralSystemService/00000002'),
+        'wss://18.193.243.175:8443/steve/websocket/CentralSystemService/00000001'),
   );
 
   @override

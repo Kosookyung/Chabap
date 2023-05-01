@@ -17,7 +17,7 @@ import 'package:stream_channel/stream_channel.dart';
 Future<void> steveRemoteStart() async {
   final channel = WebSocketChannel.connect(
     Uri.parse(
-        'ws://18.193.243.175:8080/steve/websocket/CentralSystemService/00000001'),
+        'wss://18.193.243.175:8443/steve/websocket/CentralSystemService/00000001'),
   );
   channel.stream.listen((message) {
     // Handle incoming messages from the server
@@ -25,7 +25,7 @@ Future<void> steveRemoteStart() async {
 
   // Send a remote charging request
   final request = {
-    "command": "RemoteStartTransaction",
+    "command": "StartTransactionRequest",
     "payload": {"connectorId": 1, "idTag": "1010010120220959"}
   };
   channel.sink.add(request.toString());

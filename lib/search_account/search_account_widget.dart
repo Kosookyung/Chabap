@@ -88,150 +88,142 @@ class _SearchAccountWidgetState extends State<SearchAccountWidget> {
               )
             : null,
         body: SafeArea(
-          child: Visibility(
-            visible: responsiveVisibility(
-              context: context,
-              tabletLandscape: false,
-            ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                    child: TextFormField(
-                      controller: _model.emailTextController,
-                      onChanged: (_) => EasyDebounce.debounce(
-                        '_model.emailTextController',
-                        Duration(milliseconds: 2000),
-                        () => setState(() {}),
-                      ),
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: FFLocalizations.of(context).getText(
-                          'a2pikytr' /* 이메일 주소를 입력하세요. */,
-                        ),
-                        hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            width: 1.0,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1.0,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1.0,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1.0,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                        suffixIcon: _model.emailTextController!.text.isNotEmpty
-                            ? InkWell(
-                                onTap: () async {
-                                  _model.emailTextController?.clear();
-                                  setState(() {});
-                                },
-                                child: Icon(
-                                  Icons.clear,
-                                  color: Color(0xFF757575),
-                                  size: 22.0,
-                                ),
-                              )
-                            : null,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: _model.emailTextControllerValidator
-                          .asValidator(context),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  child: TextFormField(
+                    controller: _model.emailTextController,
+                    onChanged: (_) => EasyDebounce.debounce(
+                      '_model.emailTextController',
+                      Duration(milliseconds: 2000),
+                      () => setState(() {}),
                     ),
+                    autofocus: true,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      hintText: FFLocalizations.of(context).getText(
+                        'a2pikytr' /* 이메일 주소를 입력하세요. */,
+                      ),
+                      hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          width: 1.0,
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(4.0),
+                          topRight: Radius.circular(4.0),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0x00000000),
+                          width: 1.0,
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(4.0),
+                          topRight: Radius.circular(4.0),
+                        ),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0x00000000),
+                          width: 1.0,
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(4.0),
+                          topRight: Radius.circular(4.0),
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0x00000000),
+                          width: 1.0,
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(4.0),
+                          topRight: Radius.circular(4.0),
+                        ),
+                      ),
+                      suffixIcon: _model.emailTextController!.text.isNotEmpty
+                          ? InkWell(
+                              onTap: () async {
+                                _model.emailTextController?.clear();
+                                setState(() {});
+                              },
+                              child: Icon(
+                                Icons.clear,
+                                color: Color(0xFF757575),
+                                size: 22.0,
+                              ),
+                            )
+                          : null,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: _model.emailTextControllerValidator
+                        .asValidator(context),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FFButtonWidget(
-                          onPressed: () async {
-                            if (_model.emailTextController.text.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Email required!',
-                                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          if (_model.emailTextController.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Email required!',
                                 ),
-                              );
-                              return;
-                            }
-                            await authManager.resetPassword(
-                              email: _model.emailTextController.text,
-                              context: context,
+                              ),
                             );
-                          },
-                          text: FFLocalizations.of(context).getText(
-                            'dnhg63z1' /* 비밀번호 재설정 */,
-                          ),
-                          options: FFButtonOptions(
-                            height: 45.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleSmallFamily,
-                                  color: Colors.white,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleSmallFamily),
-                                ),
-                            elevation: 2.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
+                            return;
+                          }
+                          await authManager.resetPassword(
+                            email: _model.emailTextController.text,
+                            context: context,
+                          );
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'dnhg63z1' /* 비밀번호 재설정 */,
                         ),
-                      ],
-                    ),
+                        options: FFButtonOptions(
+                          height: 45.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
+                                color: Colors.white,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmallFamily),
+                              ),
+                          elevation: 2.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
