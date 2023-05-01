@@ -670,6 +670,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '충전중',
       'en': '',
     },
+    'bmbvdojg': {
+      'ko': '충전량',
+      'en': '',
+    },
+    '06qmi2zt': {
+      'ko': 'Hello',
+      'en': '',
+    },
+    'r95g7b4d': {
+      'ko': 'kWh',
+      'en': '',
+    },
+    'y3kqzkvk': {
+      'ko': '충전 단가',
+      'en': '',
+    },
+    'il3vn823': {
+      'ko': '/',
+      'en': '',
+    },
+    'tsrq27c5': {
+      'ko': 'kWh',
+      'en': '',
+    },
     'q91sbvaa': {
       'ko': '충전이 완료되면\n결제가 진행됩니다',
       'en': '',
@@ -901,10 +925,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'hb4knxt0': {
       'ko': '추천 충전소',
-      'en': '',
-    },
-    'vadzexqk': {
-      'ko': 'DMC래미안e편한세상3단지아파트',
       'en': '',
     },
     'c11vl6ji': {

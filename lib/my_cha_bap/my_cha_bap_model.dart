@@ -5,6 +5,7 @@ import '/location_info_guide/location_info_guide_widget.dart';
 import '/personal_info_guide/personal_info_guide_widget.dart';
 import '/personal_setting/personal_setting_widget.dart';
 import '/user_guide/user_guide_widget.dart';
+import '/user_paylist/user_paylist_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

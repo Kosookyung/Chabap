@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/firebase_user_provider.dart';
+import '/auth/base_auth_user_provider.dart';
 import '/backend/backend.dart';
 import '/components/bottom_sheet_place_info_widget.dart';
 import '/components/bottom_sheets_recommend_charge_widget.dart';
