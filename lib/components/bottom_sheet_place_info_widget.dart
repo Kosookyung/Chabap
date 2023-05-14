@@ -1,8 +1,7 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/navi_select/navi_select_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +11,14 @@ export 'bottom_sheet_place_info_model.dart';
 class BottomSheetPlaceInfoWidget extends StatefulWidget {
   const BottomSheetPlaceInfoWidget({
     Key? key,
-    this.placeName,
+    required this.placeName,
     this.longitude,
     this.latitude,
   }) : super(key: key);
 
-  final ChargeMarkerRecord? placeName;
-  final ChargeMarkerRecord? longitude;
-  final ChargeMarkerRecord? latitude;
+  final String? placeName;
+  final String? longitude;
+  final String? latitude;
 
   @override
   _BottomSheetPlaceInfoWidgetState createState() =>
@@ -111,7 +110,10 @@ class _BottomSheetPlaceInfoWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 12.0, 0.0, 0.0),
                 child: Text(
-                  widget.placeName!.name!,
+                  valueOrDefault<String>(
+                    widget.placeName,
+                    '충전소 이름',
+                  ),
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily:
@@ -234,15 +236,11 @@ class _BottomSheetPlaceInfoWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await Navigator.push(
+                          await actions.kakaoNavi(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => NaviSelectWidget(
-                                nmae: widget.placeName!.name,
-                                longitude: widget.longitude!.longitude,
-                                latitude: widget.latitude!.latitude,
-                              ),
-                            ),
+                            widget.placeName!,
+                            widget.longitude!,
+                            widget.latitude!,
                           );
                         },
                         text: FFLocalizations.of(context).getText(
