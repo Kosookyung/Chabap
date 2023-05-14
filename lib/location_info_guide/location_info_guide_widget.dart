@@ -85,31 +85,25 @@ class _LocationInfoGuideWidgetState extends State<LocationInfoGuideWidget> {
               )
             : null,
         body: SafeArea(
-          child: Visibility(
-            visible: responsiveVisibility(
-              context: context,
-              tabletLandscape: false,
-            ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'j8h6yg8a' /* 제1조 (목적)
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        'j8h6yg8a' /* 제1조 (목적)
 주식회사 차밥(이하 '회사'라고 합니다... */
-                          ,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        ,
                       ),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

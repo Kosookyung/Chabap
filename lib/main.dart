@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser!.loggedIn
               ? NavBarPage()
-              : MainHomeEntryWidget(),
+              : LogInWidget(),
     );
   }
 }
