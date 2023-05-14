@@ -50,6 +50,19 @@ class _$ChargeMarkerRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.qty;
+    if (value != null) {
+      result
+        ..add('qty')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.status;
+    if (value != null) {
+      result
+        ..add('status')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -89,6 +102,14 @@ class _$ChargeMarkerRecordSerializer
           result.longitude = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'qty':
+          result.qty = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'status':
+          result.status = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -112,6 +133,10 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
   @override
   final String? longitude;
   @override
+  final int? qty;
+  @override
+  final String? status;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$ChargeMarkerRecord(
@@ -119,7 +144,13 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
       (new ChargeMarkerRecordBuilder()..update(updates))._build();
 
   _$ChargeMarkerRecord._(
-      {this.name, this.location, this.latitude, this.longitude, this.ffRef})
+      {this.name,
+      this.location,
+      this.latitude,
+      this.longitude,
+      this.qty,
+      this.status,
+      this.ffRef})
       : super._();
 
   @override
@@ -139,6 +170,8 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
         location == other.location &&
         latitude == other.latitude &&
         longitude == other.longitude &&
+        qty == other.qty &&
+        status == other.status &&
         ffRef == other.ffRef;
   }
 
@@ -149,6 +182,8 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, latitude.hashCode);
     _$hash = $jc(_$hash, longitude.hashCode);
+    _$hash = $jc(_$hash, qty.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -161,6 +196,8 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
           ..add('location', location)
           ..add('latitude', latitude)
           ..add('longitude', longitude)
+          ..add('qty', qty)
+          ..add('status', status)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -186,6 +223,14 @@ class ChargeMarkerRecordBuilder
   String? get longitude => _$this._longitude;
   set longitude(String? longitude) => _$this._longitude = longitude;
 
+  int? _qty;
+  int? get qty => _$this._qty;
+  set qty(int? qty) => _$this._qty = qty;
+
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -201,6 +246,8 @@ class ChargeMarkerRecordBuilder
       _location = $v.location;
       _latitude = $v.latitude;
       _longitude = $v.longitude;
+      _qty = $v.qty;
+      _status = $v.status;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -228,6 +275,8 @@ class ChargeMarkerRecordBuilder
             location: location,
             latitude: latitude,
             longitude: longitude,
+            qty: qty,
+            status: status,
             ffRef: ffRef);
     replace(_$result);
     return _$result;
