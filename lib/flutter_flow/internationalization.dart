@@ -1040,8 +1040,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Miscellaneous
   {
     'n1aejf93': {
-      'ko': '',
-      'en': '',
+      'ko':
+          'In order to search for nearby charging stations to recharge, this app requires access to your current location.',
+      'en':
+          'In order to search for nearby charging stations to recharge, this app requires access to your current location.',
     },
     'swfu438m': {
       'ko': '',
