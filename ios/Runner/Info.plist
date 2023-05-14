@@ -119,8 +119,10 @@
      <key>LSApplicationQueriesSchemes</key>
      <array>
       	<!-- 카카오톡으로 로그인 -->
+     <string>kakao8a75a6acc2aee4dcd96331240f84b157</string>	     
      <string>kakaokompassauth</string>
-      	<!-- 카카오톡 공유 -->
+     <string>kakaonavi-sdk</string>
+	     <!-- 카카오톡 공유 -->
      <string>kakaolink</string>
      </array>
 
