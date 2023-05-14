@@ -90,6 +90,42 @@ class OcppTagsPostCall {
   }
 }
 
+class SessionsCall {
+  static Future<ApiCallResponse> call({
+    String? connector = '645dc219a448ff6e422719d4',
+    String? user = '63e307ae3add8e7c9bdabc90',
+    dynamic? targetJson,
+    dynamic? configurelationsJson,
+    dynamic? metaDataJson,
+  }) {
+    final target = _serializeJson(targetJson);
+    final configurelations = _serializeJson(configurelationsJson);
+    final metaData = _serializeJson(metaDataJson);
+    final body = '''
+{
+  "connect": "${connector}",
+  "user": "${user}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'sessions',
+      apiUrl: 'https://api.edrv.io/v1.1/sessions',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'appliction/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer rEhwIwmnyY4plJDj6QJRmGqwC6TG9Fstn9zMLxEj',
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

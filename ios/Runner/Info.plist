@@ -51,7 +51,7 @@
 	<true/>
 
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>In order to search nearby, this app requires access to your current location.</string>
+    <string>In order to search for nearby charging stations to recharge, this app requires access to your current location.</string>
 
 
     <key>LSApplicationQueriesSchemes</key>
