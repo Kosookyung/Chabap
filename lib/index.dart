@@ -30,3 +30,4 @@ export '/payment/payment_widget.dart' show PaymentWidget;
 export '/user_paylist/user_paylist_widget.dart' show UserPaylistWidget;
 export '/navi_select/navi_select_widget.dart' show NaviSelectWidget;
 export '/pay_history/pay_history_widget.dart' show PayHistoryWidget;
+export '/log_in_copy/log_in_copy_widget.dart' show LogInCopyWidget;
