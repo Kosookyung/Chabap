@@ -23,6 +23,15 @@ abstract class ChargeMarkerRecord
 
   String? get status;
 
+  @BuiltValueField(wireName: 'favorite_is')
+  bool? get favoriteIs;
+
+  BuiltList<int>? get connector;
+
+  String? get power;
+
+  String? get type;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -32,7 +41,11 @@ abstract class ChargeMarkerRecord
     ..latitude = ''
     ..longitude = ''
     ..qty = 0
-    ..status = '';
+    ..status = ''
+    ..favoriteIs = false
+    ..connector = ListBuilder()
+    ..power = ''
+    ..type = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('ChargeMarker');
@@ -63,6 +76,9 @@ Map<String, dynamic> createChargeMarkerRecordData({
   String? longitude,
   int? qty,
   String? status,
+  bool? favoriteIs,
+  String? power,
+  String? type,
 }) {
   final firestoreData = serializers.toFirestore(
     ChargeMarkerRecord.serializer,
@@ -73,7 +89,11 @@ Map<String, dynamic> createChargeMarkerRecordData({
         ..latitude = latitude
         ..longitude = longitude
         ..qty = qty
-        ..status = status,
+        ..status = status
+        ..favoriteIs = favoriteIs
+        ..connector = null
+        ..power = power
+        ..type = type,
     ),
   );
 

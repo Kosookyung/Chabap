@@ -268,8 +268,8 @@ class _NaviSelectWidgetState extends State<NaviSelectWidget> {
                                     await actions.kakaoNavi(
                                       context,
                                       widget.nmae!,
-                                      widget.longitude,
-                                      widget.latitude,
+                                      widget.longitude!,
+                                      widget.latitude!,
                                     );
                                   },
                                   text: FFLocalizations.of(context).getText(

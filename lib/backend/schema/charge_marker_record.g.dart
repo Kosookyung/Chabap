@@ -63,6 +63,35 @@ class _$ChargeMarkerRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.favoriteIs;
+    if (value != null) {
+      result
+        ..add('favorite_is')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.connector;
+    if (value != null) {
+      result
+        ..add('connector')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(int)])));
+    }
+    value = object.power;
+    if (value != null) {
+      result
+        ..add('power')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.type;
+    if (value != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -110,6 +139,24 @@ class _$ChargeMarkerRecordSerializer
           result.status = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'favorite_is':
+          result.favoriteIs = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'connector':
+          result.connector.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(int)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'power':
+          result.power = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'type':
+          result.type = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -137,6 +184,14 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
   @override
   final String? status;
   @override
+  final bool? favoriteIs;
+  @override
+  final BuiltList<int>? connector;
+  @override
+  final String? power;
+  @override
+  final String? type;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$ChargeMarkerRecord(
@@ -150,6 +205,10 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
       this.longitude,
       this.qty,
       this.status,
+      this.favoriteIs,
+      this.connector,
+      this.power,
+      this.type,
       this.ffRef})
       : super._();
 
@@ -172,6 +231,10 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
         longitude == other.longitude &&
         qty == other.qty &&
         status == other.status &&
+        favoriteIs == other.favoriteIs &&
+        connector == other.connector &&
+        power == other.power &&
+        type == other.type &&
         ffRef == other.ffRef;
   }
 
@@ -184,6 +247,10 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
     _$hash = $jc(_$hash, longitude.hashCode);
     _$hash = $jc(_$hash, qty.hashCode);
     _$hash = $jc(_$hash, status.hashCode);
+    _$hash = $jc(_$hash, favoriteIs.hashCode);
+    _$hash = $jc(_$hash, connector.hashCode);
+    _$hash = $jc(_$hash, power.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -198,6 +265,10 @@ class _$ChargeMarkerRecord extends ChargeMarkerRecord {
           ..add('longitude', longitude)
           ..add('qty', qty)
           ..add('status', status)
+          ..add('favoriteIs', favoriteIs)
+          ..add('connector', connector)
+          ..add('power', power)
+          ..add('type', type)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -231,6 +302,23 @@ class ChargeMarkerRecordBuilder
   String? get status => _$this._status;
   set status(String? status) => _$this._status = status;
 
+  bool? _favoriteIs;
+  bool? get favoriteIs => _$this._favoriteIs;
+  set favoriteIs(bool? favoriteIs) => _$this._favoriteIs = favoriteIs;
+
+  ListBuilder<int>? _connector;
+  ListBuilder<int> get connector =>
+      _$this._connector ??= new ListBuilder<int>();
+  set connector(ListBuilder<int>? connector) => _$this._connector = connector;
+
+  String? _power;
+  String? get power => _$this._power;
+  set power(String? power) => _$this._power = power;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -248,6 +336,10 @@ class ChargeMarkerRecordBuilder
       _longitude = $v.longitude;
       _qty = $v.qty;
       _status = $v.status;
+      _favoriteIs = $v.favoriteIs;
+      _connector = $v.connector?.toBuilder();
+      _power = $v.power;
+      _type = $v.type;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -269,15 +361,32 @@ class ChargeMarkerRecordBuilder
   ChargeMarkerRecord build() => _build();
 
   _$ChargeMarkerRecord _build() {
-    final _$result = _$v ??
-        new _$ChargeMarkerRecord._(
-            name: name,
-            location: location,
-            latitude: latitude,
-            longitude: longitude,
-            qty: qty,
-            status: status,
-            ffRef: ffRef);
+    _$ChargeMarkerRecord _$result;
+    try {
+      _$result = _$v ??
+          new _$ChargeMarkerRecord._(
+              name: name,
+              location: location,
+              latitude: latitude,
+              longitude: longitude,
+              qty: qty,
+              status: status,
+              favoriteIs: favoriteIs,
+              connector: _connector?.build(),
+              power: power,
+              type: type,
+              ffRef: ffRef);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'connector';
+        _connector?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'ChargeMarkerRecord', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
