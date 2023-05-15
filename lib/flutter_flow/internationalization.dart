@@ -666,6 +666,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChargeInProcess
   {
+    '4bckd6er': {
+      'ko': '충전시간',
+      'en': '',
+    },
+    '9zvriioo': {
+      'ko': 'Hello World',
+      'en': '',
+    },
+    'etkag5aj': {
+      'ko': '충전량',
+      'en': '',
+    },
+    '5sms4yca': {
+      'ko': 'Hello World',
+      'en': '',
+    },
+    '3e2o2so5': {
+      'ko': '요금',
+      'en': '',
+    },
+    'oigalb0o': {
+      'ko': 'Hello World',
+      'en': '',
+    },
     'hlsybizw': {
       'ko': '충전중',
       'en': '',
@@ -870,6 +894,65 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
+  // LogInCopy
+  {
+    'nr61x9gv': {
+      'ko': '이메일 아이디를 입력해주세요',
+      'en': '',
+    },
+    'ffifa71e': {
+      'ko': '비밀번호를 입력해주세요',
+      'en': '',
+    },
+    '46u99pkw': {
+      'ko': '자동 로그인',
+      'en': '',
+    },
+    'q2qr4hlo': {
+      'ko': '로그인',
+      'en': '',
+    },
+    'koxrzl75': {
+      'ko': 'Field is required',
+      'en': '',
+    },
+    'sqsxqclo': {
+      'ko': 'Please choose an option from the dropdown',
+      'en': '',
+    },
+    'r9odr499': {
+      'ko': 'Field is required',
+      'en': '',
+    },
+    'k1zvna9c': {
+      'ko': 'Please choose an option from the dropdown',
+      'en': '',
+    },
+    'v9nqfpz7': {
+      'ko': '회원가입',
+      'en': '',
+    },
+    'rowwzcg5': {
+      'ko': '|',
+      'en': '',
+    },
+    'vl9sl1u2': {
+      'ko': '아이디/비밀번호찾기',
+      'en': '',
+    },
+    'jeevp5xa': {
+      'ko': '다음 계정으로 로그인/회원가입',
+      'en': '',
+    },
+    '2krx5wbb': {
+      'ko': '비회원으로 이용하기',
+      'en': '',
+    },
+    'h3jlxm0m': {
+      'ko': 'Home',
+      'en': '',
+    },
+  },
   // RecommendCharge
   {
     'kvlabtsc': {
@@ -903,94 +986,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '추천 충전소',
       'en': '',
     },
-    'vadzexqk': {
-      'ko': 'DMC래미안e편한세상3단지아파트',
-      'en': '',
-    },
-    'c11vl6ji': {
-      'ko': ' 최근 ',
-      'en': '',
-    },
-    'jwjq9td9': {
-      'ko': '급속',
-      'en': '',
-    },
-    'ag5vsoey': {
-      'ko': '0대',
-      'en': '',
-    },
-    'xywo4cpo': {
+    'uhe1sioc': {
       'ko': '완속',
       'en': '',
     },
-    'nxizdpv5': {
-      'ko': '4대',
-      'en': '',
-    },
-    '0e0dnaaz': {
+    'shypkc4l': {
       'ko': '가능',
-      'en': '',
-    },
-    'ci6xc9u0': {
-      'ko': '7.2km',
-      'en': '',
-    },
-    'jkbtksyq': {
-      'ko': '논현초교 공영노외주차장',
-      'en': '',
-    },
-    'pvhrmh16': {
-      'ko': '가까운',
-      'en': '',
-    },
-    'qkp4pydx': {
-      'ko': '급속',
-      'en': '',
-    },
-    'sojdmn3q': {
-      'ko': '1대',
-      'en': '',
-    },
-    'rg682vlp': {
-      'ko': '완속',
-      'en': '',
-    },
-    'xc3zpmao': {
-      'ko': '2대',
-      'en': '',
-    },
-    'lbwra04q': {
-      'ko': '가능',
-      'en': '',
-    },
-    'fet89pac': {
-      'ko': '7.2km',
       'en': '',
     },
   },
   // bottomSheetPlaceInfo
   {
-    'di5wekkv': {
-      'ko': '급속',
-      'en': '',
-    },
-    '0tru669b': {
-      'ko': '0대',
-      'en': '',
-    },
     'gj23fnkg': {
       'ko': '완속',
       'en': '',
     },
-    '8m1jqv9z': {
-      'ko': '4대',
-      'en': '',
-    },
-    '1jke8qy1': {
+    '3d79b7tu': {
       'ko': '가능',
       'en': '',
     },
-    'wh039ju4': {
+    'isd7fhdh': {
       'ko': '안내시작',
       'en': '',
     },

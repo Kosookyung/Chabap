@@ -2,24 +2,25 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/kakao_login/kakao_login_widget.dart';
 import '/main.dart';
 import '/registration/registration_widget.dart';
 import '/search_account/search_account_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'log_in_model.dart';
-export 'log_in_model.dart';
+import 'log_in_copy_model.dart';
+export 'log_in_copy_model.dart';
 
-class LogInWidget extends StatefulWidget {
-  const LogInWidget({Key? key}) : super(key: key);
+class LogInCopyWidget extends StatefulWidget {
+  const LogInCopyWidget({Key? key}) : super(key: key);
 
   @override
-  _LogInWidgetState createState() => _LogInWidgetState();
+  _LogInCopyWidgetState createState() => _LogInCopyWidgetState();
 }
 
-class _LogInWidgetState extends State<LogInWidget> {
-  late LogInModel _model;
+class _LogInCopyWidgetState extends State<LogInCopyWidget> {
+  late LogInCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -27,7 +28,7 @@ class _LogInWidgetState extends State<LogInWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LogInModel());
+    _model = createModel(context, () => LogInCopyModel());
 
     _model.emailFieldController ??= TextEditingController();
     _model.passWordFieldController ??= TextEditingController();
@@ -93,7 +94,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                 .bodyMediumFamily),
                                   ),
                               hintText: FFLocalizations.of(context).getText(
-                                'b311222x' /* 이메일 아이디를 입력해주세요 */,
+                                'nr61x9gv' /* 이메일 아이디를 입력해주세요 */,
                               ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -170,7 +171,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                             obscureText: !_model.passWordFieldVisibility,
                             decoration: InputDecoration(
                               hintText: FFLocalizations.of(context).getText(
-                                'svkhhryn' /* 비밀번호를 입력해주세요 */,
+                                'ffifa71e' /* 비밀번호를 입력해주세요 */,
                               ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
@@ -263,7 +264,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                               },
                               title: Text(
                                 FFLocalizations.of(context).getText(
-                                  'kbpfhrvq' /* 자동 로그인 */,
+                                  '46u99pkw' /* 자동 로그인 */,
                                 ),
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
@@ -311,7 +312,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                             );
                           },
                           text: FFLocalizations.of(context).getText(
-                            '176glhxg' /* 로그인 */,
+                            'q2qr4hlo' /* 로그인 */,
                           ),
                           options: FFButtonOptions(
                             width: 350.0,
@@ -365,7 +366,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                           },
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'tyxyif05' /* 회원가입 */,
+                              'v9nqfpz7' /* 회원가입 */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -386,7 +387,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'i1bitf2s' /* | */,
+                              'rowwzcg5' /* | */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -419,7 +420,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                             },
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'xw9kxyoe' /* 아이디/비밀번호찾기 */,
+                                'vl9sl1u2' /* 아이디/비밀번호찾기 */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -453,7 +454,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                       children: [
                         Text(
                           FFLocalizations.of(context).getText(
-                            'lv1qbnvl' /* 다음 계정으로 로그인/회원가입 */,
+                            'jeevp5xa' /* 다음 계정으로 로그인/회원가입 */,
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -478,6 +479,67 @@ class _LogInWidgetState extends State<LogInWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => KakaoLoginWidget(),
+                              ),
+                            );
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/logo_kakao.png',
+                              width: 45.0,
+                              height: 45.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('안내'),
+                                    content: Text(
+                                        '네이버 로그인은 네이버 검수중입니다. 네이버에서 승인 후 이용 가능하십니다.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('확인'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/logo_naver.png',
+                                width: 45.0,
+                                height: 45.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
@@ -613,7 +675,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                           },
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'hmxdtp6h' /* 비회원으로 이용하기 */,
+                              '2krx5wbb' /* 비회원으로 이용하기 */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
